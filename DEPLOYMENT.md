@@ -20,7 +20,8 @@ Everything you need to ship `~/alexandrias-design-redesign/mockup/` to `www.alex
 | `style.css` | Shared styles + new dark-section / boxy-audience modifiers | ✅ Done |
 | `motion.js` | GSAP scroll reveals, headline word stagger | ✅ Existing |
 | `inspiration/` | 30 Unsplash reference JPGs for the studio-room palette | ✅ Done |
-| `videos-encoded/` | Web-optimized video assets: Micro Mayhem, Microsoft, 2GIG, CAAASA, Wear-the-Crown, CCC secure preview, Dr. Cortés avatar walkthrough, and TV idle GIF | ✅ Done |
+| `videos-encoded/` | Web-optimized video assets: Micro Mayhem, Microsoft, 2GIG, CAAASA, Wear-the-Crown, CCC MEDCoE secure walkthrough, Dr. Cortés gated avatar walkthrough, and TV idle GIF | ✅ Done |
+| `research/` | Downloadable Dr. Cortés article drafts for the gated research and portfolio sections | ✅ Done |
 | `ACADEMY-ROUTING-WORKFLOW.md` | UI/UX doc for routing consumer vs. business buyers from `academy.html` into Moodle | ✅ Done |
 
 ---

@@ -438,6 +438,15 @@
       font-weight: 700;
     }
     .case-link:hover { color: var(--gold); }
+    .case-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+    .case-links .case-link { margin-top: 0; }
 
     .journey {
       display: grid;
@@ -662,10 +671,11 @@
           <div class="case-media"></div>
           <div class="case-body">
             <span class="case-client">U.S. Army MEDCoE</span>
-            <h3>Distributed Learning for Army Medical Professionals</h3>
-            <p>Multi-year subcontractor engagement developing TRADOC-compliant distributed-learning courses for Army medical professionals.</p>
-            <div class="case-tags"><span class="tag">TRADOC</span><span class="tag">Blackboard</span><span class="tag">Articulate</span></div>
-            <div class="case-metrics"><div class="case-metric"><strong>DL</strong><span>course design</span></div><div class="case-metric"><strong>508</strong><span>compliance</span></div></div>
+            <h3>Captain's Career Course Primer DL</h3>
+            <p>Multi-year subcontractor engagement for Army medical professionals at AMEDD MEDCoE, Fort Sam Houston. The course integrated Army University compliance, human-centered design, microlearning, mobile-friendly delivery, a test-out feature, and a Microsoft Teams OneNote resource hub.</p>
+            <div class="case-tags"><span class="tag">TRADOC</span><span class="tag">Army U</span><span class="tag">Articulate Rise</span><span class="tag">OneNote hub</span></div>
+            <div class="case-metrics"><div class="case-metric"><strong>40 hr</strong><span>primer course</span></div><div class="case-metric"><strong>94%</strong><span>job-readiness agreement</span></div></div>
+            <a class="case-link" href="videos-encoded/ch08-ccc-medcoe-walkthrough.mp4" target="_blank" rel="noopener">Open CCC walkthrough →</a>
           </div>
         </article>
 
@@ -694,12 +704,12 @@
         <article class="case" data-tags="government simulation" style="--accent: var(--cyan); --accent-dim: var(--cyan-dim);">
           <div class="case-media"></div>
           <div class="case-body">
-            <span class="case-client">CCC · Secure Government Portfolio</span>
-            <h3>Corporate Avatar Lesson Preview</h3>
-            <p>Password-gated government portfolio asset showing a curated avatar lesson preview for CCC. This item stays inside the secure case room because it is meant for vetted buyers and government-facing walkthroughs.</p>
-            <div class="case-tags"><span class="tag">Secure preview</span><span class="tag">Avatar lesson</span><span class="tag">Government buyer</span></div>
-            <div class="case-metrics"><div class="case-metric"><strong>4.5</strong><span>minute preview</span></div><div class="case-metric"><strong>Gov</strong><span>portfolio only</span></div></div>
-            <a class="case-link" href="videos-encoded/ch08-ccc-lesson-preview.mp4" target="_blank" rel="noopener">Open secure video preview →</a>
+            <span class="case-client">Army MEDCoE · CCC Walkthrough</span>
+            <h3>CCC Secure Lesson Walkthrough</h3>
+            <p>Password-gated walkthrough for vetted government buyers. The preview shows the structure, pacing, interface logic, and production quality of the Captain's Career Course learning environment without exposing the full proprietary deliverable.</p>
+            <div class="case-tags"><span class="tag">Secure preview</span><span class="tag">Government buyer</span><span class="tag">MEDCoE</span></div>
+            <div class="case-metrics"><div class="case-metric"><strong>4.5</strong><span>minute walkthrough</span></div><div class="case-metric"><strong>Gov</strong><span>portfolio only</span></div></div>
+            <a class="case-link" href="videos-encoded/ch08-ccc-medcoe-walkthrough.mp4" target="_blank" rel="noopener">Open secure CCC walkthrough →</a>
           </div>
         </article>
 
@@ -707,11 +717,16 @@
           <div class="case-media"></div>
           <div class="case-body">
             <span class="case-client">Dr. Carlos E. Cortés · UCR Emeritus Professor</span>
-            <h3>Living Legacy Avatar Prototype</h3>
-            <p>Participatory design work with a distinguished scholar whose career spans ethnic studies, multicultural education, public scholarship, and professional writing. The prototype documents a guarded RAG, corpus-curation decisions, legal considerations, and new design frameworks for legacy-informed chatbot work.</p>
-            <div class="case-tags"><span class="tag">Participatory design</span><span class="tag">Corpus curation</span><span class="tag">RAG guardrails</span></div>
-            <div class="case-metrics"><div class="case-metric"><strong>5+</strong><span>decades of work</span></div><div class="case-metric"><strong>3</strong><span>research papers</span></div></div>
-            <a class="case-link" href="videos-encoded/ch09-cortes-avatar-walkthrough.mp4" target="_blank" rel="noopener">Open prototype walkthrough →</a>
+            <h3>Corpus Curation Project: Creating the Avatar</h3>
+            <p>Participatory design with a UCR emeritus professor whose work spans ethnic studies, multicultural education, public scholarship, and professional writing. The project turns a curated career corpus into a guarded RAG companion with consent tiers for corpus, voice, and representation.</p>
+            <div class="case-tags"><span class="tag">Participatory design</span><span class="tag">Corpus curation</span><span class="tag">RAG guardrails</span><span class="tag">Consent architecture</span></div>
+            <div class="case-metrics"><div class="case-metric"><strong>5+</strong><span>decades of scholarship</span></div><div class="case-metric"><strong>3</strong><span>paper series</span></div></div>
+            <div class="case-links">
+              <a class="case-link" href="videos-encoded/ch09-cortes-avatar-walkthrough.mp4" target="_blank" rel="noopener">Open prototype walkthrough →</a>
+              <a class="case-link" href="research/cortes-article-1-teaching-with-a-living-legacy.docx" download>Paper 1 DOCX ↓</a>
+              <a class="case-link" href="research/cortes-article-2-imagine-produce-employ-experience.docx" download>Paper 2 DOCX ↓</a>
+              <a class="case-link" href="research/cortes-article-3-thinking-with-not-thinking-for.docx" download>Paper 3 DOCX ↓</a>
+            </div>
           </div>
         </article>
 
@@ -719,10 +734,14 @@
           <div class="case-media"></div>
           <div class="case-body">
             <span class="case-client">Microsoft Education</span>
-            <h3>Inclusive Classroom Solutions Curriculum</h3>
-            <p>AI-augmented educator curriculum centered on accessible classroom technology, inclusive practice, and scalable teacher-facing implementation.</p>
-            <div class="case-tags"><span class="tag">Educators</span><span class="tag">Accessibility</span><span class="tag">Platform onboarding</span></div>
-            <div class="case-metrics"><div class="case-metric"><strong>3K+</strong><span>educators</span></div><div class="case-metric"><strong>93%</strong><span>satisfaction</span></div></div>
+            <h3>Educator Insider Series</h3>
+            <p>Seven project-based webinars and learning paths built with Microsoft SMEs for parents and educators adapting to distance and hybrid K-12 learning. Deliverables included facilitation guides, presentation decks, participant guides, and platform-based learning paths.</p>
+            <div class="case-tags"><span class="tag">7 webinars</span><span class="tag">SME collaboration</span><span class="tag">Learning paths</span><span class="tag">Parent research</span></div>
+            <div class="case-metrics"><div class="case-metric"><strong>3K+</strong><span>attendees</span></div><div class="case-metric"><strong>93%</strong><span>satisfaction</span></div></div>
+            <div class="case-links">
+              <a class="case-link" href="videos-encoded/ch02-microsoft-inclusive-classroom.mp4" target="_blank" rel="noopener">Open classroom presentation →</a>
+              <a class="case-link" href="videos-encoded/ch04-teams-scheduling.mp4" target="_blank" rel="noopener">Open Teams scheduling demo →</a>
+            </div>
           </div>
         </article>
 
@@ -731,9 +750,10 @@
           <div class="case-body">
             <span class="case-client">UCLA Health</span>
             <h3>ACES Aware &amp; Stress Busters CEU Programs</h3>
-            <p>Continuing education infrastructure for healthcare professionals, built for health-system scale and credentialing requirements.</p>
-            <div class="case-tags"><span class="tag">CEU</span><span class="tag">Healthcare</span><span class="tag">Credentialing</span></div>
-            <div class="case-metrics"><div class="case-metric"><strong>5K+</strong><span>professionals</span></div><div class="case-metric"><strong>CEU</strong><span>accredited</span></div></div>
+            <p>Healthcare eLearning built with medical and mental health SMEs to support provider resilience, burnout reduction, and public health training. Deliverables included course outlines, storyboards, Articulate Rise and Storyline builds, Vyond and Camtasia video, infographics, and downloadable resources.</p>
+            <div class="case-tags"><span class="tag">CEU</span><span class="tag">Healthcare SMEs</span><span class="tag">Provider burnout</span><span class="tag">Articulate</span></div>
+            <div class="case-metrics"><div class="case-metric"><strong>5K+</strong><span>professionals</span></div><div class="case-metric"><strong>6 mo.</strong><span>per course</span></div></div>
+            <a class="case-link" href="mailto:cmartin@alexandriasdesign.com?subject=UCLA%20Health%20Case%20Study%20Walkthrough">Request healthcare walkthrough →</a>
           </div>
         </article>
 
