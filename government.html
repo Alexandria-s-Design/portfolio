@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Government — Alexandria's Design</title>
+  <meta name="description" content="WOSB · SDB · SAM.gov active. Multi-year subcontractor for ODNI, U.S. Army MEDCoE, and the Department of War. Procurement-ready instructional design with documented compliance." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .gov-hero {
+      padding: 140px 0 60px;
+      background: linear-gradient(180deg, #0a1628 0%, #122a4f 100%);
+      color: rgba(255,255,255,0.92);
+    }
+    .gov-hero h1 { color: #fff; font-size: clamp(48px, 7vw, 88px); letter-spacing: -0.035em; margin: 18px 0 14px; }
+    .gov-hero .lede { color: rgba(255,255,255,0.72); }
+    .gov-hero .pill { background: rgba(201,168,76,0.10); border-color: rgba(201,168,76,0.32); color: #c9a84c; }
+    .gov-hero .pill::before { background: #c9a84c; box-shadow: 0 0 0 3px rgba(201,168,76,0.20); }
+    .gov-hero .stub__back { color: rgba(255,255,255,0.6); }
+    .gov-hero .btn--primary { background: #c9a84c; color: #0a1628; border: 0; font-weight: 600; }
+    .gov-hero .btn--primary:hover { background: #d6b860; }
+
+    .gov-cred-strip {
+      background: #0a1628;
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+    .gov-cred-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      align-items: center;
+    }
+    @media (max-width: 720px) { .gov-cred-grid { grid-template-columns: repeat(2, 1fr); } }
+    .gov-cred {
+      text-align: center;
+      color: rgba(255,255,255,0.78);
+    }
+    .gov-cred__badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid #c9a84c;
+      color: #c9a84c;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      margin-bottom: 8px;
+    }
+    .gov-cred__label { font-size: 12px; letter-spacing: 0.08em; color: rgba(255,255,255,0.55); }
+
+    .gov-section { padding: 80px 0; }
+    .gov-section--soft { background: var(--bg-soft); }
+
+    .perf-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+      margin-top: 40px;
+    }
+    .perf-card {
+      background: #fff;
+      border: 1px solid var(--navy-08);
+      border-radius: 14px;
+      padding: 28px;
+      transition: all var(--t-fast) var(--ease);
+    }
+    .perf-card:hover { border-color: var(--amber); box-shadow: 0 12px 30px rgba(30, 58, 95, 0.08); }
+    .perf-card__client { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); font-weight: 600; }
+    .perf-card__title {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.2;
+      margin: 10px 0 12px;
+    }
+    .perf-card__desc { font-size: 14px; line-height: 1.6; color: var(--navy-60); }
+    .perf-card__tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--navy-08); }
+    .perf-card__tag {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--navy-60);
+      background: var(--bg-soft);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .naics-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--navy-08);
+    }
+    .naics-table th, .naics-table td {
+      padding: 16px 22px;
+      text-align: left;
+      border-bottom: 1px solid var(--navy-08);
+      font-size: 15px;
+    }
+    .naics-table th {
+      background: var(--bg-soft);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--navy-60);
+    }
+    .naics-table tr:last-child td { border-bottom: 0; }
+    .naics-table td:first-child { font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: var(--amber); font-size: 14px; }
+
+    .lane-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0 0;
+    }
+    .lane-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--navy-08);
+      font-size: 15px;
+      color: var(--navy);
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .lane-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--amber);
+      margin-top: 9px;
+    }
+
+    .gov-closing {
+      padding: 100px 0;
+      text-align: center;
+      background: #0a1628;
+      color: #fff;
+    }
+    .gov-closing h2 { color: #fff; font-size: clamp(36px, 5vw, 60px); margin: 0 0 14px; }
+    .gov-closing p { color: rgba(255,255,255,0.72); max-width: 600px; margin: 0 auto 32px; }
+    .gov-closing .btn--primary { background: #c9a84c; color: #0a1628; border: 0; }
+    .gov-closing .btn--primary:hover { background: #d6b860; }
+    .gov-closing .btn--ghost { background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.18); }
+  </style>
+</head>
+<body>
+  <header class="nav" role="banner">
+    <div class="wrap nav__row">
+      <a href="index.html" class="nav__brand">
+        <svg class="nav__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="#1E3A5F" stroke-width="1.4"/>
+          <path d="M12 3v18M3 12h18" stroke="#D97706" stroke-width="1.4"/>
+        </svg>
+        Alexandria's Design
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="government.html" class="nav__link is-active">Government</a>
+        <a href="corporate.html" class="nav__link">Corporate</a>
+        <a href="education.html" class="nav__link">Education</a>
+        <a href="academy.html" class="nav__link">Academy</a>
+        <a href="about-room.html" class="nav__link">About</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+      </nav>
+      <a href="contact.html" class="btn btn--primary nav__cta">Start a project <span class="arrow">→</span></a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="gov-hero">
+      <div class="wrap">
+        <a href="index.html" class="stub__back">← Home</a>
+        <span class="pill" style="margin-top:16px;">WOSB · SDB · SAM.gov Active · ODNI · MEDCoE · DoW Subcontractor</span>
+        <h1>Procurement-ready.<br/>Mission-aligned.</h1>
+        <p class="lede">
+          Federal &amp; state agencies, MSOs, and FQHCs. Multi-year subcontractor across the Office of the Director of National Intelligence, U.S. Army MEDCoE, and the Department of War. WOSB / SDB set-asides, SAM.gov active, Section 508 compliant. Portfolio kept private until the right buyer asks.
+        </p>
+        <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top: 32px;">
+          <a href="capabilities.pdf" class="btn btn--primary" download>Download Capabilities Statement (PDF) <span class="arrow">↓</span></a>
+          <a href="contact.html" class="btn btn--ghost" style="background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.18);">Talk to contracting</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CRED STRIP -->
+    <section class="gov-cred-strip">
+      <div class="wrap">
+        <div class="gov-cred-grid">
+          <div class="gov-cred"><div class="gov-cred__badge">WOSB</div><div class="gov-cred__label">SBA-Certified Women-Owned</div></div>
+          <div class="gov-cred"><div class="gov-cred__badge">SDB</div><div class="gov-cred__label">Small Disadvantaged Business</div></div>
+          <div class="gov-cred"><div class="gov-cred__badge">SAM.gov</div><div class="gov-cred__label">Active Registration</div></div>
+          <div class="gov-cred"><div class="gov-cred__badge">508 / WCAG</div><div class="gov-cred__label">2.1 AA Compliant</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAST PERFORMANCE -->
+    <section class="gov-section">
+      <div class="wrap">
+        <span class="eyebrow">Federal Past Performance</span>
+        <h2 class="h-section" style="margin-top:14px;">Multi-year work<br/>across federal training.</h2>
+        <p class="lede" style="max-width:680px; margin-top:18px;">
+          Subcontractor relationships spanning intelligence community, defense health, and federal acquisition. Procurement-vetted, Section 508 by default, TRADOC-aligned where the mission requires it.
+        </p>
+
+        <div class="perf-grid">
+
+          <article class="perf-card">
+            <div class="perf-card__client">Office of the Director of National Intelligence</div>
+            <h3 class="perf-card__title">Workforce Training Development</h3>
+            <p class="perf-card__desc">Federal workforce training development as a vetted subcontractor partner. Curriculum design, content architecture, and accessibility compliance for ODNI training initiatives.</p>
+            <div class="perf-card__tags">
+              <span class="perf-card__tag">Subcontractor</span>
+              <span class="perf-card__tag">Federal IC</span>
+            </div>
+          </article>
+
+          <article class="perf-card">
+            <div class="perf-card__client">U.S. Army MEDCoE · Fort Sam Houston</div>
+            <h3 class="perf-card__title">Captain's Career Course DL · Preventive Medicine · 3M Course</h3>
+            <p class="perf-card__desc">Multi-year subcontractor engagement developing distributed-learning courses for Army medical professionals. TRADOC-compliant, Blackboard-deployed, with Articulate Rise/Storyline interactive scenarios.</p>
+            <div class="perf-card__tags">
+              <span class="perf-card__tag">TRADOC</span>
+              <span class="perf-card__tag">DL Course</span>
+              <span class="perf-card__tag">Articulate</span>
+            </div>
+          </article>
+
+          <article class="perf-card">
+            <div class="perf-card__client">Department of War · OUSD(A&amp;S)</div>
+            <h3 class="perf-card__title">Mentor-Protege Program — 10 Bilingual Modules</h3>
+            <p class="perf-card__desc">136 learning objectives across 10 bilingual training modules for the Office of the Under Secretary of Defense for Acquisition &amp; Sustainment. Section 508 compliant, replaced legacy Storyline implementations with web-native interactive scenarios.</p>
+            <div class="perf-card__tags">
+              <span class="perf-card__tag">10 Modules</span>
+              <span class="perf-card__tag">136 Objectives</span>
+              <span class="perf-card__tag">Bilingual</span>
+            </div>
+          </article>
+
+          <article class="perf-card">
+            <div class="perf-card__client">APEX Accelerator Program</div>
+            <h3 class="perf-card__title">Federal Contracting Training Development</h3>
+            <p class="perf-card__desc">Training development for the APEX Accelerator program supporting small businesses in government contracting. Instructional design, content architecture, and delivery infrastructure.</p>
+            <div class="perf-card__tags">
+              <span class="perf-card__tag">Subcontractor</span>
+              <span class="perf-card__tag">Small Business</span>
+            </div>
+          </article>
+
+          <article class="perf-card">
+            <div class="perf-card__client">California CalAIM · Healthcare CBOs</div>
+            <h3 class="perf-card__title">ECM Policy Guide Training Simulation</h3>
+            <p class="perf-card__desc">Year-long virtual workplace simulation for newly hired Care Managers at CBOs operating under California DHCS Enhanced Care Management. 7 ECM Core Components, audit-ready chart documentation.</p>
+            <div class="perf-card__tags">
+              <span class="perf-card__tag">State / Healthcare</span>
+              <span class="perf-card__tag">Year-Long Sim</span>
+            </div>
+          </article>
+
+          <article class="perf-card">
+            <div class="perf-card__client">Discovery Collective · NIH SBIR</div>
+            <h3 class="perf-card__title">K-12 STEM Curriculum &amp; Rapid Development</h3>
+            <p class="perf-card__desc">NGSS-aligned computational modeling curriculum adopted nationwide. Federally-funded SBIR Phase II platform powering science classrooms across the U.S.</p>
+            <div class="perf-card__tags">
+              <span class="perf-card__tag">SBIR Phase II</span>
+              <span class="perf-card__tag">NIH</span>
+              <span class="perf-card__tag">NGSS</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="gov-section gov-section--soft">
+      <div class="wrap">
+        <span class="eyebrow">Service Lines</span>
+        <h2 class="h-section" style="margin-top:14px;">What we deliver<br/>for federal &amp; state buyers.</h2>
+
+        <ul class="lane-list">
+          <li><strong style="color:var(--navy); font-weight:600;">Distributed Learning (DL) Course Design &amp; Development</strong> — TRADOC / Army University compliant, Blackboard / Moodle / LMS-agnostic, Section 508 by default.</li>
+          <li><strong style="color:var(--navy); font-weight:600;">Federal Workforce AI Readiness Programs</strong> — Copilot-first AI fluency curricula for federal civilian and DoD workforce. SCORM-packaged for agency LMS.</li>
+          <li><strong style="color:var(--navy); font-weight:600;">Mentor-Protege &amp; Acquisition Training Portals</strong> — Web-native interactive scenarios. Bilingual delivery available. Compliance documentation layer.</li>
+          <li><strong style="color:var(--navy); font-weight:600;">Healthcare &amp; CalAIM ECM Training</strong> — Year-long Care Manager / Housing Navigator / CHW simulations. Real-game pedagogy. MSO/FQHC customization.</li>
+          <li><strong style="color:var(--navy); font-weight:600;">Train-the-Trainer &amp; Custom Implementation</strong> — $2.5K per organization for capability transfer; $15K–$35K for MSO/FQHC adaptation with compliance documentation.</li>
+          <li><strong style="color:var(--navy); font-weight:600;">Thought-Leadership Consulting</strong> — Workforce strategy for CalAIM, ECM, and federal training initiatives. Retainer or per-engagement.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- NAICS -->
+    <section class="gov-section">
+      <div class="wrap">
+        <span class="eyebrow">Procurement Reference</span>
+        <h2 class="h-section" style="margin-top:14px;">NAICS &amp; set-asides.</h2>
+        <p class="lede" style="max-width:680px; margin-top:18px;">
+          For contracting officers and small-business specialists. Full credentials, capability statement, and prior-performance file available on request.
+        </p>
+
+        <table class="naics-table">
+          <thead>
+            <tr><th>NAICS</th><th>Description</th><th>Primary use</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>611430</td><td>Professional &amp; Management Development Training</td><td>Primary</td></tr>
+            <tr><td>611710</td><td>Educational Support Services</td><td>Primary</td></tr>
+            <tr><td>541611</td><td>Administrative Management &amp; General Management Consulting</td><td>Supporting</td></tr>
+            <tr><td>541512</td><td>Computer Systems Design Services</td><td>Supporting (AI platforms)</td></tr>
+          </tbody>
+        </table>
+
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-top:30px;">
+          <div style="background:var(--bg-soft); border:1px solid var(--navy-08); border-radius:12px; padding:18px;">
+            <span class="eyebrow">Set-Aside Eligibility</span>
+            <p style="font-size:14px; line-height:1.55; color:var(--navy-60); margin:8px 0 0;">WOSB · SDB · Minority-Owned · Small Business. Eligible for set-aside and sole-source under applicable thresholds.</p>
+          </div>
+          <div style="background:var(--bg-soft); border:1px solid var(--navy-08); border-radius:12px; padding:18px;">
+            <span class="eyebrow">Compliance</span>
+            <p style="font-size:14px; line-height:1.55; color:var(--navy-60); margin:8px 0 0;">Section 508 / WCAG 2.1 AA · SCORM 1.2 + 2004 · xAPI · TRADOC DL standards · FERPA / COPPA.</p>
+          </div>
+          <div style="background:var(--bg-soft); border:1px solid var(--navy-08); border-radius:12px; padding:18px;">
+            <span class="eyebrow">Vehicles</span>
+            <p style="font-size:14px; line-height:1.55; color:var(--navy-60); margin:8px 0 0;">SAM.gov active. Available as prime or subcontractor on agency-specific BPAs / IDIQs. Teaming agreements welcomed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="gov-closing">
+      <div class="wrap">
+        <h2>Need the full file?</h2>
+        <p>Capability statement, prior performance, NAICS, and set-aside eligibility — packaged for your contracting team. Or book a 30-min discovery call with Charles.</p>
+        <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+          <a href="capabilities.pdf" class="btn btn--primary" download>Download Capabilities Statement (PDF) ↓</a>
+          <a href="mailto:cmartin@alexandriasdesign.com?subject=Government%20Contracting%20Inquiry" class="btn btn--ghost">Email contracting →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot__bottom" style="border:0; padding:24px 0;">
+        <span>© 2026 Alexandria's Design LLC</span>
+        <span class="creds">
+          <span>WOSB</span>
+          <span>SDB · Minority-Owned</span>
+          <span>508 / WCAG 2.1 AA</span>
+          <span>SAM.gov</span>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="motion.js"></script>
+</body>
+</html>

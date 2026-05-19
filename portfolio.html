@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio — Alexandria's Design</title>
+  <meta name="description" content="Password-gated Alexandria's Design portfolio: federal training, healthcare simulations, AI fluency, corporate enablement, and K-12 science modeling." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..650&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #05070b;
+      --panel: rgba(255, 255, 255, 0.055);
+      --panel-2: rgba(255, 255, 255, 0.09);
+      --line: rgba(255, 255, 255, 0.14);
+      --line-strong: rgba(255, 255, 255, 0.24);
+      --ink: #f5f6f2;
+      --muted: rgba(245, 246, 242, 0.66);
+      --soft: rgba(245, 246, 242, 0.44);
+      --cyan: #68e7ff;
+      --cyan-dim: rgba(104, 231, 255, 0.18);
+      --gold: #e8c373;
+      --gold-dim: rgba(232, 195, 115, 0.18);
+      --magenta: #ff6fa8;
+      --green: #70f3b1;
+      --font-display: "Fraunces", Georgia, serif;
+      --font-body: "Inter", system-ui, sans-serif;
+      --font-mono: "Space Mono", ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(104, 231, 255, 0.16), transparent 28%),
+        radial-gradient(circle at 84% 18%, rgba(255, 111, 168, 0.11), transparent 24%),
+        radial-gradient(circle at 52% 96%, rgba(232, 195, 115, 0.10), transparent 32%),
+        linear-gradient(180deg, #070a10 0%, #05070b 48%, #0a0d13 100%);
+      color: var(--ink);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 76%);
+      opacity: 0.45;
+      z-index: 0;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(1400px, calc(100% - 48px)); margin: 0 auto; position: relative; z-index: 1; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 24px;
+      background: rgba(5, 7, 11, 0.72);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(22px) saturate(140%);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 17px;
+      letter-spacing: -0.01em;
+    }
+    .brand-mark {
+      width: 21px;
+      height: 21px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--cyan);
+      font-size: 13px;
+      line-height: 1;
+    }
+    .top-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .nav-chip {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.045);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      transition: 180ms ease;
+    }
+    .nav-chip:hover { color: var(--ink); border-color: var(--cyan); background: var(--cyan-dim); }
+
+    .hero {
+      min-height: calc(100vh - 68px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+      align-items: center;
+      gap: clamp(32px, 5vw, 72px);
+      padding: clamp(64px, 8vw, 120px) 0 56px;
+    }
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 24px var(--cyan);
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 8.5vw, 128px);
+      font-weight: 360;
+      line-height: 0.92;
+      letter-spacing: -0.052em;
+      margin: 0;
+      max-width: 10ch;
+    }
+    .hero p {
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: clamp(17px, 1.35vw, 21px);
+      line-height: 1.65;
+      margin: 28px 0 0;
+    }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 13px;
+      transition: 180ms ease;
+    }
+    .btn--primary { background: var(--cyan); color: #061016; border-color: var(--cyan); box-shadow: 0 0 34px rgba(104,231,255,0.22); }
+    .btn:hover { transform: translateY(-1px); border-color: var(--gold); }
+    .btn--primary:hover { background: var(--gold); color: #0d0c08; }
+
+    .signal-panel {
+      position: relative;
+      min-height: 580px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03)),
+        #070a10;
+      box-shadow: 0 40px 110px rgba(0,0,0,0.44);
+    }
+    .signal-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 42% 30%, rgba(104,231,255,0.28), transparent 28%),
+        radial-gradient(circle at 72% 66%, rgba(232,195,115,0.16), transparent 26%),
+        linear-gradient(135deg, transparent 0 45%, rgba(255,255,255,0.07) 46% 47%, transparent 48%);
+      opacity: 0.88;
+    }
+    .orbital {
+      position: absolute;
+      inset: 64px 46px;
+      border: 1px solid rgba(104,231,255,0.22);
+      border-radius: 50%;
+      transform: rotate(-18deg);
+    }
+    .orbital:nth-child(2) { inset: 118px 32px; border-color: rgba(232,195,115,0.20); transform: rotate(23deg); }
+    .orbital:nth-child(3) { inset: 172px 92px; border-color: rgba(255,111,168,0.18); transform: rotate(61deg); }
+    .signal-card {
+      position: absolute;
+      left: 34px;
+      right: 34px;
+      bottom: 34px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(5,7,11,0.76);
+      backdrop-filter: blur(20px);
+    }
+    .signal-card h2 {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 3vw, 48px);
+      line-height: 1;
+      font-weight: 380;
+      letter-spacing: -0.035em;
+      margin: 0 0 12px;
+    }
+    .signal-card p { color: var(--muted); line-height: 1.55; margin: 0; }
+    .meters {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .meter {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      background: rgba(255,255,255,0.045);
+    }
+    .meter strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 420;
+      line-height: 1;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .meter span {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      color: var(--soft);
+      text-transform: uppercase;
+    }
+
+    .section { padding: clamp(72px, 9vw, 132px) 0; position: relative; z-index: 1; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(320px, 0.7fr);
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+    .section-head h2 {
+      font-family: var(--font-display);
+      font-weight: 360;
+      font-size: clamp(40px, 6vw, 82px);
+      line-height: 0.96;
+      letter-spacing: -0.045em;
+      margin: 0;
+    }
+    .section-head p { color: var(--muted); line-height: 1.65; margin: 0; }
+
+    .filterbar {
+      position: sticky;
+      top: 72px;
+      z-index: 12;
+      display: flex;
+      gap: 8px;
+      padding: 10px;
+      margin: 0 0 24px;
+      width: fit-content;
+      max-width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(5,7,11,0.72);
+      backdrop-filter: blur(18px);
+    }
+    .filter {
+      flex: 0 0 auto;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      padding: 9px 14px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .filter.is-active { background: var(--cyan); color: #051017; }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+    .case {
+      grid-column: span 4;
+      min-height: 430px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--panel);
+      transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+    }
+    .case:nth-child(1), .case:nth-child(6) { grid-column: span 8; }
+    .case:hover { transform: translateY(-4px); border-color: var(--cyan); background: var(--panel-2); }
+    .case::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.7;
+      background:
+        radial-gradient(circle at 20% 12%, var(--accent-dim, var(--cyan-dim)), transparent 34%),
+        linear-gradient(135deg, rgba(255,255,255,0.09), transparent 38%);
+      pointer-events: none;
+    }
+    .case-media {
+      position: relative;
+      height: 170px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.09), rgba(255,255,255,0.01)),
+        #070a10;
+      overflow: hidden;
+    }
+    .case:nth-child(1) .case-media, .case:nth-child(6) .case-media { height: 230px; }
+    .case-media::before {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border: 1px solid var(--accent, var(--cyan));
+      border-radius: 50%;
+      opacity: 0.38;
+      transform: rotate(-18deg);
+    }
+    .case-media::after {
+      content: "";
+      position: absolute;
+      inset: auto 22px 22px 22px;
+      height: 46px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent, var(--cyan)), transparent);
+      filter: blur(20px);
+      opacity: 0.42;
+    }
+    .case-body {
+      position: relative;
+      flex: 1;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+    }
+    .case-client {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent, var(--cyan));
+      font-weight: 700;
+    }
+    .case h3 {
+      font-family: var(--font-display);
+      font-weight: 390;
+      font-size: clamp(25px, 2.8vw, 42px);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin: 12px 0 14px;
+    }
+    .case p {
+      color: var(--muted);
+      line-height: 1.58;
+      margin: 0;
+      font-size: 15px;
+    }
+    .case-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 22px; }
+    .tag {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--soft);
+      padding: 5px 9px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+    .case-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: auto;
+      padding-top: 24px;
+    }
+    .case-metric {
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+    .case-metric strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 28px;
+      line-height: 1;
+      color: var(--gold);
+      font-weight: 430;
+      margin-bottom: 4px;
+    }
+    .case-metric span {
+      color: var(--soft);
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .case-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      color: var(--cyan);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .case-link:hover { color: var(--gold); }
+
+    .journey {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    .journey-panel {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: clamp(28px, 4vw, 48px);
+      background: rgba(255,255,255,0.055);
+      min-height: 520px;
+    }
+    .journey-panel h2 {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5vw, 72px);
+      line-height: 0.98;
+      font-weight: 360;
+      letter-spacing: -0.045em;
+      margin: 0 0 22px;
+    }
+    .journey-panel p { color: var(--muted); line-height: 1.7; margin: 0; }
+    .timeline { display: grid; gap: 12px; }
+    .step {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      background: rgba(255,255,255,0.04);
+    }
+    .step-num {
+      font-family: var(--font-mono);
+      color: var(--cyan);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .step h3 {
+      margin: 0 0 6px;
+      font-family: var(--font-display);
+      font-size: 25px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .step p { margin: 0; color: var(--muted); line-height: 1.55; font-size: 14px; }
+
+    .lock {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: clamp(32px, 5vw, 64px);
+      background:
+        radial-gradient(circle at 14% 0%, rgba(255,111,168,0.15), transparent 28%),
+        radial-gradient(circle at 86% 18%, rgba(104,231,255,0.14), transparent 26%),
+        rgba(255,255,255,0.055);
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.6fr);
+      gap: 42px;
+      align-items: center;
+    }
+    .lock h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5.7vw, 78px);
+      line-height: 0.95;
+      font-weight: 360;
+      letter-spacing: -0.045em;
+      margin: 0 0 18px;
+    }
+    .lock p { color: var(--muted); line-height: 1.65; margin: 0; max-width: 62ch; }
+    .lock-box {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      background: rgba(5,7,11,0.56);
+    }
+    .lock-form { display: flex; gap: 10px; margin-top: 18px; }
+    .lock-input {
+      flex: 1;
+      min-width: 0;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--ink);
+      padding: 13px 14px;
+      outline: none;
+    }
+    .lock-input:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(104,231,255,0.16); }
+    .lock-error { min-height: 20px; color: #ff8fae; font-size: 13px; margin-top: 10px; }
+
+    .footer {
+      padding: 42px 0;
+      color: var(--soft);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-top: 1px solid var(--line);
+    }
+    .footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+    body.is-locked .portfolio-only { filter: blur(8px); opacity: 0.38; pointer-events: none; user-select: none; }
+    body.is-unlocked .lock { display: none; }
+
+    @media (max-width: 980px) {
+      .hero, .section-head, .journey, .lock { grid-template-columns: 1fr; }
+      .signal-panel { min-height: 460px; }
+      .case, .case:nth-child(1), .case:nth-child(6) { grid-column: span 12; }
+      .filterbar { top: 66px; width: 100%; border-radius: 18px; }
+      .topbar { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 28px, 1400px); }
+      .hero { padding-top: 46px; }
+      .meters, .case-metrics, .lock-form { grid-template-columns: 1fr; display: grid; }
+      .signal-card { left: 18px; right: 18px; bottom: 18px; }
+      .signal-panel { min-height: 520px; }
+    }
+  </style>
+</head>
+<body class="is-locked">
+
+  <header class="topbar">
+    <a class="brand" href="about-room.html">
+      <span class="brand-mark">+</span>
+      <span>Alexandria's Design Portfolio</span>
+    </a>
+    <div class="top-actions">
+      <a class="nav-chip" href="about-room.html">Studio Room</a>
+      <a class="nav-chip" href="index.html">Main Site</a>
+      <a class="nav-chip" href="mailto:cmartin@alexandriasdesign.com?subject=Portfolio%20Discovery%20Call">Book Discovery</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <div>
+        <span class="eyebrow">Password-Gated Case Room</span>
+        <h1>Evidence you can walk through.</h1>
+        <p>
+          This is the portfolio shell for buyers who need more than a capabilities statement. Each case is organized by the business problem, the learning architecture, the production system, and the proof a stakeholder can use.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn--primary" href="#case-wall">Enter the case wall</a>
+          <a class="btn" href="capabilities.pdf" download>Download capabilities PDF</a>
+        </div>
+      </div>
+
+      <aside class="signal-panel" aria-label="Portfolio signal panel">
+        <div class="orbital"></div>
+        <div class="orbital"></div>
+        <div class="orbital"></div>
+        <div class="signal-card">
+          <h2>The work is the pitch.</h2>
+          <p>Federal compliance, healthcare simulation, AI fluency, K-12 modeling, and corporate enablement presented as one coherent production system.</p>
+          <div class="meters">
+            <div class="meter"><strong>9</strong><span>case rooms</span></div>
+            <div class="meter"><strong>4</strong><span>markets</span></div>
+            <div class="meter"><strong>508</strong><span>by default</span></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="wrap section" id="unlock">
+      <div class="lock">
+        <div>
+          <span class="eyebrow">Doorway Access</span>
+          <h2>Unlock the case-room layer.</h2>
+          <p>
+            Public visitors can see the structure. Discovery-call clients can unlock the detailed portfolio view using the shared password. This keeps sensitive client context private while still showing the level of work Alexandria's Design can produce.
+          </p>
+        </div>
+        <div class="lock-box">
+          <span class="eyebrow">Access Key</span>
+          <form class="lock-form" id="lock-form">
+            <input class="lock-input" id="lock-password" type="password" placeholder="Enter password" autocomplete="off" />
+            <button class="btn btn--primary" type="submit">Unlock</button>
+          </form>
+          <div class="lock-error" id="lock-error"></div>
+          <a class="btn" style="margin-top:10px; width:100%;" href="mailto:cmartin@alexandriasdesign.com?subject=Portfolio%20Access%20Request">Request access</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section portfolio-only" id="case-wall">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Case Wall</span>
+          <h2>Choose the proof path.</h2>
+        </div>
+        <p>
+          The portfolio is organized around the question each buyer asks first: Can you move fast? Can you handle compliance? Can you build something immersive? Can you prove learning beyond a quiz?
+        </p>
+      </div>
+
+      <div class="filterbar" aria-label="Portfolio filters">
+        <button class="filter is-active" data-filter="all">All</button>
+        <button class="filter" data-filter="government">Government</button>
+        <button class="filter" data-filter="healthcare">Healthcare</button>
+        <button class="filter" data-filter="enterprise">Enterprise</button>
+        <button class="filter" data-filter="education">Education</button>
+        <button class="filter" data-filter="simulation">Simulation</button>
+        <button class="filter" data-filter="research">Research</button>
+      </div>
+
+      <div class="case-grid">
+        <article class="case" data-tags="simulation healthcare enterprise" style="--accent: var(--cyan); --accent-dim: var(--cyan-dim);">
+          <div class="case-media"></div>
+          <div class="case-body">
+            <span class="case-client">California CalAIM · Healthcare CBOs</span>
+            <h3>ECM Care Manager Year-Long Simulation</h3>
+            <p>A longitudinal real-game simulation for newly hired Care Managers. Learners move from Day 1 to Year 1 through realistic documentation, team handoffs, and audit-ready charting.</p>
+            <div class="case-tags"><span class="tag">Real-game pedagogy</span><span class="tag">CalAIM</span><span class="tag">Audit-ready</span></div>
+            <div class="case-metrics"><div class="case-metric"><strong>7</strong><span>ECM components</span></div><div class="case-metric"><strong>12 mo.</strong><span>learning arc</span></div></div>
+          </div>
+        </article>
+
+        <article class="case" data-tags="government" style="--accent: var(--gold); --accent-dim: var(--gold-dim);">
+          <div class="case-media"></div>
+          <div class="case-body">
+            <span class="case-client">U.S. Army MEDCoE</span>
+            <h3>Distributed Learning for Army Medical Professionals</h3>
+            <p>Multi-year subcontractor engagement developing TRADOC-compliant distributed-learning courses for Army medical professionals.</p>
+            <div class="case-tags"><span class="tag">TRADOC</span><span class="tag">Blackboard</span><span class="tag">Articulate</span></div>
+            <div class="case-metrics"><div class="case-metric"><strong>DL</strong><span>course design</span></div><div class="case-metric"><strong>508</strong><span>compliance</span></div></div>
+          </div>
+        </article>
+
+        <article class="case" data-tags="government" style="--accent: var(--magenta); --accent-dim: rgba(255,111,168,0.18);">
+          <div class="case-media"></div>
+          <div class="case-body">
+            <span class="case-client">ODNI</span>
+            <h3>Federal Workforce Training Development</h3>
+            <p>Vetted subcontractor work across curriculum design, content architecture, accessibility compliance, and federal workforce development.</p>
+            <div class="case-tags"><span class="tag">Subcontractor</span><span class="tag">Federal IC</span></div>
+            <div class="case-metrics"><div class="case-metric"><strong>IC</strong><span>workforce</span></div><div class="case-metric"><strong>508</strong><span>floor</span></div></div>
+          </div>
+        </article>
+
+        <article class="case" data-tags="government enterprise" style="--accent: var(--gold); --accent-dim: var(--gold-dim);">
+          <div class="case-media"></div>
+          <div class="case-body">
+            <span class="case-client">Department of War · OUSD(A&amp;S)</span>
+            <h3>Mentor-Protege Program Portal</h3>
+            <p>Ten bilingual training modules replacing legacy Storyline implementations with web-native scenarios and clearer learning architecture.</p>
+            <div class="case-tags"><span class="tag">10 modules</span><span class="tag">Bilingual</span><span class="tag">136 objectives</span></div>
+            <div class="case-metrics"><div class="case-metric"><strong>10</strong><span>modules</span></div><div class="case-metric"><strong>136</strong><span>objectives</span></div></div>
+          </div>
+        </article>
+
+        <article class="case" data-tags="government simulation" style="--accent: var(--cyan); --accent-dim: var(--cyan-dim);">
+          <div class="case-media"></div>
+          <div class="case-body">
+            <span class="case-client">CCC · Secure Government Portfolio</span>
+            <h3>Corporate Avatar Lesson Preview</h3>
+            <p>Password-gated government portfolio asset showing a curated avatar lesson preview for CCC. This item stays inside the secure case room because it is meant for vetted buyers and government-facing walkthroughs.</p>
+            <div class="case-tags"><span class="tag">Secure preview</span><span class="tag">Avatar lesson</span><span class="tag">Government buyer</span></div>
+            <div class="case-metrics"><div class="case-metric"><strong>4.5</strong><span>minute preview</span></div><div class="case-metric"><strong>Gov</strong><span>portfolio only</span></div></div>
+            <a class="case-link" href="videos-encoded/ch08-ccc-lesson-preview.mp4" target="_blank" rel="noopener">Open secure video preview →</a>
+          </div>
+        </article>
+
+        <article class="case" data-tags="education simulation research" style="--accent: var(--magenta); --accent-dim: rgba(255,111,168,0.18);">
+          <div class="case-media"></div>
+          <div class="case-body">
+            <span class="case-client">Dr. Carlos E. Cortés · UCR Emeritus Professor</span>
+            <h3>Living Legacy Avatar Prototype</h3>
+            <p>Participatory design work with a distinguished scholar whose career spans ethnic studies, multicultural education, public scholarship, and professional writing. The prototype documents a guarded RAG, corpus-curation decisions, legal considerations, and new design frameworks for legacy-informed chatbot work.</p>
+            <div class="case-tags"><span class="tag">Participatory design</span><span class="tag">Corpus curation</span><span class="tag">RAG guardrails</span></div>
+            <div class="case-metrics"><div class="case-metric"><strong>5+</strong><span>decades of work</span></div><div class="case-metric"><strong>3</strong><span>research papers</span></div></div>
+            <a class="case-link" href="videos-encoded/ch09-cortes-avatar-walkthrough.mp4" target="_blank" rel="noopener">Open prototype walkthrough →</a>
+          </div>
+        </article>
+
+        <article class="case" data-tags="enterprise education" style="--accent: var(--cyan); --accent-dim: var(--cyan-dim);">
+          <div class="case-media"></div>
+          <div class="case-body">
+            <span class="case-client">Microsoft Education</span>
+            <h3>Inclusive Classroom Solutions Curriculum</h3>
+            <p>AI-augmented educator curriculum centered on accessible classroom technology, inclusive practice, and scalable teacher-facing implementation.</p>
+            <div class="case-tags"><span class="tag">Educators</span><span class="tag">Accessibility</span><span class="tag">Platform onboarding</span></div>
+            <div class="case-metrics"><div class="case-metric"><strong>3K+</strong><span>educators</span></div><div class="case-metric"><strong>93%</strong><span>satisfaction</span></div></div>
+          </div>
+        </article>
+
+        <article class="case" data-tags="healthcare enterprise" style="--accent: var(--green); --accent-dim: rgba(112,243,177,0.16);">
+          <div class="case-media"></div>
+          <div class="case-body">
+            <span class="case-client">UCLA Health</span>
+            <h3>ACES Aware &amp; Stress Busters CEU Programs</h3>
+            <p>Continuing education infrastructure for healthcare professionals, built for health-system scale and credentialing requirements.</p>
+            <div class="case-tags"><span class="tag">CEU</span><span class="tag">Healthcare</span><span class="tag">Credentialing</span></div>
+            <div class="case-metrics"><div class="case-metric"><strong>5K+</strong><span>professionals</span></div><div class="case-metric"><strong>CEU</strong><span>accredited</span></div></div>
+          </div>
+        </article>
+
+        <article class="case" data-tags="education simulation" style="--accent: var(--gold); --accent-dim: var(--gold-dim);">
+          <div class="case-media"></div>
+          <div class="case-body">
+            <span class="case-client">Discovery Collective · NIH SBIR</span>
+            <h3>ModelIt! Computational Modeling</h3>
+            <p>NGSS-aligned computational modeling platform powered by Cell Collective, adopted nationwide for K-12 science classrooms.</p>
+            <div class="case-tags"><span class="tag">NIH SBIR II</span><span class="tag">NGSS</span><span class="tag">Cell Collective</span></div>
+            <div class="case-metrics"><div class="case-metric"><strong>K-12</strong><span>science</span></div><div class="case-metric"><strong>US</strong><span>adoption</span></div></div>
+          </div>
+        </article>
+
+        <article class="case" data-tags="education enterprise" style="--accent: var(--magenta); --accent-dim: rgba(255,111,168,0.18);">
+          <div class="case-media"></div>
+          <div class="case-body">
+            <span class="case-client">CAAASA</span>
+            <h3>AI Academy &amp; Superintendent Leadership</h3>
+            <p>AI fluency cohort and statewide leadership programming for K-12 leaders, packaged for Moodle delivery and district LMS reuse.</p>
+            <div class="case-tags"><span class="tag">AI fluency</span><span class="tag">K-12 leaders</span><span class="tag">Moodle</span></div>
+            <div class="case-metrics"><div class="case-metric"><strong>AI</strong><span>academy</span></div><div class="case-metric"><strong>LMS</strong><span>ready</span></div></div>
+          </div>
+        </article>
+
+        <article class="case" data-tags="enterprise" style="--accent: var(--cyan); --accent-dim: var(--cyan-dim);">
+          <div class="case-media"></div>
+          <div class="case-body">
+            <span class="case-client">2GIG / Nice</span>
+            <h3>EDGE Dealer Toolkit</h3>
+            <p>Corporate explainer and dealer training video for the 2GIG EDGE platform, produced for channel enablement and distribution-ready rollout.</p>
+            <div class="case-tags"><span class="tag">Sales enablement</span><span class="tag">Dealer training</span><span class="tag">Video</span></div>
+            <div class="case-metrics"><div class="case-metric"><strong>B2B</strong><span>channel</span></div><div class="case-metric"><strong>Video</strong><span>toolkit</span></div></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section portfolio-only">
+      <div class="journey">
+        <div class="journey-panel">
+          <span class="eyebrow">Production System</span>
+          <h2>What a buyer should feel.</h2>
+          <p>
+            The portfolio is designed as a guided proof environment. It says: we do not just make courses. We design systems that move people through context, pressure, practice, reflection, and proof.
+          </p>
+          <div class="hero-ctas">
+            <a class="btn btn--primary" href="mailto:cmartin@alexandriasdesign.com?subject=Portfolio%20Follow-Up">Discuss this portfolio</a>
+            <a class="btn" href="about-room.html">Return to studio</a>
+          </div>
+        </div>
+        <div class="timeline">
+          <article class="step"><span class="step-num">01</span><div><h3>Problem frame</h3><p>Each case starts with the operational pressure: compliance, workforce readiness, adoption, onboarding, or clinical judgment.</p></div></article>
+          <article class="step"><span class="step-num">02</span><div><h3>Learning architecture</h3><p>ADDIE is visible, but not generic. The design shows levels, scenarios, practice loops, and evidence artifacts.</p></div></article>
+          <article class="step"><span class="step-num">03</span><div><h3>Production pipeline</h3><p>AI accelerates storyboards, video, simulation assets, SCORM packaging, QA, and revision cycles without replacing expert judgment.</p></div></article>
+          <article class="step"><span class="step-num">04</span><div><h3>Proof layer</h3><p>Every case points to the artifact a buyer needs: audit file, completion record, stakeholder-ready summary, or performance evidence.</p></div></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>© 2026 Alexandria's Design LLC</span>
+      <span>WOSB · SDB · SAM.gov · Section 508 / WCAG 2.1 AA</span>
+    </div>
+  </footer>
+
+  <script>
+    const ACCEPTED_HASHES = new Set([
+      '31a455f16d9b59f789240e2e81679db1a3f99596796fee7c639dee60a89b57f2'
+    ]);
+
+    async function sha256Hex(str) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+      return [...new Uint8Array(buf)].map(x => x.toString(16).padStart(2, '0')).join('');
+    }
+
+    function unlock() {
+      document.body.classList.remove('is-locked');
+      document.body.classList.add('is-unlocked');
+      try { localStorage.setItem('ad-portfolio-unlocked', '1'); } catch(_) {}
+    }
+
+    (async () => {
+      const params = new URLSearchParams(location.search);
+      const key = params.get('key');
+      if (key && ACCEPTED_HASHES.has(await sha256Hex(key))) unlock();
+      try { if (localStorage.getItem('ad-portfolio-unlocked') === '1') unlock(); } catch(_) {}
+    })();
+
+    document.getElementById('lock-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const input = document.getElementById('lock-password');
+      const err = document.getElementById('lock-error');
+      err.textContent = '';
+      const value = input.value.trim();
+      if (!value) return;
+      if (ACCEPTED_HASHES.has(await sha256Hex(value))) unlock();
+      else err.textContent = "That password did not unlock the case room.";
+    });
+
+    document.querySelectorAll('.filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter').forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        const f = btn.dataset.filter;
+        document.querySelectorAll('.case').forEach(card => {
+          const show = f === 'all' || card.dataset.tags.includes(f);
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

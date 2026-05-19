@@ -1,711 +1,623 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alexandria's Design — Instructional Design & Training Development</title>
-  <meta name="description" content="Instructional design & training development for government and enterprise. WOSB & minority-owned.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --bg: #000000;
-      --bg-card: #111111;
-      --bg-elevated: #1A1A1A;
-      --border: #222222;
-      --text: #F5F5F7;
-      --text-muted: #86868B;
-      --accent: #2997FF;
-      --accent-hover: #40A9FF;
-      --white: #FFFFFF;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* ── Nav ──────────────────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 0 2rem;
-      height: 3.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(0, 0, 0, 0.72);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: -0.01em;
-    }
-
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    .nav-links a:hover { color: var(--white); }
-
-    .nav-hamburger {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      width: 1.5rem;
-      height: 1.5rem;
-      position: relative;
-    }
-
-    .nav-hamburger span {
-      display: block;
-      width: 100%;
-      height: 2px;
-      background: var(--text);
-      position: absolute;
-      left: 0;
-      transition: all 0.3s ease;
-    }
-
-    .nav-hamburger span:nth-child(1) { top: 4px; }
-    .nav-hamburger span:nth-child(2) { top: 11px; }
-    .nav-hamburger span:nth-child(3) { top: 18px; }
-
-    .nav-hamburger.open span:nth-child(1) { top: 11px; transform: rotate(45deg); }
-    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.open span:nth-child(3) { top: 11px; transform: rotate(-45deg); }
-
-    /* ── Sections ─────────────────────────────────────────── */
-    section { padding: 6rem 2rem; max-width: 1080px; margin: 0 auto; }
-
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-
-    .section-heading {
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: -0.02em;
-      margin-bottom: 3rem;
-    }
-
-    /* ── Hero ─────────────────────────────────────────────── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding-top: 3.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(41, 151, 255, 0.08) 0%, transparent 70%);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-    }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: var(--white);
-      line-height: 1.1;
-      max-width: 720px;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      color: var(--text-muted);
-      max-width: 560px;
-      margin-bottom: 2.5rem;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.75rem 1.75rem;
-      background: var(--accent);
-      color: var(--white);
-      text-decoration: none;
-      border-radius: 980px;
-      font-size: 0.9375rem;
-      font-weight: 500;
-      transition: background 0.3s ease;
-    }
-
-    .btn:hover { background: var(--accent-hover); }
-
-    /* ── Services ──────────────────────────────────────────── */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
-
-    .service-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 2rem;
-      transition: all 0.3s ease;
-    }
-
-    .service-card:hover {
-      border-color: #333;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 24px rgba(41, 151, 255, 0.06);
-    }
-
-    .service-icon {
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .service-card h3 {
-      font-size: 1.0625rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-
-    .service-card p {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* ── Impact Metrics ───────────────────────────────────── */
-    .impact {
-      max-width: 100%;
-      padding: 4rem 2rem;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .impact-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      text-align: center;
-    }
-
-    .metric-number {
-      font-size: 3rem;
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.02em;
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-
-    .metric-label {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    /* ── Work ──────────────────────────────────────────────── */
-    .work-list { display: flex; flex-direction: column; gap: 1rem; }
-
-    .work-card {
-      display: flex;
-      align-items: baseline;
-      gap: 2rem;
-      padding: 1.5rem 2rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      border-left: 3px solid var(--accent);
-      transition: all 0.3s ease;
-    }
-
-    .work-card:hover {
-      border-color: #333;
-      border-left-color: var(--accent-hover);
-      transform: translateX(4px);
-    }
-
-    .work-client {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--white);
-      min-width: 180px;
-      flex-shrink: 0;
-    }
-
-    .work-project {
-      font-size: 0.9375rem;
-      color: var(--accent);
-      font-weight: 500;
-      min-width: 220px;
-      flex-shrink: 0;
-    }
-
-    .work-highlight {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-    }
-
-    /* ── About ─────────────────────────────────────────────── */
-    .about-content {
-      display: flex;
-      gap: 3rem;
-      align-items: flex-start;
-    }
-
-    .about-avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      color: var(--text-muted);
-      flex-shrink: 0;
-    }
-
-    .about-text h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 0.25rem;
-    }
-
-    .about-text .about-title {
-      font-size: 0.875rem;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 1rem;
-    }
-
-    .about-text p {
-      font-size: 0.9375rem;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-      max-width: 600px;
-    }
-
-    .certs {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .cert-badge {
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.375rem 0.875rem;
-      border: 1px solid var(--border);
-      border-radius: 980px;
-      color: var(--text-muted);
-      letter-spacing: 0.02em;
-    }
-
-    /* ── Contact ───────────────────────────────────────────── */
-    #contact { text-align: center; }
-
-    #contact .section-heading {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .contact-links a {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    .contact-links a:hover { color: var(--accent-hover); }
-
-    .contact-links span {
-      color: var(--text-muted);
-      font-size: 0.9375rem;
-    }
-
-    /* ── Footer ────────────────────────────────────────────── */
-    footer {
-      padding: 2rem;
-      text-align: center;
-      border-top: 1px solid var(--border);
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-    }
-
-    footer a {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    footer a:hover { color: var(--white); }
-
-    .footer-links { margin-top: 0.5rem; }
-    .footer-links a + a { margin-left: 1.5rem; }
-
-    /* ── Animations ────────────────────────────────────────── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── Responsive ────────────────────────────────────────── */
-    @media (max-width: 900px) {
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .impact-inner { grid-template-columns: repeat(2, 1fr); }
-
-      .work-card {
-        flex-direction: column;
-        gap: 0.375rem;
-      }
-
-      .work-client, .work-project { min-width: unset; }
-    }
-
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 2.25rem; }
-      .hero p { font-size: 1rem; }
-
-      .section-heading { font-size: 1.5rem; }
-      .services-grid { grid-template-columns: 1fr; }
-      .metric-number { font-size: 2.25rem; }
-
-      #contact .section-heading { font-size: 1.75rem; }
-
-      .about-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .certs { justify-content: center; }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 3.5rem;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        background: rgba(0, 0, 0, 0.95);
-        backdrop-filter: blur(20px);
-        padding: 1rem 2rem;
-        gap: 1rem;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .nav-links.open { display: flex; }
-      .nav-hamburger { display: block; }
-    }
-
-    /* ── Print ─────────────────────────────────────────────── */
-    @media print {
-      nav, .hero::before { display: none; }
-      body { background: #fff; color: #000; }
-      .hero { min-height: auto; padding: 2rem; }
-      section { padding: 2rem; }
-      .service-card, .work-card { border-color: #ccc; background: #fff; }
-      .metric-number, .hero h1, .section-heading,
-      .service-card h3, .work-client, .about-text h3 { color: #000; }
-      .btn { background: #000; color: #fff; }
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alexandria's Design — Learning that moves people forward.</title>
+  <meta name="description" content="Instructional design and rapid AI course development for government, biotech, and education. WOSB-certified, SAM.gov active, Section 508 compliant." />
+
+  <!-- Google Fonts: Newsreader (display) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ── Navigation ─────────────────────────────────────── -->
-  <nav>
-    <div class="nav-logo">Alexandria's Design</div>
-    <button class="nav-hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#impact">Impact</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- ── Hero ───────────────────────────────────────────── -->
-  <section class="hero" id="hero">
-    <h1 class="fade-in">We design learning that moves people forward.</h1>
-    <p class="fade-in">Instructional design &amp; training development for government and enterprise</p>
-    <a href="#work" class="btn fade-in">See Our Work</a>
-  </section>
-
-  <!-- ── Services ───────────────────────────────────────── -->
-  <section id="services">
-    <p class="section-label fade-in">What We Do</p>
-    <h2 class="section-heading fade-in">Services</h2>
-    <div class="services-grid">
-      <div class="service-card fade-in">
-        <span class="service-icon">&#x1F4E1;</span>
-        <h3>Distributed Learning</h3>
-        <p>TRADOC &amp; Army University compliant DL courses</p>
-      </div>
-      <div class="service-card fade-in">
-        <span class="service-icon">&#x1F4BB;</span>
-        <h3>eLearning Development</h3>
-        <p>Articulate 360, SCORM/xAPI, Rise &amp; Storyline</p>
-      </div>
-      <div class="service-card fade-in">
-        <span class="service-icon">&#x1F4DA;</span>
-        <h3>Curriculum Design</h3>
-        <p>CCSS, NGSS &amp; military education standards alignment</p>
-      </div>
-      <div class="service-card fade-in">
-        <span class="service-icon">&#x1F3AF;</span>
-        <h3>Leadership Training</h3>
-        <p>Virtual &amp; in-person professional development</p>
-      </div>
-      <div class="service-card fade-in">
-        <span class="service-icon">&#x267F;</span>
-        <h3>508 Accessibility</h3>
-        <p>Full Section 508 &amp; WCAG compliance</p>
-      </div>
-      <div class="service-card fade-in">
-        <span class="service-icon">&#x1F916;</span>
-        <h3>AI in Education</h3>
-        <p>4th Industrial Revolution workforce readiness</p>
-      </div>
+  <!-- =====================================================================
+       NAV
+       ===================================================================== -->
+  <header class="nav" role="banner">
+    <div class="wrap nav__row">
+      <a href="index.html" class="nav__brand" aria-label="Alexandria's Design home">
+        <svg class="nav__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="#1E3A5F" stroke-width="1.4"/>
+          <path d="M12 3v18M3 12h18" stroke="#D97706" stroke-width="1.4"/>
+        </svg>
+        Alexandria's Design
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="index.html" class="nav__link is-active">Home</a>
+        <a href="government.html" class="nav__link">Government</a>
+        <a href="corporate.html" class="nav__link">Corporate</a>
+        <a href="education.html" class="nav__link">Education</a>
+        <a href="academy.html" class="nav__link">Academy</a>
+        <a href="about-room.html" class="nav__link">About</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+      </nav>
+      <a href="contact.html" class="btn btn--primary nav__cta">
+        Start a project <span class="arrow">→</span>
+      </a>
     </div>
-  </section>
+  </header>
 
-  <!-- ── Impact Metrics ─────────────────────────────────── -->
-  <section class="impact" id="impact">
-    <div class="impact-inner">
-      <div class="fade-in">
-        <div class="metric-number" data-target="10000" data-suffix="+">0</div>
-        <div class="metric-label">Learners Impacted</div>
-      </div>
-      <div class="fade-in">
-        <div class="metric-number" data-target="94" data-suffix="%">0</div>
-        <div class="metric-label">Avg Satisfaction</div>
-      </div>
-      <div class="fade-in">
-        <div class="metric-number" data-target="120" data-suffix="+">0</div>
-        <div class="metric-label">Hours DL Content</div>
-      </div>
-      <div class="fade-in">
-        <div class="metric-number" data-target="20" data-suffix="+">0</div>
-        <div class="metric-label">Years of Expertise</div>
-      </div>
-    </div>
-  </section>
+  <main>
 
-  <!-- ── Featured Work ──────────────────────────────────── -->
-  <section id="work">
-    <p class="section-label fade-in">Selected Projects</p>
-    <h2 class="section-heading fade-in">Featured Work</h2>
-    <div class="work-list">
-      <div class="work-card fade-in">
-        <span class="work-client">U.S. Army MEDCoE</span>
-        <span class="work-project">DL Course Development</span>
-        <span class="work-highlight">120+ contact hours, 94% satisfaction</span>
-      </div>
-      <div class="work-card fade-in">
-        <span class="work-client">DoD OUSD(A&amp;S)</span>
-        <span class="work-project">MPP Portal eLearning</span>
-        <span class="work-highlight">10 modules, 136 objectives, bilingual</span>
-      </div>
-      <div class="work-card fade-in">
-        <span class="work-client">Microsoft Education</span>
-        <span class="work-project">Educator Training Series</span>
-        <span class="work-highlight">3,000+ educators, 93% satisfaction</span>
-      </div>
-      <div class="work-card fade-in">
-        <span class="work-client">UCLA Health</span>
-        <span class="work-project">Health Professional eLearning</span>
-        <span class="work-highlight">5,000+ professionals, CEU-accredited</span>
-      </div>
-      <div class="work-card fade-in">
-        <span class="work-client">NIH SBIR</span>
-        <span class="work-project">K-12 STEM Curriculum</span>
-        <span class="work-highlight">NGSS-aligned, adopted nationwide</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── About ──────────────────────────────────────────── -->
-  <section id="about">
-    <p class="section-label fade-in">Leadership</p>
-    <h2 class="section-heading fade-in">About</h2>
-    <div class="about-content fade-in">
-      <div class="about-avatar">M</div>
-      <div class="about-text">
-        <h3>Dr. Marie Martin, Ed.L.</h3>
-        <p class="about-title">Founder &amp; CEO</p>
-        <p>With a doctorate from USC and over 20 years of experience spanning government and enterprise, Dr. Martin leads Alexandria's Design in creating learning experiences that drive measurable impact for military, healthcare, and K-12 organizations.</p>
-        <div class="certs">
-          <span class="cert-badge">WOSB</span>
-          <span class="cert-badge">Minority-Owned</span>
-          <span class="cert-badge">SDB</span>
-          <span class="cert-badge">SAM.gov Active</span>
+    <!-- =====================================================================
+         HERO
+         ===================================================================== -->
+    <section class="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="lightstreak" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="hero__inner">
+          <span class="pill hero__pill">WOSB · Minority-Owned · SAM.gov Active · Section 508</span>
+          <h1 class="hero__headline h-display">
+            <span class="word"><span>The</span></span>
+            <span class="word"><span>leaders</span></span>
+            <span class="word"><span>who</span></span>
+            <span class="word"><span>win</span></span>
+            <span class="word"><span>this</span></span>
+            <span class="word"><span>era</span></span>
+            <span class="word"><span>move</span></span>
+            <span class="word"><span>at</span></span>
+            <span class="word"><span>the</span></span>
+            <span class="word"><span>speed</span></span>
+            <span class="word"><span>of</span></span>
+            <span class="word"><span>light.</span></span>
+          </h1>
+          <p class="lede hero__lede">
+            Onboard, reskill, and upskill your workforce as fast as the regulation changes drop. The era of slow course development is over. We're the studio that gets you ready before your competitors finish writing the RFP.
+          </p>
+          <div class="hero__ctas">
+            <a href="#imagine" class="btn btn--primary">See what next month looks like <span class="arrow">→</span></a>
+            <a href="#demo" class="btn btn--ghost">Try a sample lesson</a>
+            <a href="capabilities.pdf" class="btn btn--ghost" download>Download Capabilities Statement (PDF) <span class="arrow">↓</span></a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="about-content fade-in" style="margin-top: 2.5rem;">
-      <div class="about-avatar">C</div>
-      <div class="about-text">
-        <h3>Dr. Charles Martin, Ed.D.</h3>
-        <p class="about-title">Director of Innovation</p>
-        <p>Dr. Martin brings deep expertise in AI-driven learning systems, systems thinking, and emerging technology integration. He leads Alexandria's Design's innovation strategy, driving the adoption of cutting-edge tools and methodologies across government and enterprise training programs.</p>
-        <div class="certs">
-          <span class="cert-badge">Top Secret Clearance</span>
+    </section>
+
+    <!-- =====================================================================
+         IMAGINE — vision-state moment
+         ===================================================================== -->
+    <section class="imagine" id="imagine">
+      <div class="wrap">
+        <div class="imagine__inner reveal">
+          <span class="imagine__kicker">Imagine, next month.</span>
+          <p class="imagine__copy">
+            A new regulation drops. Within weeks, your organization is <em>compliant</em> under the new rules. All courses are finished. Attestations are signed. The audit file is on your CCO's desk. Your team kept its existing roadmap.<br/><br/>
+            That's what we build.
+          </p>
+          <div class="imagine__line">
+            <div class="imagine__line__cell">
+              <strong>Day 1</strong>
+              You call us. The discovery happens that week.
+            </div>
+            <div class="imagine__line__cell">
+              <strong>Week 2–3</strong>
+              First module is in your hands for SME review.
+            </div>
+            <div class="imagine__line__cell">
+              <strong>By Week 6</strong>
+              Attestations signed. Audit file ready. Workforce certified.
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ── Contact ────────────────────────────────────────── -->
-  <section id="contact">
-    <h2 class="section-heading fade-in">Let's build something together.</h2>
-    <div class="contact-links fade-in">
-      <a href="mailto:mmartin@alexandriasdesign.com">mmartin@alexandriasdesign.com</a>
-      <a href="mailto:drcharlesmartinjr@alexandriasdesign.com">drcharlesmartinjr@alexandriasdesign.com</a>
-      <span>(323) 632-0271</span>
-      <a href="https://alexandria-s-design.github.io/capability-statement/">Capability Statement</a>
-    </div>
-  </section>
+    <!-- =====================================================================
+         IMPACT STRIP
+         ===================================================================== -->
+    <section class="impact impact--dark" aria-label="Impact at a glance">
+      <div class="wrap">
+        <div class="impact__grid">
+          <div class="impact__cell">
+            <span class="impact__num" data-count="3000" data-suffix="+">3,000+</span>
+            <span class="impact__label">Educators trained · 93% satisfaction</span>
+          </div>
+          <div class="impact__cell">
+            <span class="impact__num" data-count="5000" data-suffix="+">5,000+</span>
+            <span class="impact__label">Health professionals · CEU-accredited</span>
+          </div>
+          <div class="impact__cell">
+            <span class="impact__num">ODNI · MEDCoE · DoW</span>
+            <span class="impact__label">Multi-year federal subcontractor</span>
+          </div>
+          <div class="impact__cell">
+            <span class="impact__num">WOSB · SDB</span>
+            <span class="impact__label">SAM.gov active · 508 / WCAG 2.1 AA</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- ── Footer ─────────────────────────────────────────── -->
-  <footer>
-    <div>&copy; 2026 Alexandria's Design. All rights reserved.</div>
-    <div class="footer-links">
-      <a href="https://alexandria-s-design.github.io/capability-statement/">Capability Statement</a>
-      <a href="https://sam.gov">SAM.gov</a>
+    <!-- =====================================================================
+         AUDIENCE — Three ways we work with you
+         ===================================================================== -->
+    <section class="section">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <h2 class="h-section">Three ways<br/>we work with&nbsp;you.</h2>
+          <p class="lede">
+            Same instructional rigor across every audience. The deliverables, evidence, and procurement path are tuned to who's buying.
+          </p>
+        </header>
+        <div class="audience audience--boxy reveal">
+          <a href="government.html" class="audience__item">
+            <span class="audience__num">01 — Government</span>
+            <h3 class="audience__title h-card">Federal &amp; state agencies, MSOs, FQHCs</h3>
+            <p class="audience__desc">WOSB / SDB set-asides. Years of subcontractor work with ODNI, U.S. Army MEDCoE, and the Department of War. TRADOC-compliant DL development. Password-protected portfolio for vetted buyers.</p>
+            <span class="audience__arrow">Government services <span class="arrow">→</span></span>
+          </a>
+          <a href="corporate.html" class="audience__item">
+            <span class="audience__num">02 — Corporate</span>
+            <h3 class="audience__title h-card">Biotech, healthcare, enterprise L&amp;D</h3>
+            <p class="audience__desc">Trusted by Microsoft, UCLA Health, Skilling It, and Crinetics. Theory-of-change-driven design with measurable outcomes.</p>
+            <span class="audience__arrow">Corporate services <span class="arrow">→</span></span>
+          </a>
+          <a href="education.html" class="audience__item">
+            <span class="audience__num">03 — Education</span>
+            <h3 class="audience__title h-card">K-12, higher ed, research-backed</h3>
+            <p class="audience__desc">SBIR work with ModelIt!, Micro Mayhem, TRPEC consulting, and university course development. Peer-reviewed outcomes.</p>
+            <span class="audience__arrow">Education services <span class="arrow">→</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PLAYABLE DEMO — branching scenario
+         ===================================================================== -->
+    <section class="demo" id="demo">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <h2 class="h-section">Try a sample<br/>interaction.</h2>
+          <p class="lede">
+            This is the texture of a Level 1 lesson — pulled from our CalAIM ECM compliance library. Click an answer. See the feedback. Get the rationale. This is the rhythm your workforce will learn in.
+          </p>
+        </header>
+
+        <div class="demo__shell reveal" id="demoShell" role="region" aria-label="Sample interactive lesson">
+
+          <div class="demo__hud">
+            <span class="step" id="demoStep">Scenario · 1 of 1</span>
+            <button type="button" class="reset" id="demoReset" hidden>↻ Reset</button>
+          </div>
+
+          <!-- Question state -->
+          <div class="demo__question" id="demoQuestion">
+            <h3 class="demo__q">Your CalAIM auditor flags a missing competency check on a Care Manager already in the field. What's your right first move?</h3>
+            <p class="demo__qsub">Pick the response a confident, compliance-aware Director of Population Health would make.</p>
+
+            <div class="demo__choices">
+              <button type="button" class="demo__choice" data-choice="A">
+                <span class="letter">A</span>
+                <span class="text">Pull the Care Manager from member-facing work immediately and require full retraining before they return.</span>
+              </button>
+              <button type="button" class="demo__choice" data-choice="B">
+                <span class="letter">B</span>
+                <span class="text">Document the competency gap, schedule the targeted retraining, and retain the field assignment under supervisor sign-off until the gap closes.</span>
+              </button>
+              <button type="button" class="demo__choice" data-choice="C">
+                <span class="letter">C</span>
+                <span class="text">Re-issue the existing competency certificate and ask the auditor to recheck their records.</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Outcome state -->
+          <div class="demo__outcome" id="demoOutcome" aria-live="polite">
+            <span class="demo__verdict" id="demoVerdict">Strong move</span>
+            <h3 class="demo__feedback" id="demoFeedback">That's the answer a seasoned compliance lead picks.</h3>
+            <p class="demo__rationale" id="demoRationale"></p>
+            <button type="button" class="demo__again" id="demoAgain">Try a different answer <span class="arrow">→</span></button>
+          </div>
+
+        </div>
+
+        <p class="demo__caption reveal">↑ A 90-second slice of what we build. The full version branches further, layers in avatar feedback, and ends with an attestation.</p>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PAST PERFORMANCE (dark — borrowed from live-site box treatment)
+         ===================================================================== -->
+    <section class="section--dark" id="performance">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <h2 class="h-section">Past performance.<br/>Public clients.</h2>
+          <p class="lede">
+            A representative slice across federal, state-healthcare, and enterprise. The full case-study file lives behind the password-protected studio room.
+          </p>
+        </header>
+
+        <div class="perf-row reveal">
+
+          <article class="perf-row__card">
+            <div class="perf-row__card-client">Microsoft Education</div>
+            <h3 class="perf-row__card-title">Inclusive Classroom — Educator Curriculum</h3>
+            <p class="perf-row__card-desc">Multi-year subcontract delivering AI-augmented teacher training built around accessible-by-default classroom technology.</p>
+            <div class="perf-row__card-tags">
+              <span class="perf-row__card-tag">3,000+ educators</span>
+              <span class="perf-row__card-tag">93% satisfaction</span>
+            </div>
+          </article>
+
+          <article class="perf-row__card">
+            <div class="perf-row__card-client">U.S. Army MEDCoE</div>
+            <h3 class="perf-row__card-title">Captain's Career Course DL · Preventive Medicine</h3>
+            <p class="perf-row__card-desc">Multi-year subcontractor engagement developing TRADOC-compliant distributed-learning courses for Army medical professionals.</p>
+            <div class="perf-row__card-tags">
+              <span class="perf-row__card-tag">TRADOC</span>
+              <span class="perf-row__card-tag">Subcontractor</span>
+            </div>
+          </article>
+
+          <article class="perf-row__card">
+            <div class="perf-row__card-client">ODNI · Director of National Intelligence</div>
+            <h3 class="perf-row__card-title">Federal Workforce Training Development</h3>
+            <p class="perf-row__card-desc">Vetted subcontractor partner. Curriculum design, content architecture, and accessibility compliance for ODNI training initiatives.</p>
+            <div class="perf-row__card-tags">
+              <span class="perf-row__card-tag">Subcontractor</span>
+              <span class="perf-row__card-tag">Federal IC</span>
+            </div>
+          </article>
+
+          <article class="perf-row__card">
+            <div class="perf-row__card-client">Department of War · OUSD(A&amp;S)</div>
+            <h3 class="perf-row__card-title">Mentor-Protege — 10 Bilingual Modules</h3>
+            <p class="perf-row__card-desc">136 learning objectives across 10 bilingual training modules. Section 508 compliant, replacing legacy Storyline with web-native scenarios.</p>
+            <div class="perf-row__card-tags">
+              <span class="perf-row__card-tag">10 modules</span>
+              <span class="perf-row__card-tag">Bilingual</span>
+            </div>
+          </article>
+
+          <article class="perf-row__card">
+            <div class="perf-row__card-client">UCLA Health</div>
+            <h3 class="perf-row__card-title">ACES Aware &amp; Stress Busters — CEU Programs</h3>
+            <p class="perf-row__card-desc">CEU-accredited healthcare professional development at health-system scale. Continuing-education infrastructure for clinical teams.</p>
+            <div class="perf-row__card-tags">
+              <span class="perf-row__card-tag">5,000+ pros</span>
+              <span class="perf-row__card-tag">CEU</span>
+            </div>
+          </article>
+
+          <article class="perf-row__card">
+            <div class="perf-row__card-client">California CalAIM · Healthcare CBOs</div>
+            <h3 class="perf-row__card-title">ECM Care Manager — Year-Long Simulation</h3>
+            <p class="perf-row__card-desc">Year-long real-game simulation for Enhanced Care Management. Day 1 → Year 1 longitudinal scaffolding. Audit-ready chart documentation.</p>
+            <div class="perf-row__card-tags">
+              <span class="perf-row__card-tag">7 ECM components</span>
+              <span class="perf-row__card-tag">Year-long</span>
+            </div>
+          </article>
+
+        </div>
+
+        <div style="text-align:center; margin-top: 50px;">
+          <a href="about-room.html" class="btn btn--primary" style="background:#c9a84c; color:#0a1628; border:0;">
+            Step into the studio for the full portfolio <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CAPABILITIES STATEMENT
+         ===================================================================== -->
+    <section class="section section--soft" id="capabilities">
+      <div class="wrap">
+        <div class="cap reveal">
+          <div class="cap__left">
+            <span class="eyebrow">Capabilities Statement</span>
+            <h2 class="h-section cap__title" style="margin-top:14px;">Built for procurement-ready delivery.</h2>
+            <p class="cap__copy">
+              Alexandria's Design LLC is a WOSB-certified, minority-owned instructional design firm with Section 508 / WCAG 2.1 AA compliance, an active SAM.gov registration, and a documented track record across federal, state, healthcare, and enterprise contracts.
+            </p>
+            <ul class="cap__list">
+              <li><span class="k">01</span><span><strong>Core competencies</strong> — Distributed Learning (TRADOC &amp; Army University), eLearning development (Articulate 360, Storyline, Rise), curriculum design (CCSS / NGSS / military standards), leadership training, Section 508 accessibility, AI literacy programs.</span></li>
+              <li><span class="k">02</span><span><strong>Selected past performance</strong> — Office of the Director of National Intelligence (subcontractor) · U.S. Army MEDCoE DL (multi-year subcontractor) · Department of War (formerly DoD) OUSD(A&amp;S) MPP Portal (10 modules, 136 objectives, bilingual) · Microsoft Education (3,000+ educators, 93% satisfaction) · UCLA Health (5,000+ professionals, CEU-accredited) · NIH SBIR K-12 STEM (NGSS-aligned, adopted nationwide).</span></li>
+              <li><span class="k">03</span><span><strong>NAICS</strong> — 611430 Professional &amp; Management Development Training · 611710 Educational Support Services · 541611 Administrative Management Consulting.</span></li>
+              <li><span class="k">04</span><span><strong>Set-aside eligibility</strong> — WOSB · Minority-Owned · Small Disadvantaged Business (SDB) · SAM.gov Active.</span></li>
+              <li><span class="k">05</span><span><strong>Standards &amp; packaging</strong> — SCORM 1.2 / 2004 · xAPI · TRADOC DL standards · WCAG 2.1 AA · ISD process documentation.</span></li>
+            </ul>
+            <a href="capabilities.pdf" class="btn btn--ghost">Download capabilities PDF <span class="arrow">↓</span></a>
+          </div>
+          <div class="cap__credentials">
+            <div>
+              <span class="badge">WOSB</span>
+              <span class="meta">SBA-Certified</span>
+            </div>
+            <div>
+              <span class="badge">SDB</span>
+              <span class="meta">Minority-Owned</span>
+            </div>
+            <div>
+              <span class="badge">508 / WCAG</span>
+              <span class="meta">2.1 AA Compliant</span>
+            </div>
+            <div>
+              <span class="badge">SCORM · xAPI</span>
+              <span class="meta">1.2 + 2004 Packaging</span>
+            </div>
+            <div>
+              <span class="badge">SAM.gov</span>
+              <span class="meta">Active Registration</span>
+            </div>
+            <div>
+              <span class="badge">Federal</span>
+              <span class="meta">ODNI · MEDCoE · DoW subcontractor</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         RAPID AI COURSE DESIGN — Format Tiers (length / scope)
+         ===================================================================== -->
+    <section class="section" id="tiers">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <h2 class="h-section">Rapid AI Course<br/>Design Services.</h2>
+          <p class="lede">
+            Two decisions shape every quote: how much course you need (format), and how much production goes into it (interaction level). Pricing scales on both axes — start with the format, then layer the interaction.
+          </p>
+        </header>
+
+        <span class="eyebrow reveal" style="display:block; margin-bottom:24px;">Step 01 — Pick a format</span>
+
+        <div class="tiers reveal">
+
+          <!-- MICRO-LEARNING -->
+          <article class="tier">
+            <span class="tier__level">Micro-Learning</span>
+            <h4 class="tier__name">Single 30-min Module</h4>
+            <p class="tier__meta">Build 1–2 weeks · SME &amp; QA up to 4 weeks</p>
+            <span class="tier__price">$8K<span style="font-size:18px; font-weight:400; color:var(--navy-40);">+</span></span>
+            <span class="tier__price-note">Starting price · Level 1 interaction</span>
+            <ul class="tier__features">
+              <li class="tier__feature">One self-contained module, narrated &amp; interactive</li>
+              <li class="tier__feature">Pre/post assessment + completion tracking</li>
+              <li class="tier__feature">Section 508 / WCAG 2.1 AA out of the box</li>
+              <li class="tier__feature">Branded to your style guide</li>
+            </ul>
+            <a href="#" class="tier__sample">
+              <span class="tier__sample-tag">Sample build</span>
+              <span class="tier__sample-name">PMP Module 1 — Why Projects Matter →</span>
+            </a>
+            <a href="contact.html" class="btn btn--ghost tier__cta">Request quote</a>
+          </article>
+
+          <!-- CURRICULUM TRACK (FEATURED) -->
+          <article class="tier tier--featured">
+            <span class="tier__level">Curriculum Track</span>
+            <h4 class="tier__name">Multi-Module Curriculum</h4>
+            <p class="tier__meta">Build 2–3 weeks · SME &amp; QA up to 4 weeks</p>
+            <span class="tier__price">$25K<span style="font-size:18px; font-weight:400; color:rgba(255,255,255,0.4);">+</span></span>
+            <span class="tier__price-note">Starting price · Level 1 interaction</span>
+            <ul class="tier__features">
+              <li class="tier__feature">5 connected modules with branching scenarios</li>
+              <li class="tier__feature">Facilitator's guide + participant guide</li>
+              <li class="tier__feature">Cohort-ready or self-paced delivery</li>
+              <li class="tier__feature">Audit-ready competency tracking</li>
+            </ul>
+            <a href="#" class="tier__sample">
+              <span class="tier__sample-tag">Sample build</span>
+              <span class="tier__sample-name">AI Fluency Path — Section preview →</span>
+            </a>
+            <a href="contact.html" class="btn btn--primary tier__cta">Request quote</a>
+          </article>
+
+          <!-- CERTIFICATION TRACK -->
+          <article class="tier">
+            <span class="tier__level">Certification Track</span>
+            <h4 class="tier__name">Full Program Build</h4>
+            <p class="tier__meta">Build 4–6 weeks · SME &amp; QA 4–6 weeks</p>
+            <span class="tier__price">$75K<span style="font-size:18px; font-weight:400; color:var(--navy-40);">+</span></span>
+            <span class="tier__price-note">Starting price · Level 1 interaction</span>
+            <ul class="tier__features">
+              <li class="tier__feature">Full multi-track certification program</li>
+              <li class="tier__feature">Day-1 → Year-1 longitudinal scaffolding</li>
+              <li class="tier__feature">Pre/mid/post + capstone assessment suite</li>
+              <li class="tier__feature">CEU / CME accreditation pathway support</li>
+            </ul>
+            <a href="#" class="tier__sample">
+              <span class="tier__sample-tag">Sample build</span>
+              <span class="tier__sample-name">ECM Care Manager — Year-Long Sim →</span>
+            </a>
+            <a href="contact.html" class="btn btn--ghost tier__cta">Request quote</a>
+          </article>
+        </div>
+
+        <p class="timeline-note reveal">
+          <strong>While your competitors scope, you ship.</strong> A Micro-Learning lands in your audit file in roughly a month. A Curriculum Track in six weeks. A full Certification by the end of the quarter — all attestations signed, all SCORM-packaged, all 508-compliant.
+        </p>
+
+        <p class="tiers__voice reveal">
+          "Two doctorates. Decades of practice. AI augmenting every hour. Your team is the hero — we're the studio that gets you ready before the regulation deadline arrives."
+        </p>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         INTERACTION LEVELS — what the production layer looks like
+         ===================================================================== -->
+    <section class="section section--soft" id="interaction-levels">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <h2 class="h-section">Step 02 — Pick<br/>an interaction level.</h2>
+          <p class="lede">
+            Same format can ship at three production depths. Level pricing multiplies the format base — a Micro-Learning at Level 3 costs more than a Curriculum at Level 1. We'll tell you the multiplier on the call; what we won't do is bury it.
+          </p>
+        </header>
+
+        <div class="levels reveal">
+
+          <article class="level">
+            <span class="level__num">Level 01</span>
+            <h3 class="level__name">Foundation</h3>
+            <p class="level__tag">Starts at format base price</p>
+            <ul class="level__list">
+              <li>Branded visuals, charts, and infographics</li>
+              <li>Click-to-reveal interactions, drag-and-drop, hotspots</li>
+              <li>Light stock or generated B-roll video</li>
+              <li>Standard pre/post assessment</li>
+              <li>Voice-over narration (synthetic or human)</li>
+            </ul>
+            <p class="level__use">Best for: compliance, policy refreshers, knowledge checks.</p>
+          </article>
+
+          <article class="level level--mid">
+            <span class="level__num">Level 02</span>
+            <h3 class="level__name">Production</h3>
+            <p class="level__tag">~1.5× the format base</p>
+            <ul class="level__list">
+              <li>Custom video shoots and avatar presenters (Synthesia / Hume)</li>
+              <li>Walkthrough recordings with clickable response paths</li>
+              <li>Heavy interactive activities, layered scenarios</li>
+              <li>Branched feedback loops on assessments</li>
+              <li>Higher-fidelity audio &amp; mixed-media production</li>
+            </ul>
+            <p class="level__use">Best for: clinical training, sales enablement, soft-skill development.</p>
+          </article>
+
+          <article class="level level--top">
+            <span class="level__num">Level 03</span>
+            <h3 class="level__name">Simulation</h3>
+            <p class="level__tag">~2.5–3× the format base</p>
+            <ul class="level__list">
+              <li>First-person 360° immersive Skybox scenes</li>
+              <li>Full game engine builds (Phaser, Unity-lite)</li>
+              <li>Branching narrative + multi-path scenario design</li>
+              <li>Avatar-driven role-play with response evaluation</li>
+              <li>Longitudinal Day-1 → Year-1 sim scaffolding</li>
+            </ul>
+            <p class="level__use">Best for: workforce-readiness, certification programs, high-stakes practice.</p>
+          </article>
+
+        </div>
+
+        <p class="timeline-note reveal">
+          <strong>The level becomes the experience.</strong> At Level 1, your learners click and absorb. At Level 2, they meet a presenter who knows their work. At Level 3, they live the role — facing scenarios that build the muscle memory their job requires. Pick the level that matches the moment your workforce has to perform.
+        </p>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         BEYOND COURSES (services row)
+         ===================================================================== -->
+    <section class="section section--soft">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <h2 class="h-section">Beyond<br/>course development.</h2>
+          <p class="lede">
+            We work with leadership teams, research initiatives, and organizations building their own learning function. Three ways to engage beyond a single course.
+          </p>
+        </header>
+
+        <div class="beyond reveal">
+          <div class="beyond__item">
+            <svg class="beyond__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M3 5h18M3 12h12M3 19h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="20" cy="12" r="2" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
+            <h3 class="beyond__title">Thought Partnership Consulting</h3>
+            <p class="beyond__desc">Train-the-trainer engagements, leadership advisory, and AI strategy for L&amp;D teams. $2.5K–$35K per engagement.</p>
+          </div>
+          <div class="beyond__item">
+            <svg class="beyond__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 19V5a2 2 0 012-2h9l5 5v11a2 2 0 01-2 2H6a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M14 3v6h6" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
+            <h3 class="beyond__title">Research &amp; White Papers</h3>
+            <p class="beyond__desc">Peer-reviewed instructional research, ModelIt! SBIR scholarship, and field-tested curriculum studies you can cite in proposals.</p>
+          </div>
+          <div class="beyond__item">
+            <svg class="beyond__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h3 class="beyond__title">Out-of-the-Box Courses</h3>
+            <p class="beyond__desc">PMP certification prep, AI fluency cohorts, ECM workforce trainings — pre-built and seat-licensed via Alexandria's Academy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CLOSING CTA
+         ===================================================================== -->
+    <section class="closing closing--dark">
+      <div class="wrap">
+        <h2 class="closing__head reveal">Your next regulation<br/>is already coming.</h2>
+        <p class="closing__sub reveal">
+          The leaders who win this era of change are the ones who can move at the speed of light. Tell us the audience and the deadline. We'll have a tailored proposal in your inbox within 48 hours.
+        </p>
+        <div class="closing__ctas reveal">
+          <a href="contact.html" class="btn btn--primary">Start your project <span class="arrow">→</span></a>
+          <a href="about-room.html" class="btn btn--ghost">Step into the studio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       FOOTER
+       ===================================================================== -->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot__top">
+        <div>
+          <div class="foot__brand">Alexandria's Design</div>
+          <p class="foot__tag">Instructional design and training development for government, biotech, and education.</p>
+        </div>
+        <div>
+          <h5>Audiences</h5>
+          <ul>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="corporate.html">Corporate</a></li>
+            <li><a href="education.html">Education</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Studio</h5>
+          <ul>
+            <li><a href="academy.html">Academy</a></li>
+            <li><a href="about-room.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://doc-martins.com/" target="_blank" rel="noopener">Portfolio</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Reach Us</h5>
+          <ul>
+            <li><a href="mailto:info@alexandriasdesign.com">info@alexandriasdesign.com</a></li>
+            <li><a href="tel:+13236320271">(323) 632-0271</a></li>
+            <li>San Diego, CA</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot__bottom">
+        <span>© 2026 Alexandria's Design LLC</span>
+        <span class="creds">
+          <span>WOSB</span>
+          <span>SDB · Minority-Owned</span>
+          <span>508 / WCAG 2.1 AA</span>
+          <span>SAM.gov</span>
+        </span>
+      </div>
     </div>
   </footer>
 
-  <!-- ── Scripts ────────────────────────────────────────── -->
-  <script>
-    // Intersection Observer — fade-in on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          // Stagger siblings slightly
-          const siblings = entry.target.parentElement.querySelectorAll('.fade-in');
-          const index = Array.from(siblings).indexOf(entry.target);
-          entry.target.style.transitionDelay = `${index * 0.08}s`;
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // Counter animation for metrics
-    function animateCounter(el) {
-      const target = parseInt(el.dataset.target);
-      const suffix = el.dataset.suffix || '';
-      const duration = 1600;
-      const start = performance.now();
-
-      function update(now) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        // Ease-out cubic
-        const ease = 1 - Math.pow(1 - progress, 3);
-        const current = Math.round(target * ease);
-        el.textContent = current.toLocaleString() + suffix;
-        if (progress < 1) requestAnimationFrame(update);
-      }
-
-      requestAnimationFrame(update);
-    }
-
-    const metricObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.metric-number').forEach(animateCounter);
-          metricObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    document.querySelectorAll('.impact-inner').forEach(el => metricObserver.observe(el));
-
-    // Mobile hamburger toggle
-    const hamburger = document.querySelector('.nav-hamburger');
-    const navLinks = document.querySelector('.nav-links');
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      navLinks.classList.toggle('open');
-    });
-
-    // Close mobile nav on link click
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        navLinks.classList.remove('open');
-      });
-    });
-  </script>
-
+  <!-- Libraries (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="motion.js"></script>
 </body>
 </html>
