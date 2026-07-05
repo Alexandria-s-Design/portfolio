@@ -9,21 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="experience.css" />
 
   <style>
-    .gov-hero {
-      padding: 140px 0 60px;
-      background: linear-gradient(180deg, #0a1628 0%, #122a4f 100%);
-      color: rgba(255,255,255,0.92);
-    }
-    .gov-hero h1 { color: #fff; font-size: clamp(48px, 7vw, 88px); letter-spacing: -0.035em; margin: 18px 0 14px; }
-    .gov-hero .lede { color: rgba(255,255,255,0.72); }
-    .gov-hero .pill { background: rgba(201,168,76,0.10); border-color: rgba(201,168,76,0.32); color: #c9a84c; }
-    .gov-hero .pill::before { background: #c9a84c; box-shadow: 0 0 0 3px rgba(201,168,76,0.20); }
-    .gov-hero .stub__back { color: rgba(255,255,255,0.6); }
-    .gov-hero .btn--primary { background: #c9a84c; color: #0a1628; border: 0; font-weight: 600; }
-    .gov-hero .btn--primary:hover { background: #d6b860; }
-
+    /* Page-scoped: credentials strip, NAICS table, closing */
     .gov-cred-strip {
       background: #0a1628;
       padding: 28px 0;
@@ -37,15 +26,12 @@
       align-items: center;
     }
     @media (max-width: 720px) { .gov-cred-grid { grid-template-columns: repeat(2, 1fr); } }
-    .gov-cred {
-      text-align: center;
-      color: rgba(255,255,255,0.78);
-    }
+    .gov-cred { text-align: center; color: rgba(255,255,255,0.78); }
     .gov-cred__badge {
       display: inline-block;
       padding: 8px 14px;
-      border: 1px solid #c9a84c;
-      color: #c9a84c;
+      border: 1px solid #9F8B5C;
+      color: #B8A26E;
       border-radius: 6px;
       font-family: var(--font-body);
       font-size: 13px;
@@ -55,43 +41,8 @@
     }
     .gov-cred__label { font-size: 12px; letter-spacing: 0.08em; color: rgba(255,255,255,0.55); }
 
-    .gov-section { padding: 80px 0; }
+    .gov-section { padding: clamp(72px, 9vw, 120px) 0; }
     .gov-section--soft { background: var(--bg-soft); }
-
-    .perf-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 18px;
-      margin-top: 40px;
-    }
-    .perf-card {
-      background: #fff;
-      border: 1px solid var(--navy-08);
-      border-radius: 14px;
-      padding: 28px;
-      transition: all var(--t-fast) var(--ease);
-    }
-    .perf-card:hover { border-color: var(--amber); box-shadow: 0 12px 30px rgba(30, 58, 95, 0.08); }
-    .perf-card__client { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); font-weight: 600; }
-    .perf-card__title {
-      font-family: var(--font-display);
-      font-weight: 500;
-      font-size: 22px;
-      line-height: 1.2;
-      margin: 10px 0 12px;
-    }
-    .perf-card__desc { font-size: 14px; line-height: 1.6; color: var(--navy-60); }
-    .perf-card__tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--navy-08); }
-    .perf-card__tag {
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--navy-60);
-      background: var(--bg-soft);
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-weight: 600;
-    }
 
     .naics-table {
       width: 100%;
@@ -117,43 +68,22 @@
       color: var(--navy-60);
     }
     .naics-table tr:last-child td { border-bottom: 0; }
-    .naics-table td:first-child { font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: var(--amber); font-size: 14px; }
-
-    .lane-list {
-      list-style: none;
-      padding: 0;
-      margin: 24px 0 0;
-    }
-    .lane-list li {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--navy-08);
-      font-size: 15px;
-      color: var(--navy);
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-    }
-    .lane-list li::before {
-      content: '';
-      flex-shrink: 0;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--amber);
-      margin-top: 9px;
-    }
+    .naics-table td:first-child { font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: var(--gold); font-size: 14px; }
 
     .gov-closing {
-      padding: 100px 0;
+      padding: clamp(88px, 12vw, 140px) 0;
       text-align: center;
       background: #0a1628;
       color: #fff;
     }
     .gov-closing h2 { color: #fff; font-size: clamp(36px, 5vw, 60px); margin: 0 0 14px; }
     .gov-closing p { color: rgba(255,255,255,0.72); max-width: 600px; margin: 0 auto 32px; }
-    .gov-closing .btn--primary { background: #c9a84c; color: #0a1628; border: 0; }
-    .gov-closing .btn--primary:hover { background: #d6b860; }
+    .gov-closing .btn--primary { background: #9F8B5C; color: #0a1628; border: 0; }
+    .gov-closing .btn--primary:hover { background: #B8A26E; }
     .gov-closing .btn--ghost { background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.18); }
+
+    /* Dossier scenes sit edge to edge with no gaps between stills */
+    .dossier .scene + .scene { border-top: 1px solid rgba(255,255,255,0.08); }
   </style>
 </head>
 <body>
@@ -180,20 +110,25 @@
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="gov-hero">
-      <div class="wrap">
-        <a href="index.html" class="stub__back">← Home</a>
-        <span class="pill" style="margin-top:16px;">WOSB · SDB · SAM.gov Active · ODNI · MEDCoE · DoW Subcontractor</span>
-        <h1>Procurement-ready.<br/>Mission-aligned.</h1>
-        <p class="lede">
-          Federal &amp; state agencies, MSOs, and FQHCs. Multi-year subcontractor across the Office of the Director of National Intelligence, U.S. Army MEDCoE, and the Department of War. WOSB / SDB set-asides, SAM.gov active, Section 508 compliant. Portfolio kept private until the right buyer asks.
-        </p>
-        <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top: 32px;">
-          <a href="capabilities.pdf" class="btn btn--primary" download>Download Capabilities Statement (PDF) <span class="arrow">↓</span></a>
-          <a href="contact.html" class="btn btn--ghost" style="background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.18);">Talk to contracting</a>
+    <!-- =====================================================================
+         ESTABLISHING SHOT — the flag, present but never dominant
+         ===================================================================== -->
+    <section class="estab estab--desat" data-estab>
+      <figure class="estab__media">
+        <img src="assets/gov/gov-flag-team.webp" alt="A uniformed training team standing before the United States flag" style="object-position: center 8%;" />
+      </figure>
+      <div class="estab__content">
+        <div class="wrap">
+          <p class="estab__kicker">WOSB · SDB · SAM.gov Active · ODNI · MEDCoE · DoW Subcontractor</p>
+          <h1 class="estab__line">Training built for the mission.</h1>
+          <p class="estab__sub">Federal and state agencies, MSOs, and FQHCs. Multi-year subcontractor across ODNI, U.S. Army MEDCoE, and the Department of War.</p>
+          <div class="estab__ctas">
+            <a href="capabilities.pdf" class="btn btn--primary" download>Download Capabilities Statement (PDF) <span class="arrow">↓</span></a>
+            <a href="contact.html" class="btn btn--ghost">Talk to contracting</a>
+          </div>
         </div>
       </div>
+      <span class="estab__cue" aria-hidden="true"></span>
     </section>
 
     <!-- CRED STRIP -->
@@ -208,102 +143,174 @@
       </div>
     </section>
 
-    <!-- PAST PERFORMANCE -->
+    <!-- =====================================================================
+         DOSSIER — Captain Serrano's story, scene by scene
+         ===================================================================== -->
+    <section class="gov-section" style="padding-bottom: 0;">
+      <div class="wrap">
+        <header class="caption-head reveal">
+          <span class="eyebrow">The Dossier</span>
+          <h2 class="h-section">One course.<br/>Follow the mission.</h2>
+          <p class="lede">Stills from a distributed-learning build for Army medical professionals. Scroll through the way a learner would live it.</p>
+        </header>
+
+        <details class="drawer reveal" style="margin-bottom: 56px;">
+          <summary>Read the thinking <span class="drawer__icon" aria-hidden="true">+</span></summary>
+          <div class="drawer__body">
+            <p>Federal &amp; state agencies, MSOs, and FQHCs. Multi-year subcontractor across the Office of the Director of National Intelligence, U.S. Army MEDCoE, and the Department of War. WOSB / SDB set-asides, SAM.gov active, Section 508 compliant. Portfolio kept private until the right buyer asks.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="dossier">
+        <figure class="scene">
+          <img src="assets/gov/gov-serrano-doorway.webp" alt="Captain Serrano pauses in a doorway before the day begins" style="object-position: center 10%;" />
+          <figcaption>
+            <div class="wrap">
+              <span class="scene__num">Scene 01</span>
+              <p class="scene__caption">Every scenario begins with a person.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <figure class="scene">
+          <img src="assets/gov/gov-serrano-clinic.webp" alt="Captain Serrano working a case inside a field clinic" style="object-position: center 12%;" />
+          <figcaption>
+            <div class="wrap">
+              <span class="scene__num">Scene 02</span>
+              <p class="scene__caption">Clinical decisions under pressure.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <figure class="scene">
+          <img src="assets/gov/gov-duststorm.webp" alt="A convoy holds position as a dust storm closes in" style="object-position: center 10%;" />
+          <figcaption>
+            <div class="wrap">
+              <span class="scene__num">Scene 03</span>
+              <p class="scene__caption">Coordination when conditions turn.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <figure class="scene">
+          <img src="assets/gov/gov-puerto-tesoro.webp" alt="A full mission environment stretches to the horizon" style="object-position: center 45%;" />
+          <figcaption>
+            <div class="wrap">
+              <span class="scene__num">Scene 04</span>
+              <p class="scene__caption">Full mission environments, built to scale.</p>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         THE BRIEFING BOARD — hotspot capability cards
+         ===================================================================== -->
     <section class="gov-section">
       <div class="wrap">
-        <span class="eyebrow">Federal Past Performance</span>
-        <h2 class="h-section" style="margin-top:14px;">Multi-year work<br/>across federal training.</h2>
-        <p class="lede" style="max-width:680px; margin-top:18px;">
-          Subcontractor relationships spanning intelligence community, defense health, and federal acquisition. Procurement-vetted, Section 508 by default, TRADOC-aligned where the mission requires it.
-        </p>
+        <header class="caption-head reveal">
+          <span class="eyebrow">The Briefing Board</span>
+          <h2 class="h-section">What we deliver<br/>for federal &amp; state buyers.</h2>
+          <p class="lede">Three capability areas, briefed from the front of the room. Open each marker.</p>
+        </header>
 
-        <div class="perf-grid">
+        <div data-hotspots class="reveal">
+          <div class="hs-scene">
+            <img src="assets/gov/gov-instructor.jpg" alt="An instructor briefs a class in front of a mission board" style="object-position: center 16%;" />
 
-          <article class="perf-card">
-            <div class="perf-card__client">Office of the Director of National Intelligence</div>
-            <h3 class="perf-card__title">Workforce Training Development</h3>
-            <p class="perf-card__desc">Federal workforce training development as a vetted subcontractor partner. Curriculum design, content architecture, and accessibility compliance for ODNI training initiatives.</p>
-            <div class="perf-card__tags">
-              <span class="perf-card__tag">Subcontractor</span>
-              <span class="perf-card__tag">Federal IC</span>
+            <button type="button" class="hotspot" style="--x: 13%; --y: 38%;" data-target="gov-hs-1" aria-controls="gov-hs-1">
+              <span class="sr-only">Scenario-based training</span>
+            </button>
+            <button type="button" class="hotspot" style="--x: 79%; --y: 30%;" data-target="gov-hs-2" aria-controls="gov-hs-2">
+              <span class="sr-only">Medical simulation</span>
+            </button>
+            <button type="button" class="hotspot" style="--x: 68%; --y: 88%;" data-target="gov-hs-3" aria-controls="gov-hs-3">
+              <span class="sr-only">Leadership curriculum</span>
+            </button>
+
+            <div class="hs-card" id="gov-hs-1">
+              <button type="button" class="hs-card__close" data-close aria-label="Close">✕</button>
+              <span class="hs-card__kicker">Capability 01</span>
+              <h3 class="hs-card__title">Scenario-based training</h3>
+              <p>Branching, decision-first courses where learners work a mission, not a slide deck. TRADOC and Army University compliant, Section 508 by default, SCORM-packaged for agency LMS.</p>
             </div>
-          </article>
-
-          <article class="perf-card">
-            <div class="perf-card__client">U.S. Army MEDCoE · Fort Sam Houston</div>
-            <h3 class="perf-card__title">Captain's Career Course DL · Preventive Medicine · 3M Course</h3>
-            <p class="perf-card__desc">Multi-year subcontractor engagement developing distributed-learning courses for Army medical professionals. TRADOC-compliant, Blackboard-deployed, with Articulate Rise/Storyline interactive scenarios.</p>
-            <div class="perf-card__tags">
-              <span class="perf-card__tag">TRADOC</span>
-              <span class="perf-card__tag">DL Course</span>
-              <span class="perf-card__tag">Articulate</span>
+            <div class="hs-card" id="gov-hs-2">
+              <button type="button" class="hs-card__close" data-close aria-label="Close">✕</button>
+              <span class="hs-card__kicker">Capability 02</span>
+              <h3 class="hs-card__title">Medical simulation</h3>
+              <p>Distributed-learning builds for military and civilian medical professionals. Case-based clinical decisions, preventive medicine content, and year-long care management simulations for state healthcare programs.</p>
             </div>
-          </article>
-
-          <article class="perf-card">
-            <div class="perf-card__client">Department of War · OUSD(A&amp;S)</div>
-            <h3 class="perf-card__title">Mentor-Protege Program — 10 Bilingual Modules</h3>
-            <p class="perf-card__desc">136 learning objectives across 10 bilingual training modules for the Office of the Under Secretary of Defense for Acquisition &amp; Sustainment. Section 508 compliant, replaced legacy Storyline implementations with web-native interactive scenarios.</p>
-            <div class="perf-card__tags">
-              <span class="perf-card__tag">10 Modules</span>
-              <span class="perf-card__tag">136 Objectives</span>
-              <span class="perf-card__tag">Bilingual</span>
+            <div class="hs-card" id="gov-hs-3">
+              <button type="button" class="hs-card__close" data-close aria-label="Close">✕</button>
+              <span class="hs-card__kicker">Capability 03</span>
+              <h3 class="hs-card__title">Leadership curriculum</h3>
+              <p>Acquisition training portals, mentor-protege modules, and workforce AI readiness programs for federal civilian and DoD audiences. Bilingual delivery available, compliance documentation included.</p>
             </div>
-          </article>
+          </div>
+          <p class="hs-hint">Select a marker on the board to open its capability card.</p>
+        </div>
 
-          <article class="perf-card">
-            <div class="perf-card__client">APEX Accelerator Program</div>
-            <h3 class="perf-card__title">Federal Contracting Training Development</h3>
-            <p class="perf-card__desc">Training development for the APEX Accelerator program supporting small businesses in government contracting. Instructional design, content architecture, and delivery infrastructure.</p>
-            <div class="perf-card__tags">
-              <span class="perf-card__tag">Subcontractor</span>
-              <span class="perf-card__tag">Small Business</span>
+        <details class="drawer reveal">
+          <summary>Read the full service lines <span class="drawer__icon" aria-hidden="true">+</span></summary>
+          <div class="drawer__body">
+            <ul>
+              <li><strong>Distributed Learning (DL) Course Design &amp; Development</strong> — TRADOC / Army University compliant, Blackboard / Moodle / LMS-agnostic, Section 508 by default.</li>
+              <li><strong>Federal Workforce AI Readiness Programs</strong> — Copilot-first AI fluency curricula for federal civilian and DoD workforce. SCORM-packaged for agency LMS.</li>
+              <li><strong>Mentor-Protege &amp; Acquisition Training Portals</strong> — Web-native interactive scenarios. Bilingual delivery available. Compliance documentation layer.</li>
+              <li><strong>Healthcare &amp; CalAIM ECM Training</strong> — Year-long Care Manager / Housing Navigator / CHW simulations. Real-game pedagogy. MSO/FQHC customization.</li>
+              <li><strong>Train-the-Trainer &amp; Custom Implementation</strong> — $2.5K per organization for capability transfer; $15K–$35K for MSO/FQHC adaptation with compliance documentation.</li>
+              <li><strong>Thought-Leadership Consulting</strong> — Workforce strategy for CalAIM, ECM, and federal training initiatives. Retainer or per-engagement.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- TEXTURE BEAT -->
+    <figure class="band" aria-hidden="true">
+      <img src="assets/gov/gov-helmet.png" alt="" />
+    </figure>
+
+    <!-- =====================================================================
+         PAST PERFORMANCE — the delivered record
+         ===================================================================== -->
+    <section class="gov-section gov-section--soft">
+      <div class="wrap">
+        <header class="caption-head reveal" style="margin-bottom: 0;">
+          <span class="eyebrow">Federal Past Performance</span>
+          <h2 class="h-section">On the record.</h2>
+        </header>
+
+        <article class="record reveal">
+          <span class="record__stamp" aria-hidden="true">Delivered</span>
+          <span class="record__client">U.S. Army MEDCoE · Fort Sam Houston</span>
+          <h3 class="record__title">Captain's Career Course DL · Preventive Medicine · 3M Course</h3>
+          <p class="record__desc">Multi-year subcontractor engagement developing distributed-learning courses for Army medical professionals. TRADOC-compliant, Blackboard-deployed, with Articulate Rise/Storyline interactive scenarios.</p>
+          <div class="record__tags">
+            <span class="record__tag">TRADOC</span>
+            <span class="record__tag">DL Course</span>
+            <span class="record__tag">Articulate</span>
+            <span class="record__tag">Multi-year</span>
+          </div>
+        </article>
+
+        <div style="max-width: 880px; margin: 0 auto;">
+          <details class="drawer reveal">
+            <summary>Read the rest of the record <span class="drawer__icon" aria-hidden="true">+</span></summary>
+            <div class="drawer__body">
+              <p><strong>Office of the Director of National Intelligence — Workforce Training Development.</strong> Federal workforce training development as a vetted subcontractor partner. Curriculum design, content architecture, and accessibility compliance for ODNI training initiatives.</p>
+              <p><strong>Department of War · OUSD(A&amp;S) — Mentor-Protege Program, 10 Bilingual Modules.</strong> 136 learning objectives across 10 bilingual training modules for the Office of the Under Secretary of Defense for Acquisition &amp; Sustainment. Section 508 compliant, replaced legacy Storyline implementations with web-native interactive scenarios.</p>
+              <p><strong>APEX Accelerator Program — Federal Contracting Training Development.</strong> Training development for the APEX Accelerator program supporting small businesses in government contracting. Instructional design, content architecture, and delivery infrastructure.</p>
+              <p><strong>California CalAIM · Healthcare CBOs — ECM Policy Guide Training Simulation.</strong> Year-long virtual workplace simulation for newly hired Care Managers at CBOs operating under California DHCS Enhanced Care Management. 7 ECM Core Components, audit-ready chart documentation.</p>
+              <p><strong>Discovery Collective · NIH SBIR — K-12 STEM Curriculum &amp; Rapid Development.</strong> NGSS-aligned computational modeling curriculum adopted nationwide. Federally-funded SBIR Phase II platform powering science classrooms across the U.S.</p>
             </div>
-          </article>
-
-          <article class="perf-card">
-            <div class="perf-card__client">California CalAIM · Healthcare CBOs</div>
-            <h3 class="perf-card__title">ECM Policy Guide Training Simulation</h3>
-            <p class="perf-card__desc">Year-long virtual workplace simulation for newly hired Care Managers at CBOs operating under California DHCS Enhanced Care Management. 7 ECM Core Components, audit-ready chart documentation.</p>
-            <div class="perf-card__tags">
-              <span class="perf-card__tag">State / Healthcare</span>
-              <span class="perf-card__tag">Year-Long Sim</span>
-            </div>
-          </article>
-
-          <article class="perf-card">
-            <div class="perf-card__client">Discovery Collective · NIH SBIR</div>
-            <h3 class="perf-card__title">K-12 STEM Curriculum &amp; Rapid Development</h3>
-            <p class="perf-card__desc">NGSS-aligned computational modeling curriculum adopted nationwide. Federally-funded SBIR Phase II platform powering science classrooms across the U.S.</p>
-            <div class="perf-card__tags">
-              <span class="perf-card__tag">SBIR Phase II</span>
-              <span class="perf-card__tag">NIH</span>
-              <span class="perf-card__tag">NGSS</span>
-            </div>
-          </article>
-
+          </details>
         </div>
       </div>
     </section>
 
-    <!-- SERVICES -->
-    <section class="gov-section gov-section--soft">
-      <div class="wrap">
-        <span class="eyebrow">Service Lines</span>
-        <h2 class="h-section" style="margin-top:14px;">What we deliver<br/>for federal &amp; state buyers.</h2>
-
-        <ul class="lane-list">
-          <li><strong style="color:var(--navy); font-weight:600;">Distributed Learning (DL) Course Design &amp; Development</strong> — TRADOC / Army University compliant, Blackboard / Moodle / LMS-agnostic, Section 508 by default.</li>
-          <li><strong style="color:var(--navy); font-weight:600;">Federal Workforce AI Readiness Programs</strong> — Copilot-first AI fluency curricula for federal civilian and DoD workforce. SCORM-packaged for agency LMS.</li>
-          <li><strong style="color:var(--navy); font-weight:600;">Mentor-Protege &amp; Acquisition Training Portals</strong> — Web-native interactive scenarios. Bilingual delivery available. Compliance documentation layer.</li>
-          <li><strong style="color:var(--navy); font-weight:600;">Healthcare &amp; CalAIM ECM Training</strong> — Year-long Care Manager / Housing Navigator / CHW simulations. Real-game pedagogy. MSO/FQHC customization.</li>
-          <li><strong style="color:var(--navy); font-weight:600;">Train-the-Trainer &amp; Custom Implementation</strong> — $2.5K per organization for capability transfer; $15K–$35K for MSO/FQHC adaptation with compliance documentation.</li>
-          <li><strong style="color:var(--navy); font-weight:600;">Thought-Leadership Consulting</strong> — Workforce strategy for CalAIM, ECM, and federal training initiatives. Retainer or per-engagement.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- NAICS -->
+    <!-- =====================================================================
+         NAICS & CONTRACTING DETAILS
+         ===================================================================== -->
     <section class="gov-section">
       <div class="wrap">
         <span class="eyebrow">Procurement Reference</span>
@@ -345,10 +352,10 @@
     <section class="gov-closing">
       <div class="wrap">
         <h2>Need the full file?</h2>
-        <p>Capability statement, prior performance, NAICS, and set-aside eligibility — packaged for your contracting team. Or book a 30-min discovery call with Charles.</p>
+        <p>Capability statement, prior performance, NAICS, and set-aside eligibility, packaged for your contracting team. Or book a 30-min discovery call.</p>
         <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
           <a href="capabilities.pdf" class="btn btn--primary" download>Download Capabilities Statement (PDF) ↓</a>
-          <a href="mailto:cmartin@alexandriasdesign.com?subject=Government%20Contracting%20Inquiry" class="btn btn--ghost">Email contracting →</a>
+          <a href="mailto:info@alexandriasdesign.com?subject=Government%20Contracting%20Inquiry" class="btn btn--ghost">Email contracting →</a>
         </div>
       </div>
     </section>
@@ -357,7 +364,41 @@
 
   <footer class="foot">
     <div class="wrap">
-      <div class="foot__bottom" style="border:0; padding:24px 0;">
+      <div class="foot__top">
+        <div>
+          <div class="foot__brand">Alexandria's Design</div>
+          <p class="foot__tag">Instructional design and training development for government, biotech, and education.</p>
+        </div>
+        <div>
+          <h5>Audiences</h5>
+          <ul>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="corporate.html">Corporate</a></li>
+            <li><a href="education.html">Education</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Studio</h5>
+          <ul>
+            <li><a href="academy.html">Academy</a></li>
+            <li><a href="about-room.html">About</a></li>
+            <li><a href="about-room.html#research">Publications</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://doc-martins.com/" target="_blank" rel="noopener">Portfolio</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Reach Us</h5>
+          <ul>
+            <li><a href="mailto:info@alexandriasdesign.com">info@alexandriasdesign.com</a></li>
+            <li><a href="https://doc-martins.com/" target="_blank" rel="noopener">doc-martins.com</a></li>
+            <li><a href="about-room.html">Step into the Studio</a></li>
+            <li><a href="tel:+13236320271">(323) 632-0271</a></li>
+            <li>San Diego, CA</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot__bottom">
         <span>© 2026 Alexandria's Design LLC</span>
         <span class="creds">
           <span>WOSB</span>
@@ -369,9 +410,10 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="vendor/lenis.min.js"></script>
   <script src="motion.js"></script>
+  <script src="experience.js"></script>
 </body>
 </html>

@@ -9,22 +9,29 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="experience.css" />
 
   <style>
-    .corp-hero { padding: 140px 0 60px; background: linear-gradient(180deg, #fafaf9 0%, #fff 100%); }
-    .corp-hero h1 { font-size: clamp(48px, 7vw, 88px); letter-spacing: -0.035em; margin: 18px 0 14px; }
-    .corp-hero .corp-logos { display: flex; flex-wrap: wrap; gap: 24px 36px; margin-top: 36px; align-items: center; color: var(--navy-40); font-size: 14px; letter-spacing: 0.04em; }
-    .corp-hero .corp-logos span { padding: 6px 0; }
-
-    .corp-section { padding: 80px 0; }
+    .corp-section { padding: clamp(72px, 9vw, 120px) 0; }
     .corp-section--dark {
       background: #0a1628;
       color: rgba(255,255,255,0.92);
-      padding: 100px 0;
     }
     .corp-section--dark h2 { color: #fff; }
     .corp-section--dark .lede { color: rgba(255,255,255,0.66); }
-    .corp-section--dark .eyebrow { color: #c9a84c; }
+    .corp-section--dark .eyebrow { color: #B8A26E; }
+
+    .corp-logos {
+      display: flex; flex-wrap: wrap;
+      gap: 20px 40px;
+      align-items: center;
+      justify-content: center;
+      padding: 26px 0;
+      color: var(--navy-40);
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      border-bottom: 0.5px solid var(--navy-08);
+    }
 
     .case-grid {
       display: grid;
@@ -39,8 +46,8 @@
       padding: 28px;
       transition: all var(--t-fast) var(--ease);
     }
-    .case-card:hover { border-color: #c9a84c; background: rgba(201,168,76,0.05); transform: translateY(-3px); }
-    .case-card__client { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #c9a84c; font-weight: 600; }
+    .case-card:hover { border-color: #9F8B5C; background: rgba(159,139,92,0.06); transform: translateY(-3px); }
+    .case-card__client { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #B8A26E; font-weight: 600; }
     .case-card__title {
       font-family: var(--font-display);
       font-weight: 500;
@@ -52,7 +59,7 @@
     .case-card__desc { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.66); }
     .case-card__metrics { display: flex; gap: 18px; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.10); }
     .case-card__metric { flex: 1; }
-    .case-card__metric-val { font-family: var(--font-display); font-size: 26px; color: #c9a84c; font-weight: 500; line-height: 1; }
+    .case-card__metric-val { font-family: var(--font-display); font-size: 26px; color: #B8A26E; font-weight: 500; line-height: 1; }
     .case-card__metric-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 4px; }
 
     .pricing-grid {
@@ -116,15 +123,15 @@
     .cohort-item p { font-size: 15px; color: var(--navy-60); line-height: 1.55; margin: 0; }
 
     .corp-closing {
-      padding: 100px 0;
+      padding: clamp(88px, 12vw, 140px) 0;
       text-align: center;
       background: var(--navy);
       color: #fff;
     }
     .corp-closing h2 { color: #fff; font-size: clamp(36px, 5vw, 60px); margin: 0 0 14px; }
     .corp-closing p { color: rgba(255,255,255,0.72); max-width: 600px; margin: 0 auto 32px; }
-    .corp-closing .btn--primary { background: var(--amber); color: #fff; border: 0; }
-    .corp-closing .btn--primary:hover { background: #b86205; }
+    .corp-closing .btn--primary { background: #9F8B5C; color: #0a1628; border: 0; }
+    .corp-closing .btn--primary:hover { background: #B8A26E; }
   </style>
 </head>
 <body>
@@ -151,34 +158,186 @@
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="corp-hero">
+    <!-- =====================================================================
+         ESTABLISHING SHOT
+         ===================================================================== -->
+    <section class="estab estab--dim" data-estab>
+      <figure class="estab__media">
+        <img src="assets/corp/corp-doctor-window.png" alt="A clinician pauses at a tall window between patients" style="object-position: center 25%;" />
+      </figure>
+      <div class="estab__content">
+        <div class="wrap">
+          <p class="estab__kicker">Biotech · Healthcare · Enterprise L&amp;D</p>
+          <h1 class="estab__line">Where your people learn.</h1>
+          <p class="estab__sub">Healthcare and biotech lead the roster. Every training type is in the room, from compliance to coaching to full clinical simulation.</p>
+          <div class="estab__ctas">
+            <a href="contact.html" class="btn btn--primary">Start a project <span class="arrow">→</span></a>
+            <a href="capabilities.pdf" class="btn btn--ghost" download>Capabilities PDF <span class="arrow">↓</span></a>
+          </div>
+        </div>
+      </div>
+      <span class="estab__cue" aria-hidden="true"></span>
+    </section>
+
+    <!-- CLIENT STRIP -->
+    <div class="wrap">
+      <div class="corp-logos" aria-label="Selected clients">
+        <span>Microsoft Education</span>
+        <span>UCLA Health</span>
+        <span>Skilling It</span>
+        <span>Nice / 2GIG EDGE</span>
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         THE ROOM EXPLORER — drag to walk the ward
+         ===================================================================== -->
+    <section class="corp-section">
       <div class="wrap">
-        <a href="index.html" class="stub__back">← Home</a>
-        <span class="pill" style="margin-top:16px;">Biotech · Healthcare · Enterprise L&amp;D</span>
-        <h1>Trusted by the teams<br/>your competitors copy.</h1>
-        <p class="lede">
-          We build the AI-fluency programs, clinical training, and sales enablement that biotech, healthcare, and enterprise L&amp;D teams license, customize, and roll out. The craft is decades-old; the pipeline is AI-native; the outcomes are measurable.
-        </p>
-        <div class="corp-logos">
-          <span>Microsoft Education</span>
-          <span>UCLA Health</span>
-          <span>Skilling It</span>
-          <span>Nice / 2GIG EDGE</span>
+        <header class="caption-head reveal">
+          <span class="eyebrow">The Room Explorer</span>
+          <h2 class="h-section">Walk the ward.</h2>
+          <p class="lede">Drag through the rooms where training happens. Open a marker to see what we build there.</p>
+        </header>
+
+        <details class="drawer reveal" style="margin-bottom: 40px;">
+          <summary>Read the thinking <span class="drawer__icon" aria-hidden="true">+</span></summary>
+          <div class="drawer__body">
+            <p>We build the AI-fluency programs, clinical training, and sales enablement that biotech, healthcare, and enterprise L&amp;D teams license, customize, and roll out. The craft is decades-old; the pipeline is AI-native; the outcomes are measurable.</p>
+          </div>
+        </details>
+
+        <div data-hotspots class="reveal">
+          <div class="ward__viewport" data-ward aria-label="Panoramic view of training rooms. Drag horizontally to pan.">
+            <div class="ward__track">
+              <div class="ward__panel">
+                <img src="assets/corp/corp-therapy-room.png" alt="A calm therapy room with a small fountain and soft seating" />
+                <button type="button" class="hotspot" style="--x: 30%; --y: 62%;" data-target="ward-hs-1" aria-controls="ward-hs-1">
+                  <span class="sr-only">Care management (ECM)</span>
+                </button>
+                <button type="button" class="hotspot" style="--x: 72%; --y: 40%;" data-target="ward-hs-2" aria-controls="ward-hs-2">
+                  <span class="sr-only">Clinical onboarding</span>
+                </button>
+              </div>
+              <div class="ward__panel">
+                <img src="assets/corp/corp-office-plants.png" alt="An office corner with bookshelves and plants" />
+                <button type="button" class="hotspot" style="--x: 22%; --y: 34%;" data-target="ward-hs-3" aria-controls="ward-hs-3">
+                  <span class="sr-only">Compliance that people actually finish</span>
+                </button>
+              </div>
+              <div class="ward__panel">
+                <img src="assets/corp/corp-office-chair.png" alt="A quiet office with a chair facing a screen" />
+                <button type="button" class="hotspot" style="--x: 70%; --y: 36%;" data-target="ward-hs-4" aria-controls="ward-hs-4">
+                  <span class="sr-only">Coaching conversations</span>
+                </button>
+                <button type="button" class="hotspot" style="--x: 34%; --y: 74%;" data-target="ward-hs-5" aria-controls="ward-hs-5">
+                  <span class="sr-only">Leadership</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="ward__stage">
+            <div class="hs-card" id="ward-hs-1">
+              <button type="button" class="hs-card__close" data-close aria-label="Close">✕</button>
+              <span class="hs-card__kicker">By the fountain</span>
+              <h3 class="hs-card__title">Care management (ECM)</h3>
+              <p>Year-long workplace simulations for CalAIM Enhanced Care Management roles. Care Manager, Housing Navigator, and CHW tracks with audit-ready chart documentation across all 7 ECM Core Components.</p>
+            </div>
+            <div class="hs-card" id="ward-hs-2">
+              <button type="button" class="hs-card__close" data-close aria-label="Close">✕</button>
+              <span class="hs-card__kicker">At the desk</span>
+              <h3 class="hs-card__title">Clinical onboarding</h3>
+              <p>Day one to fully ramped. Role-based onboarding for clinical and care teams, with CEU-accredited continuing education built at health-system scale.</p>
+            </div>
+            <div class="hs-card" id="ward-hs-3">
+              <button type="button" class="hs-card__close" data-close aria-label="Close">✕</button>
+              <span class="hs-card__kicker">On the bookshelf</span>
+              <h3 class="hs-card__title">Compliance that people actually finish</h3>
+              <p>Policy training built as decisions, not disclaimers. Completion tracking, attestations, and an audit file your compliance officer can hand over without flinching.</p>
+            </div>
+            <div class="hs-card" id="ward-hs-4">
+              <button type="button" class="hs-card__close" data-close aria-label="Close">✕</button>
+              <span class="hs-card__kicker">In the chair</span>
+              <h3 class="hs-card__title">Coaching conversations</h3>
+              <p>Practice-first programs where managers rehearse the hard conversation before they have it. Scenario role-play with structured feedback, not scripts to memorize.</p>
+            </div>
+            <div class="hs-card" id="ward-hs-5">
+              <button type="button" class="hs-card__close" data-close aria-label="Close">✕</button>
+              <span class="hs-card__kicker">On the tablet</span>
+              <h3 class="hs-card__title">Leadership</h3>
+              <p>Leadership curriculum and AI-fluency programs for the people who run teams. Cohort-based or self-paced, with artifacts leaders ship back into their own organization.</p>
+            </div>
+          </div>
+          <p class="hs-hint">Drag the ward sideways. Select a marker to open its card.</p>
         </div>
       </div>
     </section>
 
-    <!-- CASE STUDIES (dark) -->
+    <!-- =====================================================================
+         BEFORE / AFTER — telling vs training
+         ===================================================================== -->
+    <section class="corp-section" style="padding-top: 0;">
+      <div class="wrap">
+        <div class="compare reveal" data-compare>
+          <div class="compare__before" aria-hidden="true">
+            <div class="deckmock">
+              <div class="deckmock__slide">
+                <div class="deckmock__title"></div>
+                <div class="deckmock__row"></div>
+                <div class="deckmock__row"></div>
+                <div class="deckmock__row"></div>
+                <div class="deckmock__row"></div>
+                <div class="deckmock__row"></div>
+                <div class="deckmock__page">Slide 14 of 62</div>
+              </div>
+            </div>
+          </div>
+          <div class="compare__after">
+            <img src="assets/corp/corp-learning-studio.png" alt="A built learning studio, warm and ready for people" />
+          </div>
+          <span class="compare__label compare__label--before">The deck</span>
+          <span class="compare__label compare__label--after">The studio</span>
+          <div class="compare__handle" role="slider" tabindex="0" aria-label="Compare slide deck with learning studio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div>
+        </div>
+        <p class="compare-caption reveal">The difference between telling and training.</p>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         BIOTECH BEAT
+         ===================================================================== -->
+    <figure class="scene">
+      <img src="assets/corp/corp-biotech-bench.png" alt="A biotech bench mid-experiment, instruments ready" />
+      <figcaption>
+        <div class="wrap">
+          <span class="scene__num">Biotech</span>
+          <p class="scene__caption">Training built where the science happens.</p>
+        </div>
+      </figcaption>
+    </figure>
+
+    <section class="corp-section" style="padding-top: clamp(40px, 5vw, 64px);">
+      <div class="wrap">
+        <div class="two-up reveal">
+          <img src="assets/corp/corp-medical-books.png" alt="Reference volumes on a medical bookshelf" />
+          <img src="assets/corp/corp-medical-screen.png" alt="A clinical dashboard on screen" />
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CASE STUDIES (dark)
+         ===================================================================== -->
     <section class="corp-section corp-section--dark">
       <div class="wrap">
         <span class="eyebrow">Selected past performance</span>
         <h2 class="h-section" style="margin-top:14px;">Public clients,<br/>measurable outcomes.</h2>
         <p class="lede" style="max-width:600px; margin-top:18px;">
-          A representative slice of our corporate engagements. Full case studies behind the password-protected portfolio at <a href="about-room.html" style="color:#c9a84c;">our studio room</a>.
+          A representative slice of our corporate engagements. Full case studies behind the password-protected portfolio at <a href="about-room.html" style="color:#B8A26E;">our studio room</a>.
         </p>
 
-        <div class="case-grid">
+        <div class="case-grid reveal">
 
           <article class="case-card">
             <div class="case-card__client">Microsoft Education</div>
@@ -244,7 +403,9 @@
       </div>
     </section>
 
-    <!-- PRICING -->
+    <!-- =====================================================================
+         PRICING
+         ===================================================================== -->
     <section class="corp-section">
       <div class="wrap">
         <span class="eyebrow">Rapid Course Design</span>
@@ -253,7 +414,7 @@
           Pick the format (how much course), then layer on the interaction level (how much production). Pricing scales on both axes. Quotes are honest about the multiplier.
         </p>
 
-        <div class="pricing-grid">
+        <div class="pricing-grid reveal">
 
           <article class="pricing-card">
             <span class="pricing-card__tag">Micro-Learning</span>
@@ -266,11 +427,11 @@
               <li>Section 508 / WCAG 2.1 AA out of the box</li>
               <li>Branded to your style guide</li>
             </ul>
-            <a href="mailto:cmartin@alexandriasdesign.com?subject=Micro-Learning%20Quote%20Request" class="btn btn--ghost">Request quote</a>
+            <a href="mailto:info@alexandriasdesign.com?subject=Micro-Learning%20Quote%20Request" class="btn btn--ghost">Request quote</a>
           </article>
 
           <article class="pricing-card pricing-card--featured">
-            <span class="pricing-card__tag" style="color:#c9a84c;">Curriculum Track</span>
+            <span class="pricing-card__tag" style="color:#B8A26E;">Curriculum Track</span>
             <h3 class="pricing-card__name">Multi-Module Curriculum</h3>
             <p class="pricing-card__sub">Build 2–3 weeks · SME &amp; QA up to 4 weeks</p>
             <div class="pricing-card__price">$25K<small>+</small></div>
@@ -280,7 +441,7 @@
               <li>Cohort-ready or self-paced delivery</li>
               <li>Audit-ready competency tracking</li>
             </ul>
-            <a href="mailto:cmartin@alexandriasdesign.com?subject=Curriculum%20Quote%20Request" class="btn btn--primary" style="background:#c9a84c; color:#0a1628; border:0;">Request quote</a>
+            <a href="mailto:info@alexandriasdesign.com?subject=Curriculum%20Quote%20Request" class="btn btn--primary" style="background:#9F8B5C; color:#0a1628; border:0;">Request quote</a>
           </article>
 
           <article class="pricing-card">
@@ -294,20 +455,22 @@
               <li>Pre/mid/post + capstone assessment suite</li>
               <li>CEU / CME accreditation pathway support</li>
             </ul>
-            <a href="mailto:cmartin@alexandriasdesign.com?subject=Certification%20Quote%20Request" class="btn btn--ghost">Request quote</a>
+            <a href="mailto:info@alexandriasdesign.com?subject=Certification%20Quote%20Request" class="btn btn--ghost">Request quote</a>
           </article>
 
         </div>
       </div>
     </section>
 
-    <!-- AI BIOTECH COHORT -->
-    <section class="corp-section">
+    <!-- =====================================================================
+         AI BIOTECH COHORT
+         ===================================================================== -->
+    <section class="corp-section" style="padding-top: 0;">
       <div class="wrap">
         <span class="eyebrow">Flagship Cohort</span>
         <h2 class="h-section" style="margin-top:14px;">AI for Biotech<br/>&amp; Healthcare.</h2>
 
-        <div class="cohort-block">
+        <div class="cohort-block reveal">
           <h3>The applied AI-fluency cohort for clinical, regulatory, and commercial teams.</h3>
           <p style="font-size: 16px; color: var(--navy-60); line-height: 1.6; margin: 10px 0 0;">
             Eight weeks. Live + async. Built around the daily workflows of the people who actually move biotech and healthcare forward. Custom case studies. Real-tool labs (Copilot, ChatGPT Enterprise, custom GPTs, AI Workforce Fluency framework).
@@ -333,14 +496,16 @@
           </div>
 
           <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:28px;">
-            <a href="mailto:cmartin@alexandriasdesign.com?subject=AI%20Biotech%20Cohort%20%E2%80%94%20Seat%20Pack%20Inquiry" class="btn btn--primary">Buy a seat pack for your team →</a>
+            <a href="mailto:info@alexandriasdesign.com?subject=AI%20Biotech%20Cohort%20%E2%80%94%20Seat%20Pack%20Inquiry" class="btn btn--primary">Buy a seat pack for your team →</a>
             <a href="academy.html" class="btn btn--ghost">See the Academy catalog</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- BEYOND COURSES -->
+    <!-- =====================================================================
+         BEYOND COURSES
+         ===================================================================== -->
     <section class="corp-section" style="background: var(--bg-soft);">
       <div class="wrap">
         <span class="eyebrow">Beyond Course Development</span>
@@ -351,25 +516,47 @@
             <span class="eyebrow">Train-the-Trainer</span>
             <h4 style="font-family: var(--font-display); font-size: 22px; margin: 10px 0 8px;">Internal capability transfer</h4>
             <p style="font-size: 14px; line-height: 1.6; color: var(--navy-60); margin: 0 0 14px;">$2,500 per organization. Certify your internal trainer to deliver our curriculum. Includes facilitator's guide, slide kit, and 2-hour live train-up.</p>
-            <a href="mailto:cmartin@alexandriasdesign.com?subject=Train-the-Trainer%20Inquiry" style="font-size: 13px; font-weight: 600; color: var(--amber);">Email Charles →</a>
+            <a href="mailto:info@alexandriasdesign.com?subject=Train-the-Trainer%20Inquiry" style="font-size: 13px; font-weight: 600; color: var(--amber);">Email the studio →</a>
           </div>
           <div style="background:#fff; border: 1px solid var(--navy-08); border-radius:14px; padding:28px;">
             <span class="eyebrow">L&amp;D Operations Audit</span>
             <h4 style="font-family: var(--font-display); font-size: 22px; margin: 10px 0 8px;">Diagnostic engagement</h4>
             <p style="font-size: 14px; line-height: 1.6; color: var(--navy-60); margin: 0 0 14px;">$25K–$40K. Two-week diagnostic of your existing L&amp;D function. Often surfaces $150K–$400K of annual managed-services scope. Surface, prioritize, sequence.</p>
-            <a href="mailto:cmartin@alexandriasdesign.com?subject=L%26D%20Audit%20Inquiry" style="font-size: 13px; font-weight: 600; color: var(--amber);">Email Charles →</a>
+            <a href="mailto:info@alexandriasdesign.com?subject=L%26D%20Audit%20Inquiry" style="font-size: 13px; font-weight: 600; color: var(--amber);">Email the studio →</a>
           </div>
           <div style="background:#fff; border: 1px solid var(--navy-08); border-radius:14px; padding:28px;">
             <span class="eyebrow">Thought Partnership</span>
             <h4 style="font-family: var(--font-display); font-size: 22px; margin: 10px 0 8px;">Strategy retainer</h4>
             <p style="font-size: 14px; line-height: 1.6; color: var(--navy-60); margin: 0 0 14px;">$2,500–$35,000 per engagement. Leadership advisory and AI strategy for L&amp;D leaders. Monthly retainer or per-project.</p>
-            <a href="mailto:cmartin@alexandriasdesign.com?subject=Thought%20Partnership%20Inquiry" style="font-size: 13px; font-weight: 600; color: var(--amber);">Email Charles →</a>
+            <a href="mailto:info@alexandriasdesign.com?subject=Thought%20Partnership%20Inquiry" style="font-size: 13px; font-weight: 600; color: var(--amber);">Email the studio →</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CLOSING -->
+    <!-- =====================================================================
+         TRAINING TYPE INDEX + CLOSING
+         ===================================================================== -->
+    <section class="corp-section">
+      <div class="wrap">
+        <header class="caption-head reveal" style="text-align:center; margin-inline:auto;">
+          <span class="eyebrow">Everything in the room</span>
+          <h2 class="h-section">One studio.<br/>Every training type.</h2>
+        </header>
+
+        <ul class="type-index reveal">
+          <li><strong>Healthcare</strong><span>Care management, clinical onboarding, CEU programs at health-system scale.</span></li>
+          <li><strong>Biotech</strong><span>Science training for clinical, regulatory, and commercial teams.</span></li>
+          <li><strong>Compliance</strong><span>Policy training people finish, with an audit file to show for it.</span></li>
+          <li><strong>Onboarding</strong><span>Day one to fully ramped, role by role.</span></li>
+          <li><strong>Leadership</strong><span>Curriculum for the people who run teams.</span></li>
+          <li><strong>Coaching</strong><span>Conversation practice with structured feedback.</span></li>
+          <li><strong>Safety</strong><span>Procedures rehearsed before they matter.</span></li>
+          <li><strong>Systems</strong><span>Software walkthroughs and workflow training that respect your time.</span></li>
+        </ul>
+      </div>
+    </section>
+
     <section class="corp-closing">
       <div class="wrap">
         <h2>The team your<br/>competitors are about to copy.</h2>
@@ -385,7 +572,41 @@
 
   <footer class="foot">
     <div class="wrap">
-      <div class="foot__bottom" style="border:0; padding:24px 0;">
+      <div class="foot__top">
+        <div>
+          <div class="foot__brand">Alexandria's Design</div>
+          <p class="foot__tag">Instructional design and training development for government, biotech, and education.</p>
+        </div>
+        <div>
+          <h5>Audiences</h5>
+          <ul>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="corporate.html">Corporate</a></li>
+            <li><a href="education.html">Education</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Studio</h5>
+          <ul>
+            <li><a href="academy.html">Academy</a></li>
+            <li><a href="about-room.html">About</a></li>
+            <li><a href="about-room.html#research">Publications</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://doc-martins.com/" target="_blank" rel="noopener">Portfolio</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Reach Us</h5>
+          <ul>
+            <li><a href="mailto:info@alexandriasdesign.com">info@alexandriasdesign.com</a></li>
+            <li><a href="https://doc-martins.com/" target="_blank" rel="noopener">doc-martins.com</a></li>
+            <li><a href="about-room.html">Step into the Studio</a></li>
+            <li><a href="tel:+13236320271">(323) 632-0271</a></li>
+            <li>San Diego, CA</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot__bottom">
         <span>© 2026 Alexandria's Design LLC</span>
         <span class="creds">
           <span>WOSB</span>
@@ -397,9 +618,10 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="vendor/lenis.min.js"></script>
   <script src="motion.js"></script>
+  <script src="experience.js"></script>
 </body>
 </html>

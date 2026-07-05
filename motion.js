@@ -50,14 +50,17 @@
   /* Hero headline reveal handled by pure CSS (word-rise keyframe animation). */
 
   /* ---- Hero supporting elements fade-up ----------------------------- */
-  gsap.from(".hero__pill, .hero__lede, .hero__ctas", {
-    opacity: 0,
-    y: 16,
-    duration: 0.9,
-    ease: "power2.out",
-    stagger: 0.12,
-    delay: 0.6,
-  });
+  const heroBits = document.querySelectorAll(".hero__pill, .hero__lede, .hero__ctas");
+  if (heroBits.length) {
+    gsap.from(heroBits, {
+      opacity: 0,
+      y: 16,
+      duration: 0.9,
+      ease: "power2.out",
+      stagger: 0.12,
+      delay: 0.6,
+    });
+  }
 
   /* ---- Impact counters ---------------------------------------------- */
   if (window.ScrollTrigger) {

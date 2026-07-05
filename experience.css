@@ -1,0 +1,1036 @@
+/* =====================================================================
+   Alexandria's Design — Experience layer (lane pages)
+   Establishing shots, door panels, dossier scenes, hotspots, drawers,
+   ward pan strip, compare slider, shelf covers, contact doors.
+   Loads AFTER style.css. Brand: Newsreader + Inter, navy, gold #9F8B5C.
+   ===================================================================== */
+
+:root {
+  --gold:       #9F8B5C;
+  --gold-hi:    #B8A26E;
+  --gold-soft:  rgba(159, 139, 92, 0.35);
+  --ink-dark:   #0a1628;
+  --ink-line:   rgba(255, 255, 255, 0.12);
+  --ink-text:   rgba(255, 255, 255, 0.75);
+}
+
+figure { margin: 0; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* =====================================================================
+   ESTABLISHING SHOT — full-viewport scene that opens every lane page
+   ===================================================================== */
+.estab {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  background: var(--ink-dark);
+  color: #fff;
+  overflow: hidden;
+  padding-bottom: clamp(56px, 9vh, 110px);
+}
+.estab__media { position: absolute; inset: 0; }
+.estab__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+.estab--desat .estab__media img { filter: saturate(0.5); }
+.estab__media::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg,
+    rgba(10, 22, 40, 0.48) 0%,
+    rgba(10, 22, 40, 0.18) 42%,
+    rgba(10, 22, 40, 0.88) 100%);
+}
+.estab--dim .estab__media::after {
+  background:
+    linear-gradient(90deg,
+      rgba(10, 22, 40, 0.62) 0%,
+      rgba(10, 22, 40, 0.34) 55%,
+      rgba(10, 22, 40, 0.12) 100%),
+    linear-gradient(180deg,
+      rgba(10, 22, 40, 0.55) 0%,
+      rgba(10, 22, 40, 0.32) 42%,
+      rgba(10, 22, 40, 0.9) 100%);
+}
+.estab__content { position: relative; z-index: 2; width: 100%; }
+.estab__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+  margin: 0 0 20px;
+}
+.estab__kicker::before {
+  content: "";
+  width: 28px; height: 1px;
+  background: var(--gold);
+}
+.estab__line {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: #fff;
+  font-size: clamp(42px, 6.4vw, 88px);
+  letter-spacing: -0.035em;
+  line-height: 1.0;
+  margin: 0 0 20px;
+  max-width: 16ch;
+}
+.estab__sub {
+  font-size: clamp(16px, 1.3vw, 19px);
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 52ch;
+  margin: 0 0 30px;
+  line-height: 1.6;
+}
+.estab__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+.estab .btn--primary {
+  background: var(--gold);
+  color: var(--ink-dark);
+  border: 0;
+  font-weight: 600;
+}
+.estab .btn--primary:hover { background: var(--gold-hi); }
+.estab .btn--ghost {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+.estab .btn--ghost:hover { background: rgba(255, 255, 255, 0.15); border-color: rgba(255,255,255,0.4); }
+.estab__cue {
+  position: absolute;
+  bottom: 22px; left: 50%;
+  width: 1px; height: 34px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.7), transparent);
+  z-index: 2;
+  animation: cue-drop 2.2s ease-in-out infinite;
+}
+@keyframes cue-drop {
+  0%   { transform: translateY(-6px); opacity: 0; }
+  35%  { opacity: 1; }
+  100% { transform: translateY(10px); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .estab__cue { display: none; } }
+
+/* =====================================================================
+   DRAWER — "Read the thinking" expandable long-form copy
+   ===================================================================== */
+details.drawer {
+  border: 1px solid var(--navy-08);
+  border-radius: 12px;
+  background: var(--bg);
+  margin-top: 28px;
+}
+details.drawer summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--navy);
+  user-select: none;
+}
+details.drawer summary::-webkit-details-marker { display: none; }
+details.drawer summary:hover { color: var(--gold); }
+.drawer__icon {
+  flex-shrink: 0;
+  width: 26px; height: 26px;
+  border: 1px solid var(--navy-08);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+  transition: transform 0.45s var(--ease-out), border-color 0.3s;
+}
+details.drawer[open] .drawer__icon { transform: rotate(45deg); border-color: var(--gold); color: var(--gold); }
+.drawer__body {
+  padding: 2px 22px 24px;
+  color: var(--navy-60);
+  font-size: 15px;
+  line-height: 1.7;
+}
+.drawer__body p { margin: 0 0 14px; }
+.drawer__body p:last-child { margin-bottom: 0; }
+.drawer__body ul { margin: 0; padding-left: 20px; }
+.drawer__body li { margin-bottom: 10px; }
+
+details.drawer.drawer--dark {
+  border-color: var(--ink-line);
+  background: rgba(255, 255, 255, 0.03);
+}
+details.drawer.drawer--dark summary { color: #fff; }
+details.drawer.drawer--dark summary:hover { color: var(--gold-hi); }
+details.drawer.drawer--dark .drawer__icon { border-color: var(--ink-line); color: #fff; }
+details.drawer.drawer--dark[open] .drawer__icon { color: var(--gold-hi); border-color: var(--gold); }
+details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
+
+/* =====================================================================
+   INDEX — THREE TALL DOOR PANELS
+   ===================================================================== */
+.doors {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+@media (max-width: 880px) { .doors { grid-template-columns: 1fr; max-width: 460px; margin-inline: auto; } }
+
+.door { display: block; perspective: 1400px; }
+.door__frame {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 9 / 13;
+  background: var(--ink-dark);
+  transform-style: preserve-3d;
+  transition: transform 0.7s var(--ease-out), box-shadow 0.7s var(--ease-out);
+  border: 1px solid var(--navy-08);
+}
+.door:hover .door__frame {
+  transform: rotateY(-3deg) translateY(-6px);
+  box-shadow: 0 24px 60px rgba(30, 58, 95, 0.22);
+}
+.door__window { position: absolute; inset: 0; }
+.door__window img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-out);
+  will-change: transform;
+  transform: scale(1.08);
+}
+.door--gov .door__window img { filter: saturate(0.6); }
+.door__leaf {
+  position: absolute; inset: 0;
+  z-index: 2;
+  background: linear-gradient(90deg,
+    rgba(10, 22, 40, 0.66) 0%,
+    rgba(10, 22, 40, 0.24) 55%,
+    rgba(10, 22, 40, 0.5) 100%);
+  transform-origin: left center;
+  transition: transform 0.8s var(--ease-out), opacity 0.8s var(--ease-out);
+  pointer-events: none;
+}
+.door__leaf::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; right: 0;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, rgba(159,139,92,0.8), transparent);
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+.door:hover .door__leaf { transform: rotateY(-22deg); opacity: 0.45; }
+.door:hover .door__leaf::after { opacity: 1; }
+.door__plate {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 3;
+  padding: 90px 26px 28px;
+  color: #fff;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 22, 40, 0.94) 62%);
+}
+.door__num {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+  display: block;
+  margin-bottom: 12px;
+}
+.door__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(28px, 2.6vw, 36px);
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: #fff;
+  margin: 0 0 10px;
+}
+.door__desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0 0 18px;
+}
+.door__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+  transition: gap var(--t-fast) var(--ease);
+}
+.door:hover .door__cta { gap: 14px; }
+
+/* =====================================================================
+   PAST PERFORMANCE — condensed strip (index)
+   ===================================================================== */
+.pp-strip { text-align: center; }
+.pp-strip__label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+}
+.pp-strip__names {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(20px, 2.6vw, 32px);
+  letter-spacing: -0.015em;
+  line-height: 1.55;
+  color: #fff;
+  max-width: 940px;
+  margin: 20px auto 14px;
+}
+.pp-strip__names .dot { color: var(--gold); padding-inline: 10px; }
+.pp-strip__line {
+  font-size: 15px;
+  color: var(--ink-text);
+  max-width: 56ch;
+  margin: 0 auto;
+}
+.pp-strip .drawer { max-width: 860px; margin: 32px auto 0; text-align: left; }
+.pp-record { padding: 16px 0; border-bottom: 1px solid var(--ink-line); }
+.pp-record:last-child { border-bottom: 0; }
+.pp-record__client {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+.pp-record__title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0 0 6px;
+}
+.pp-record p { margin: 0; font-size: 14px; }
+
+/* =====================================================================
+   CAPTION SCENES — full-width dossier stills with one-line captions
+   ===================================================================== */
+.scene { position: relative; overflow: hidden; background: var(--ink-dark); }
+.scene img {
+  width: 100%;
+  height: min(86vh, 740px);
+  object-fit: cover;
+  display: block;
+}
+.scene--desat img { filter: saturate(0.55); }
+.scene::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 45%;
+  background: linear-gradient(180deg, transparent, rgba(10, 22, 40, 0.82));
+  pointer-events: none;
+}
+.scene figcaption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 2;
+  padding: 0 0 clamp(28px, 5vh, 56px);
+  color: #fff;
+}
+.scene__num {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+  margin-bottom: 10px;
+}
+.scene__caption {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(24px, 3.2vw, 42px);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  max-width: 22ch;
+  margin: 0;
+}
+
+/* Narrow texture band */
+.band { position: relative; overflow: hidden; }
+.band img {
+  width: 100%;
+  height: clamp(200px, 34vh, 340px);
+  object-fit: cover;
+  display: block;
+}
+
+/* =====================================================================
+   HOTSPOT SCENES — pulsing dots that open capability cards
+   ===================================================================== */
+.hs-scene {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--ink-dark);
+}
+.hs-scene > img {
+  width: 100%;
+  height: min(78vh, 660px);
+  object-fit: cover;
+  display: block;
+}
+.hotspot {
+  position: absolute;
+  left: var(--x, 50%); top: var(--y, 50%);
+  transform: translate(-50%, -50%);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(10, 22, 40, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  transition: background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+.hotspot::before {
+  content: "";
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  transition: background var(--t-fast) var(--ease);
+}
+.hotspot::after {
+  content: "";
+  position: absolute; inset: -1px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  animation: hs-pulse 2.4s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes hs-pulse {
+  0%   { transform: scale(1); opacity: 0.85; }
+  100% { transform: scale(2); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .hotspot::after { animation: none; opacity: 0; } }
+.hotspot:hover, .hotspot.is-active {
+  background: var(--gold);
+  border-color: var(--gold-hi);
+}
+.hotspot.is-active::after { animation: none; opacity: 0; }
+
+/* Capability card — static below the scene by default (no-JS safe);
+   becomes an overlay panel once JS adds the .js class to <html>. */
+.hs-card {
+  background: rgba(10, 22, 40, 0.94);
+  border: 1px solid var(--ink-line);
+  border-radius: 14px;
+  padding: 24px 26px;
+  color: #fff;
+  margin: 14px;
+}
+.js .hs-card { display: none; }
+.js .hs-card.is-open { display: block; animation: hs-in 0.5s var(--ease-out) both; }
+@keyframes hs-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) { .js .hs-card.is-open { animation: none; } }
+.js .hs-scene .hs-card {
+  position: absolute;
+  left: 22px; bottom: 22px;
+  z-index: 6;
+  max-width: 400px;
+  margin: 0;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+@media (max-width: 640px) {
+  .js .hs-scene .hs-card { left: 12px; right: 12px; bottom: 12px; max-width: none; }
+}
+.hs-card__kicker {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+  display: block;
+  margin-bottom: 8px;
+}
+.hs-card__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin: 0 0 8px;
+}
+.hs-card p { font-size: 14px; line-height: 1.6; color: var(--ink-text); margin: 0; }
+.hs-card__close {
+  position: absolute;
+  top: 12px; right: 12px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--ink-line);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  line-height: 1;
+  display: none;
+  place-items: center;
+}
+.js .hs-card__close { display: grid; }
+.hs-card__close:hover { border-color: var(--gold); color: var(--gold-hi); }
+.hs-hint {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--navy-40);
+  font-style: italic;
+  text-align: center;
+}
+.hs-hint--dark { color: rgba(255,255,255,0.5); }
+
+/* =====================================================================
+   GOVERNMENT — delivered record card
+   ===================================================================== */
+.record {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--navy-08);
+  border-radius: 16px;
+  padding: 44px 40px;
+  max-width: 880px;
+  margin: 48px auto 0;
+  box-shadow: 0 10px 40px rgba(30, 58, 95, 0.07);
+}
+@media (max-width: 640px) { .record { padding: 32px 24px; } }
+.record__stamp {
+  position: absolute;
+  top: 30px; right: 30px;
+  transform: rotate(-8deg);
+  border: 2px solid var(--gold);
+  box-shadow: inset 0 0 0 2px #fff, inset 0 0 0 3px var(--gold-soft);
+  color: var(--gold);
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  pointer-events: none;
+}
+@media (max-width: 640px) {
+  .record__stamp { position: static; display: inline-block; margin-bottom: 18px; }
+}
+.record__client {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+.record__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(24px, 2.6vw, 34px);
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  margin: 12px 0 14px;
+  max-width: 20ch;
+}
+.record__desc { font-size: 15px; line-height: 1.65; color: var(--navy-60); margin: 0 0 20px; max-width: 58ch; }
+.record__tags { display: flex; gap: 8px; flex-wrap: wrap; padding-top: 18px; border-top: 1px solid var(--navy-08); }
+.record__tag {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy-60);
+  background: var(--bg-soft);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+/* =====================================================================
+   CORPORATE — ward pan strip
+   ===================================================================== */
+.ward__viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  cursor: grab;
+  border-radius: 18px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  background: var(--ink-dark);
+}
+.ward__viewport::-webkit-scrollbar { display: none; }
+.ward__viewport.is-dragging { cursor: grabbing; }
+.ward__track { display: flex; width: max-content; }
+.ward__panel { position: relative; flex: 0 0 auto; }
+.ward__panel img {
+  height: min(70vh, 600px);
+  width: auto;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+@media (max-width: 640px) { .ward__panel img { height: 58vh; } }
+.ward__stage { margin-top: 18px; }
+.ward__stage .hs-card { margin: 0; }
+.js .ward__stage .hs-card { position: static; max-width: none; }
+
+/* =====================================================================
+   CORPORATE — before / after compare slider
+   ===================================================================== */
+.compare {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  max-height: 620px;
+  user-select: none;
+  touch-action: none;
+  background: var(--ink-dark);
+}
+.compare__before, .compare__after { position: absolute; inset: 0; }
+.compare__after { clip-path: inset(0 0 0 var(--pos, 50%)); }
+.compare__after img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.compare__handle {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: var(--pos, 50%);
+  width: 2px;
+  margin-left: -1px;
+  background: #fff;
+  z-index: 6;
+  cursor: ew-resize;
+}
+.compare__handle::after {
+  content: "◂ ▸";
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink-dark);
+  font-size: 12px;
+  letter-spacing: 1px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+}
+.compare__handle:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.compare__label {
+  position: absolute;
+  top: 18px;
+  z-index: 5;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(10, 22, 40, 0.75);
+  color: rgba(255, 255, 255, 0.85);
+  pointer-events: none;
+}
+.compare__label--before { left: 18px; }
+.compare__label--after { right: 18px; }
+
+/* Deliberately plain "slide deck" mock — the before state */
+.deckmock {
+  position: absolute; inset: 0;
+  background: #d9dce1;
+  display: grid;
+  place-items: center;
+}
+.deckmock__slide {
+  width: 70%;
+  aspect-ratio: 16 / 10;
+  background: #f2f3f5;
+  border: 1px solid #c3c7cd;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.14);
+  padding: 4.5% 5.5%;
+  display: flex;
+  flex-direction: column;
+}
+.deckmock__title { height: 11%; width: 58%; background: #b6bbc4; margin-bottom: 7%; border-radius: 2px; }
+.deckmock__row { height: 5.5%; background: #ced2d9; margin-bottom: 4.5%; border-radius: 2px; }
+.deckmock__row:nth-child(2) { width: 86%; }
+.deckmock__row:nth-child(3) { width: 78%; }
+.deckmock__row:nth-child(4) { width: 84%; }
+.deckmock__row:nth-child(5) { width: 62%; }
+.deckmock__row:nth-child(6) { width: 74%; }
+.deckmock__page {
+  margin-top: auto;
+  align-self: flex-end;
+  font-size: clamp(8px, 1vw, 12px);
+  color: #9aa0aa;
+  letter-spacing: 0.06em;
+}
+.compare-caption {
+  text-align: center;
+  margin-top: 22px;
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2vw, 24px);
+  font-style: italic;
+  letter-spacing: -0.015em;
+  color: var(--navy-60);
+}
+
+/* Two-up image pair */
+.two-up {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+@media (max-width: 720px) { .two-up { grid-template-columns: 1fr; } }
+.two-up img {
+  width: 100%;
+  height: clamp(260px, 40vh, 420px);
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
+/* Corporate closing index — one line per training type */
+.type-index {
+  list-style: none;
+  padding: 0;
+  max-width: 840px;
+  margin: 48px auto 0;
+  border-top: 1px solid var(--navy-08);
+}
+.type-index li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--navy-08);
+}
+.type-index strong {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(18px, 1.8vw, 24px);
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  white-space: nowrap;
+}
+.type-index span { font-size: 14px; color: var(--navy-60); text-align: right; }
+@media (max-width: 560px) {
+  .type-index li { flex-direction: column; gap: 4px; }
+  .type-index span { text-align: left; }
+}
+
+/* =====================================================================
+   ACADEMY — companion course + shelf covers
+   ===================================================================== */
+.companion {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  background: var(--ink-dark);
+  color: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--ink-line);
+}
+@media (max-width: 880px) { .companion { grid-template-columns: 1fr; } }
+.companion__body { padding: clamp(32px, 4vw, 52px); }
+.companion__tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+  display: block;
+  margin-bottom: 16px;
+}
+.companion__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(30px, 3.4vw, 46px);
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+  color: #fff;
+  margin: 0 0 16px;
+}
+.companion__desc { font-size: 15px; line-height: 1.65; color: var(--ink-text); margin: 0 0 26px; max-width: 46ch; }
+.companion__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+.companion .btn--primary { background: var(--gold); color: var(--ink-dark); border: 0; }
+.companion .btn--primary:hover { background: var(--gold-hi); }
+.companion .btn--ghost { background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.2); }
+.companion__media { position: relative; min-height: 280px; }
+.companion__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.companion__media::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, var(--ink-dark), transparent 45%);
+}
+@media (max-width: 880px) {
+  .companion__media { min-height: 220px; order: -1; }
+  .companion__media::after { background: linear-gradient(0deg, var(--ink-dark), transparent 55%); }
+}
+
+.shelf {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+@media (max-width: 980px) { .shelf { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .shelf { grid-template-columns: 1fr; max-width: 380px; margin-inline: auto; } }
+.cover-wrap { perspective: 1000px; }
+.cover {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 3 / 4;
+  border-radius: 10px 14px 14px 10px;
+  padding: 30px 26px 26px 34px;
+  background: linear-gradient(155deg, #172c50 0%, var(--ink-dark) 70%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  color: #fff;
+  transform-style: preserve-3d;
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+  will-change: transform;
+  box-shadow: 0 12px 30px rgba(10, 22, 40, 0.25);
+}
+.cover:hover { box-shadow: 0 28px 60px rgba(10, 22, 40, 0.35); }
+.cover::before {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 8px;
+  border-radius: 10px 0 0 10px;
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold) 55%, #7d6c46);
+}
+.cover:nth-child(even), .cover--alt { background: linear-gradient(155deg, #1d3a63 0%, #0d1c33 70%); }
+.cover__tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+  margin-bottom: 14px;
+}
+.cover__name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(24px, 2.2vw, 30px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #fff;
+  margin: 0 0 12px;
+}
+.cover__desc { font-size: 13px; line-height: 1.6; color: var(--ink-text); margin: 0; }
+.cover__foot {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--ink-line);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+.shelf-ledge {
+  height: 10px;
+  margin-top: 34px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #2a2118, #17120c);
+  box-shadow: 0 8px 22px rgba(10, 22, 40, 0.3);
+}
+
+/* =====================================================================
+   CONTACT — three door-styled cards
+   ===================================================================== */
+.door-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+@media (max-width: 880px) { .door-cards { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; } }
+.door-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 360px;
+  padding: 52px 28px 34px;
+  background: var(--bg);
+  border: 1px solid var(--navy-08);
+  border-radius: 150px 150px 14px 14px;
+  transition: transform 0.45s var(--ease-out), border-color 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out);
+}
+.door-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: 0 20px 46px rgba(30, 58, 95, 0.12);
+}
+.door-card__icon {
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-soft);
+  color: var(--gold);
+  display: grid;
+  place-items: center;
+  margin-bottom: 22px;
+  font-size: 20px;
+}
+.door-card__kicker {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--navy-40);
+  margin-bottom: 10px;
+}
+.door-card__name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin: 0 0 10px;
+}
+.door-card__desc { font-size: 14px; line-height: 1.6; color: var(--navy-60); margin: 0 0 22px; }
+.door-card__cta {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+}
+.door-card:hover .door-card__cta { color: var(--navy); }
+
+/* Mailto note shown after the contact form hands off to the email app */
+.mailto-note {
+  margin-top: 16px;
+  padding: 14px 18px;
+  border-left: 2px solid var(--gold);
+  background: var(--bg-soft);
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--navy);
+  line-height: 1.55;
+}
+
+/* =====================================================================
+   PICKER — index format / level selection states
+   ===================================================================== */
+[data-picker] .tier, [data-picker] .level { cursor: pointer; }
+.tier.is-selected, .level.is-selected {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold);
+}
+.tier--featured.is-selected { box-shadow: 0 0 0 2px var(--gold); }
+.picker-summary {
+  max-width: 760px;
+  margin: 48px auto 0;
+  padding: 22px 28px;
+  border: 1px solid var(--gold-soft);
+  border-radius: 14px;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.picker-summary__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--navy-40);
+  display: block;
+  margin-bottom: 4px;
+}
+.picker-summary__text {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--navy);
+}
+
+/* =====================================================================
+   EDUCATION — bridge card to the Academy
+   ===================================================================== */
+.bridge {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 32px;
+  background: var(--ink-dark);
+  color: #fff;
+  border-radius: 20px;
+  padding: clamp(32px, 4vw, 52px);
+  border: 1px solid var(--ink-line);
+}
+@media (max-width: 720px) { .bridge { grid-template-columns: 1fr; } }
+.bridge__tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+  display: block;
+  margin-bottom: 12px;
+}
+.bridge__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(26px, 3vw, 40px);
+  letter-spacing: -0.025em;
+  line-height: 1.06;
+  color: #fff;
+  margin: 0 0 12px;
+}
+.bridge__desc { font-size: 15px; line-height: 1.6; color: var(--ink-text); margin: 0; max-width: 52ch; }
+.bridge__ctas { display: flex; flex-direction: column; gap: 12px; }
+@media (max-width: 720px) { .bridge__ctas { flex-direction: row; flex-wrap: wrap; } }
+.bridge .btn--primary { background: var(--gold); color: var(--ink-dark); border: 0; }
+.bridge .btn--primary:hover { background: var(--gold-hi); }
+.bridge .btn--ghost { background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.2); }
+
+/* =====================================================================
+   Shared section header caption style (short lines, generous space)
+   ===================================================================== */
+.caption-head { max-width: 760px; margin-bottom: clamp(40px, 6vw, 72px); }
+.caption-head .eyebrow { margin-bottom: 16px; }
+.caption-head .h-section { margin-bottom: 18px; }
+.caption-head .lede { font-size: 17px; }
+
+/* Guard against horizontal overflow from experience components */
+main { overflow-x: clip; }

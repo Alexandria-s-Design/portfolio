@@ -9,12 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="experience.css" />
 
   <style>
-    .edu-hero { padding: 140px 0 60px; background: linear-gradient(180deg, #fafaf9 0%, #fff 100%); }
-    .edu-hero h1 { font-size: clamp(48px, 7vw, 88px); letter-spacing: -0.035em; margin: 18px 0 14px; }
-
-    .edu-section { padding: 80px 0; }
+    .edu-section { padding: clamp(72px, 9vw, 120px) 0; }
     .edu-section--soft { background: var(--bg-soft); }
 
     .product-grid {
@@ -34,8 +32,8 @@
       display: flex;
       flex-direction: column;
     }
-    .product-card:hover { border-color: var(--amber); box-shadow: 0 12px 30px rgba(30, 58, 95, 0.08); }
-    .product-card__tag { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); font-weight: 600; }
+    .product-card:hover { border-color: var(--gold); box-shadow: 0 12px 30px rgba(30, 58, 95, 0.08); }
+    .product-card__tag { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
     .product-card__name {
       font-family: var(--font-display);
       font-weight: 500;
@@ -67,7 +65,7 @@
       gap: 8px;
       font-size: 14px;
       font-weight: 600;
-      color: var(--amber);
+      color: var(--gold);
       letter-spacing: 0.02em;
     }
     .product-card__cta:hover { color: var(--navy); }
@@ -75,11 +73,11 @@
     .research-strip {
       background: #0a1628;
       color: rgba(255,255,255,0.92);
-      padding: 80px 0;
+      padding: clamp(72px, 9vw, 120px) 0;
     }
     .research-strip h2 { color: #fff; }
     .research-strip .lede { color: rgba(255,255,255,0.66); }
-    .research-strip .eyebrow { color: #c9a84c; }
+    .research-strip .eyebrow { color: #B8A26E; }
     .pub-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -92,7 +90,7 @@
       border-radius: 12px;
       padding: 24px;
     }
-    .pub-card__cat { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #c9a84c; font-weight: 600; }
+    .pub-card__cat { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #B8A26E; font-weight: 600; }
     .pub-card__title {
       font-family: var(--font-display);
       font-weight: 500;
@@ -104,7 +102,7 @@
     .pub-card__meta { font-size: 13px; color: rgba(255,255,255,0.55); }
 
     .edu-closing {
-      padding: 100px 0;
+      padding: clamp(88px, 12vw, 140px) 0;
       text-align: center;
     }
     .edu-closing h2 { font-size: clamp(36px, 5vw, 60px); margin: 0 0 14px; }
@@ -135,25 +133,92 @@
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="edu-hero">
+    <!-- =====================================================================
+         ESTABLISHING SHOT — the classroom
+         ===================================================================== -->
+    <section class="estab" data-estab>
+      <figure class="estab__media">
+        <img src="assets/scenes/education-classroom.png" alt="A bright classroom where students build and test models" style="object-position: center 40%;" />
+      </figure>
+      <div class="estab__content">
+        <div class="wrap">
+          <p class="estab__kicker">SBIR Phase II · K-12 · Higher Ed · Peer-Reviewed</p>
+          <h1 class="estab__line">The classroom is changing. Bring it with you.</h1>
+          <p class="estab__sub">K-12 platforms, federally funded SBIR work, district consulting, and higher-ed course development. The research is peer-reviewed. The kids are why.</p>
+          <div class="estab__ctas">
+            <a href="#classroom" class="btn btn--primary">Look around the room <span class="arrow">→</span></a>
+            <a href="contact.html" class="btn btn--ghost">Start a project</a>
+          </div>
+        </div>
+      </div>
+      <span class="estab__cue" aria-hidden="true"></span>
+    </section>
+
+    <!-- =====================================================================
+         HOTSPOT SCENE — what happens in this classroom
+         ===================================================================== -->
+    <section class="edu-section" id="classroom">
       <div class="wrap">
-        <a href="index.html" class="stub__back">← Home</a>
-        <span class="pill" style="margin-top:16px;">SBIR Phase II · K-12 · Higher Ed · Peer-Reviewed</span>
-        <h1>Research-backed.<br/>Classroom-tested.</h1>
-        <p class="lede">
-          K-12 platforms, federally-funded SBIR work, K-12 district consulting, and higher-ed course development. The classroom is the standard. The research is peer-reviewed. The kids are why.
-        </p>
+        <header class="caption-head reveal">
+          <span class="eyebrow">Inside the room</span>
+          <h2 class="h-section">Three things we build<br/>for educators.</h2>
+          <p class="lede">Open a marker to see the work behind it.</p>
+        </header>
+
+        <div data-hotspots class="reveal">
+          <div class="hs-scene">
+            <img src="assets/scenes/education-classroom.png" alt="The same classroom, seen from the teacher's side" style="object-position: center 60%;" />
+
+            <button type="button" class="hotspot" style="--x: 22%; --y: 45%;" data-target="edu-hs-1" aria-controls="edu-hs-1">
+              <span class="sr-only">Professional development</span>
+            </button>
+            <button type="button" class="hotspot" style="--x: 52%; --y: 34%;" data-target="edu-hs-2" aria-controls="edu-hs-2">
+              <span class="sr-only">Curriculum design</span>
+            </button>
+            <button type="button" class="hotspot" style="--x: 80%; --y: 48%;" data-target="edu-hs-3" aria-controls="edu-hs-3">
+              <span class="sr-only">AI fluency for educators</span>
+            </button>
+
+            <div class="hs-card" id="edu-hs-1">
+              <button type="button" class="hs-card__close" data-close aria-label="Close">✕</button>
+              <span class="hs-card__kicker">At the teacher's desk</span>
+              <h3 class="hs-card__title">Professional development</h3>
+              <p>PD that teachers keep using after the session ends. AI fluency paths, ModelIt! onboarding, and full-district workshops via TRPEC, delivered live or on your LMS.</p>
+            </div>
+            <div class="hs-card" id="edu-hs-2">
+              <button type="button" class="hs-card__close" data-close aria-label="Close">✕</button>
+              <span class="hs-card__kicker">On the board</span>
+              <h3 class="hs-card__title">Curriculum design</h3>
+              <p>NGSS-aligned units, SBIR-funded modeling lessons, and higher-ed course builds. SCORM-packaged, LMS-agnostic, accessibility by default.</p>
+            </div>
+            <div class="hs-card" id="edu-hs-3">
+              <button type="button" class="hs-card__close" data-close aria-label="Close">✕</button>
+              <span class="hs-card__kicker">At the student tables</span>
+              <h3 class="hs-card__title">AI fluency for educators</h3>
+              <p>Programs that treat teachers as professionals learning a new practice. Application-first, role-based, and grounded in the daily rhythm of a real classroom.</p>
+            </div>
+          </div>
+          <p class="hs-hint">Select a marker in the room to open its card.</p>
+        </div>
+
+        <details class="drawer reveal">
+          <summary>Read the thinking <span class="drawer__icon" aria-hidden="true">+</span></summary>
+          <div class="drawer__body">
+            <p>K-12 platforms, federally-funded SBIR work, K-12 district consulting, and higher-ed course development. The classroom is the standard. The research is peer-reviewed. The kids are why.</p>
+          </div>
+        </details>
       </div>
     </section>
 
-    <!-- PRODUCTS -->
-    <section class="edu-section">
+    <!-- =====================================================================
+         PRODUCTS
+         ===================================================================== -->
+    <section class="edu-section edu-section--soft">
       <div class="wrap">
         <span class="eyebrow">Platforms &amp; Programs</span>
         <h2 class="h-section" style="margin-top:14px;">Where we work<br/>in education.</h2>
 
-        <div class="product-grid">
+        <div class="product-grid reveal">
 
           <article class="product-card">
             <span class="product-card__tag">SBIR Phase II · NIH</span>
@@ -215,7 +280,9 @@
       </div>
     </section>
 
-    <!-- RESEARCH -->
+    <!-- =====================================================================
+         RESEARCH
+         ===================================================================== -->
     <section class="research-strip">
       <div class="wrap">
         <span class="eyebrow">Research &amp; Scholarship</span>
@@ -224,7 +291,7 @@
           Peer-reviewed scholarship and manuscripts in submission. Our pricing model, our pedagogy, and our refusal of "AI ethics theater" all start here.
         </p>
 
-        <div class="pub-grid">
+        <div class="pub-grid reveal">
           <div class="pub-card">
             <span class="pub-card__cat">Manuscript</span>
             <h3 class="pub-card__title">"Which Humans?" — AI Governance &amp; Techno-Neoliberalism</h3>
@@ -246,26 +313,34 @@
             <p class="pub-card__meta">Performance task → Walkthrough → Reflection → Monday Brief</p>
           </div>
         </div>
+
+        <div style="margin-top: 32px;">
+          <a href="about-room.html#research" class="btn btn--ghost" style="background: rgba(255,255,255,0.08); color:#fff; border-color: rgba(255,255,255,0.18);">Browse the research shelf in the Studio →</a>
+        </div>
       </div>
     </section>
 
-    <!-- TEACHER ACADEMY -->
-    <section class="edu-section edu-section--soft">
+    <!-- =====================================================================
+         BRIDGE — to the Academy
+         ===================================================================== -->
+    <section class="edu-section">
       <div class="wrap">
-        <span class="eyebrow">For Districts &amp; Teachers</span>
-        <h2 class="h-section" style="margin-top:14px;">Looking for<br/>professional development?</h2>
-        <p class="lede" style="max-width:680px; margin-top:18px;">
-          AI Fluency for teachers, ModelIt! teacher onboarding, and full-district workshops via TRPEC. Hosted on Alexandria's Academy Moodle. SCORM-packaged for your LMS.
-        </p>
-        <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:32px;">
-          <a href="academy.html" class="btn btn--primary">See the Academy catalog →</a>
-          <a href="https://www.rightpathed.com/services" target="_blank" rel="noopener" class="btn btn--ghost">TRPEC workshops →</a>
+        <div class="bridge reveal">
+          <div>
+            <span class="bridge__tag">For Districts &amp; Teachers</span>
+            <h2 class="bridge__title">Looking for professional development?</h2>
+            <p class="bridge__desc">AI Fluency for teachers, ModelIt! teacher onboarding, and full-district workshops via TRPEC. Hosted on Alexandria's Academy Moodle. SCORM-packaged for your LMS.</p>
+          </div>
+          <div class="bridge__ctas">
+            <a href="academy.html" class="btn btn--primary">See the Academy catalog <span class="arrow">→</span></a>
+            <a href="https://www.rightpathed.com/services" target="_blank" rel="noopener" class="btn btn--ghost">TRPEC workshops →</a>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- CLOSING -->
-    <section class="edu-closing">
+    <section class="edu-closing" style="padding-top: 0;">
       <div class="wrap">
         <h2>K-12 district?<br/>University program?</h2>
         <p>Tell us your audience and the standards alignment you need. We work fast, document everything, and leave you with a program your teachers will actually use.</p>
@@ -280,7 +355,41 @@
 
   <footer class="foot">
     <div class="wrap">
-      <div class="foot__bottom" style="border:0; padding:24px 0;">
+      <div class="foot__top">
+        <div>
+          <div class="foot__brand">Alexandria's Design</div>
+          <p class="foot__tag">Instructional design and training development for government, biotech, and education.</p>
+        </div>
+        <div>
+          <h5>Audiences</h5>
+          <ul>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="corporate.html">Corporate</a></li>
+            <li><a href="education.html">Education</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Studio</h5>
+          <ul>
+            <li><a href="academy.html">Academy</a></li>
+            <li><a href="about-room.html">About</a></li>
+            <li><a href="about-room.html#research">Publications</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://doc-martins.com/" target="_blank" rel="noopener">Portfolio</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Reach Us</h5>
+          <ul>
+            <li><a href="mailto:info@alexandriasdesign.com">info@alexandriasdesign.com</a></li>
+            <li><a href="https://doc-martins.com/" target="_blank" rel="noopener">doc-martins.com</a></li>
+            <li><a href="about-room.html">Step into the Studio</a></li>
+            <li><a href="tel:+13236320271">(323) 632-0271</a></li>
+            <li>San Diego, CA</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot__bottom">
         <span>© 2026 Alexandria's Design LLC</span>
         <span class="creds">
           <span>WOSB</span>
@@ -292,9 +401,10 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="vendor/lenis.min.js"></script>
   <script src="motion.js"></script>
+  <script src="experience.js"></script>
 </body>
 </html>

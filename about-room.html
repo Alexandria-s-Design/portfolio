@@ -30,7 +30,8 @@
       --font-mono:    'Space Mono', ui-monospace, monospace;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg); }
+    /* Deep navy from the first paint. Never white, even if every script fails. */
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #0a1226; }
     body { font-family: var(--font-body); color: var(--ink); -webkit-font-smoothing: antialiased; }
     a { color: inherit; text-decoration: none; }
 
@@ -492,6 +493,362 @@
       .studio-portrait { width: 132px; }
     }
 
+    /* =====================================================================
+       THE RETRO CRT TELEVISION
+       ===================================================================== */
+    .crt { max-width: 780px; margin: 0 auto 8px; user-select: none; }
+    .crt__body {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 172px;
+      gap: 20px;
+      padding: 26px 24px 22px;
+      border-radius: 24px 24px 16px 16px;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(255,235,200,0.10), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(0,0,0,0.22)),
+        repeating-linear-gradient(93deg,
+          #573a22 0px, #62432a 5px, #55381f 9px, #6a4a2d 14px,
+          #5d3f26 19px, #52351d 24px, #684831 29px),
+        #5a3c24;
+      box-shadow:
+        inset 0 2px 3px rgba(255,255,255,0.22),
+        inset 0 -4px 10px rgba(0,0,0,0.45),
+        inset 3px 0 8px rgba(0,0,0,0.20),
+        inset -3px 0 8px rgba(0,0,0,0.20),
+        0 26px 60px rgba(0,0,0,0.60);
+    }
+    .crt__legs {
+      display: flex; justify-content: space-between;
+      padding: 0 72px;
+      height: 30px;
+    }
+    .crt__legs span {
+      width: 26px; height: 30px;
+      clip-path: polygon(12% 0, 88% 0, 66% 100%, 38% 100%);
+      background: linear-gradient(180deg, #4a3019, #2e1c0c);
+      box-shadow: inset 0 2px 2px rgba(255,255,255,0.14);
+    }
+    .crt__screen-frame {
+      background: linear-gradient(180deg, #241608, #171009);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.8), inset 0 -1px 2px rgba(255,255,255,0.08);
+    }
+    .crt__screen {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: #04070c;
+      border-radius: 8% / 7%;
+      overflow: hidden;
+      box-shadow: inset 0 0 40px rgba(0,0,0,0.9);
+      cursor: pointer;
+      transition: box-shadow 0.5s ease;
+    }
+    .crt__screen.is-on {
+      box-shadow:
+        inset 0 0 40px rgba(0,0,0,0.75),
+        inset 0 0 90px rgba(111,233,255,0.10),
+        0 0 44px rgba(150,200,255,0.20);
+    }
+    .crt__screen video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: contain;
+      background: #04070c;
+    }
+    .crt__static {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      image-rendering: pixelated;
+      opacity: 0;
+      transition: opacity 0.12s linear;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .crt__powerline {
+      position: absolute;
+      left: 4%; right: 4%; top: 50%;
+      height: 3px;
+      margin-top: -1.5px;
+      background: #fff;
+      box-shadow: 0 0 18px rgba(255,255,255,0.95), 0 0 50px rgba(180,220,255,0.7);
+      border-radius: 2px;
+      transform: scale(0, 1);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 4;
+    }
+    .crt__powerline.is-firing { animation: crt-powerline 0.45s ease-out forwards; }
+    @keyframes crt-powerline {
+      0%   { opacity: 0; transform: scale(0, 0.6); }
+      12%  { opacity: 1; transform: scale(0.08, 0.6); }
+      62%  { opacity: 1; transform: scale(1, 0.6); }
+      100% { opacity: 0; transform: scale(1, 40); }
+    }
+    /* Curved-glass highlight + vignette */
+    .crt__glass {
+      position: absolute; inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 5;
+      background:
+        radial-gradient(ellipse 62% 42% at 30% 16%, rgba(255,255,255,0.13), rgba(255,255,255,0.02) 55%, transparent 70%),
+        radial-gradient(ellipse 130% 120% at 50% 50%, transparent 62%, rgba(0,0,0,0.38) 100%);
+    }
+    .crt__scanlines {
+      position: absolute; inset: 0;
+      pointer-events: none;
+      z-index: 4;
+      background: repeating-linear-gradient(0deg,
+        rgba(0,0,0,0.10) 0px, rgba(0,0,0,0.10) 1px,
+        transparent 1px, transparent 3px);
+      opacity: 0.55;
+      border-radius: inherit;
+    }
+    .crt__sound {
+      position: absolute;
+      left: 50%; bottom: 9%;
+      transform: translateX(-50%);
+      z-index: 6;
+      border: 1px solid rgba(60,38,10,0.8);
+      border-radius: 999px;
+      padding: 9px 20px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #2c1c06;
+      cursor: pointer;
+      background: linear-gradient(180deg, #f3ddaa, #d9b869 55%, #b3893d);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.55), inset 0 1px 1px rgba(255,255,255,0.7);
+    }
+    .crt__sound:hover { filter: brightness(1.08); }
+    .crt__sound[hidden] { display: none; }
+    .crt__plate {
+      margin-top: 12px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: #2e1e08;
+      padding: 7px 12px;
+      border-radius: 6px;
+      background: linear-gradient(180deg, #ecd49b, #cfae60 60%, #a97f35);
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.7), inset 0 -1px 2px rgba(0,0,0,0.35), 0 2px 5px rgba(0,0,0,0.4);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .crt__side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding-top: 2px;
+    }
+    .crt__grille {
+      width: 100%;
+      flex: 1 1 auto;
+      min-height: 110px;
+      border-radius: 10px;
+      background:
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.14) 0 2px, transparent 2px 4px),
+        repeating-linear-gradient(90deg, #241708 0px 4px, #c3a678 4px 7px);
+      box-shadow: inset 0 3px 8px rgba(0,0,0,0.6), inset 0 -2px 5px rgba(0,0,0,0.4);
+      border: 2px solid rgba(30,18,6,0.8);
+    }
+    .crt__knob-group { text-align: center; }
+    .crt__knob {
+      position: relative;
+      width: 62px; height: 62px;
+      margin: 0 auto;
+      border-radius: 50%;
+      cursor: grab;
+      touch-action: none;
+      background: radial-gradient(circle at 32% 28%, #f8e6b4, #dcbc6e 36%, #b1873c 68%, #77551f 100%);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6), inset 0 1px 2px rgba(255,255,255,0.65), inset 0 -2px 4px rgba(0,0,0,0.35);
+      transition: transform 0.16s ease-out;
+    }
+    .crt__knob:active { cursor: grabbing; }
+    .crt__knob::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      z-index: -1;
+      background: repeating-conic-gradient(#6e4e1d 0deg 6deg, #d3b269 6deg 12deg);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.55);
+    }
+    .crt__knob-notch {
+      position: absolute;
+      left: 50%; top: 5px;
+      width: 5px; height: 17px;
+      margin-left: -2.5px;
+      border-radius: 3px;
+      background: #35220a;
+      box-shadow: 0 1px 1px rgba(255,255,255,0.35);
+    }
+    .crt__knob-label {
+      margin-top: 9px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #ecd8a8;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.7);
+    }
+    .crt__vol-tick {
+      margin-top: 4px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      color: rgba(236,216,168,0.75);
+      text-shadow: 0 1px 1px rgba(0,0,0,0.7);
+    }
+    .crt__power {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(30,18,6,0.85);
+      background: radial-gradient(circle at 34% 30%, #f3ddaa, #cfae60 45%, #97702c 100%);
+      color: #2c1c06;
+      font-size: 15px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.55), inset 0 1px 1px rgba(255,255,255,0.6);
+    }
+    .crt__power:hover { filter: brightness(1.1); }
+    .crt__guide-note {
+      margin: 16px 0 10px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-30);
+    }
+    @media (max-width: 720px) {
+      .crt__body { grid-template-columns: 1fr; }
+      .crt__side { flex-direction: row; justify-content: center; flex-wrap: wrap; }
+      .crt__grille { width: 100%; min-height: 34px; flex: 1 1 100%; }
+    }
+
+    /* =====================================================================
+       PUBLICATIONS RACK — Research Shelf featured spines
+       ===================================================================== */
+    .pubrack {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      margin-bottom: 22px;
+      background:
+        linear-gradient(180deg, rgba(7,10,17,0.86), rgba(7,10,17,0.80)),
+        url('assets/scenes/publications-shelf.png') center 40% / cover no-repeat,
+        #14100a;
+      padding: 26px;
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 760px) { .pubrack { grid-template-columns: 1fr; } }
+    .pubrack__spine {
+      border: 1px solid rgba(232,195,115,0.30);
+      border-left: 6px solid var(--gold);
+      border-radius: 10px;
+      padding: 20px 22px;
+      background: rgba(10, 8, 4, 0.55);
+      backdrop-filter: blur(3px);
+    }
+    .pubrack__spine--course { border-left-color: var(--cyan); border-color: rgba(111,233,255,0.28); }
+    .pubrack__meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .pubrack__spine--course .pubrack__meta { color: var(--cyan); }
+    .pubrack__title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+      margin: 8px 0 8px;
+      letter-spacing: -0.01em;
+    }
+    .pubrack__sub { font-size: 13px; line-height: 1.55; color: var(--ink-60); margin-bottom: 16px; }
+    .pubrack__btn {
+      display: inline-block;
+      padding: 11px 20px;
+      border-radius: 10px;
+      background: var(--gold);
+      color: #171006;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 13px;
+      transition: all 0.2s ease;
+    }
+    .pubrack__btn:hover { background: #f2d38c; transform: translateY(-1px); }
+    .pubrack__spine--course .pubrack__btn { background: var(--cyan); color: #06222a; }
+    .pubrack__spine--course .pubrack__btn:hover { background: #9df0ff; }
+
+    /* =====================================================================
+       2D FALLBACK ROOM — shown when WebGL / Three.js is unavailable
+       ===================================================================== */
+    .fallback-room {
+      position: fixed; inset: 0;
+      z-index: 2;
+      display: none;
+      background: #0a1226;
+    }
+    body.is-fallback .fallback-room { display: block; }
+    body.is-fallback canvas#stage,
+    body.is-fallback .label,
+    body.is-fallback .ui-hint { display: none !important; }
+    .fallback-room img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .fb-spot {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 11px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(6, 8, 13, 0.80);
+      backdrop-filter: blur(10px);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .fb-spot::before {
+      content: '';
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 12px var(--cyan-glow);
+    }
+    .fb-spot[data-color="gold"]::before { background: var(--gold); box-shadow: 0 0 12px var(--gold-glow); }
+    .fb-spot[data-color="magenta"]::before { background: var(--magenta); box-shadow: 0 0 12px rgba(255,107,168,0.5); }
+    .fb-spot:hover { border-color: var(--cyan); background: rgba(6, 8, 13, 0.94); transform: translate(-50%, -50%) scale(1.05); }
+
     /* Mobile: keep label cards open since no hover */
     @media (max-width: 880px) {
       .label__card { opacity: 1; transform: none; pointer-events: auto; }
@@ -507,6 +864,15 @@
   <!-- The Three.js canvas fills the viewport -->
   <canvas id="stage"></canvas>
   <div class="vignette" aria-hidden="true"></div>
+
+  <!-- 2D fallback room: shown only if Three.js or WebGL is unavailable -->
+  <div class="fallback-room" id="fallback-room" aria-hidden="true">
+    <img src="assets/scenes/studio-room-2d.png" alt="The studio: a television on the left, a work table in the center, a bookshelf on the right, and a door at the back." />
+    <button class="fb-spot" style="left: 12%; top: 58%;" data-modal="tv">01 · The Television</button>
+    <button class="fb-spot" style="left: 86%; top: 50%;" data-modal="magazine" data-color="gold">02 · Research Shelf</button>
+    <button class="fb-spot" style="left: 50%; top: 74%;" data-modal="theory" data-color="gold">03 · Work Table</button>
+    <button class="fb-spot" style="left: 35.5%; top: 47%;" data-modal="doorway" data-color="magenta">04 · The Doorway</button>
+  </div>
 
   <!-- =====================================================================
        CORNER UI
@@ -534,9 +900,9 @@
   <a class="label" id="label-tv" data-modal="tv" data-color="cyan">
     <div class="label__ring"></div>
     <div class="label__card">
-      <div class="label__eyebrow">01 · The TV</div>
-      <div class="label__title">Watch the reel</div>
-      <div class="label__sub">Video work lives here: Micro Mayhem, Microsoft, CAAASA, and public-facing studio reels.</div>
+      <div class="label__eyebrow">01 · The Television</div>
+      <div class="label__title">Turn it on</div>
+      <div class="label__sub">A welcome film and nine project channels: Micro Mayhem, Microsoft, CAAASA, and studio reels.</div>
     </div>
   </a>
 
@@ -575,22 +941,43 @@
   <div class="modal" id="modal-tv" role="dialog" aria-modal="true">
     <div class="modal__panel">
       <button class="modal__close" data-close>×</button>
-      <span class="modal__eyebrow">The TV · Video Console</span>
-      <h2 class="modal__title">Reels from the studio.</h2>
-      <p class="modal__lede">The console stays in idle mode until a viewer chooses a file. Each channel is tied to a real project or prototype.</p>
-      <div class="tv__screen" id="tv-screen">
-        <div class="tv__placeholder" id="tv-placeholder">
-          <div class="tv__idle">
-            <img src="videos-encoded/tv-console-idle.gif" alt="" />
-            <div class="tv__idle-copy">
-              <strong>Console idle</strong>
-              <div>Select a channel below to begin.</div>
+      <span class="modal__eyebrow">01 · The Television</span>
+      <h2 class="modal__title">Turn it on.</h2>
+      <p class="modal__lede">A working set from the studio. Turn the channel knob, or pick from the program guide below. Every channel is a real project.</p>
+      <div class="crt" id="crt">
+        <div class="crt__body">
+          <div class="crt__screen-frame">
+            <div class="crt__screen" id="crt-screen">
+              <video id="tv-video" preload="metadata" playsinline></video>
+              <canvas class="crt__static" id="crt-static" width="180" height="135" aria-hidden="true"></canvas>
+              <div class="crt__powerline" id="crt-powerline" aria-hidden="true"></div>
+              <div class="crt__scanlines" aria-hidden="true"></div>
+              <div class="crt__glass" aria-hidden="true"></div>
+              <button class="crt__sound" id="crt-sound" hidden>Sound on</button>
             </div>
+            <div class="crt__plate" id="crt-plate" aria-live="polite">CH 00 · WELCOME</div>
+          </div>
+          <div class="crt__side">
+            <div class="crt__grille" aria-hidden="true"></div>
+            <div class="crt__knob-group">
+              <div class="crt__knob" id="knob-channel" role="button" tabindex="0" aria-label="Channel knob. Click to change channel.">
+                <div class="crt__knob-notch"></div>
+              </div>
+              <div class="crt__knob-label">Channel</div>
+            </div>
+            <div class="crt__knob-group">
+              <div class="crt__knob" id="knob-volume" role="slider" tabindex="0" aria-label="Volume knob. Drag to adjust." aria-valuemin="0" aria-valuemax="100" aria-valuenow="80">
+                <div class="crt__knob-notch"></div>
+              </div>
+              <div class="crt__knob-label">Volume</div>
+              <div class="crt__vol-tick" id="crt-vol-tick">80</div>
+            </div>
+            <button class="crt__power" data-close title="Power off and close">&#9211;</button>
           </div>
         </div>
-        <video id="tv-video" controls preload="auto" playsinline style="display:none;"></video>
-        <div class="tv__play-note" id="tv-play-note" aria-live="polite"></div>
+        <div class="crt__legs" aria-hidden="true"><span></span><span></span></div>
       </div>
+      <div class="crt__guide-note">Program guide</div>
       <div class="tv__channels" id="tv-channels"></div>
     </div>
   </div>
@@ -602,6 +989,20 @@
       <span class="modal__eyebrow">The Research Shelf</span>
       <h2 class="modal__title">The work is built on scholarship.</h2>
       <p class="modal__lede">This shelf holds the research frame: published and in-press scholarship, corpus-curation work, legal guardrails, and participatory design methods behind the portfolio.</p>
+      <div class="pubrack">
+        <div class="pubrack__spine">
+          <div class="pubrack__meta">Published doctoral research</div>
+          <h3 class="pubrack__title">The Fourth Industrial Superintendent</h3>
+          <p class="pubrack__sub">Dr. Marie Martin. Doctoral research on how superintendents lead district transformation in the Fourth Industrial Revolution.</p>
+          <a class="pubrack__btn" href="research/the-fourth-industrial-superintendent.pdf" target="_blank" rel="noopener">Read the published work</a>
+        </div>
+        <div class="pubrack__spine pubrack__spine--course">
+          <div class="pubrack__meta">Companion course</div>
+          <h3 class="pubrack__title">The Fourth Industrial Educator</h3>
+          <p class="pubrack__sub">The companion course that turns the research into practice for educators and district leaders.</p>
+          <a class="pubrack__btn" href="https://courses.alexandriasdesign.com/" target="_blank" rel="noopener">Take the course</a>
+        </div>
+      </div>
       <div class="magazine__grid">
         <article class="mag-item"><span class="mag-item__cat">In press</span><h3 class="mag-item__title">Superintendent Leadership in Fourth Industrial Revolution Educational Transformation</h3><p class="mag-item__meta">Martin, M. · <em>Journal of Educational Leadership and Policy Studies</em></p></article>
         <article class="mag-item"><span class="mag-item__cat">In press</span><h3 class="mag-item__title">Fourth Industrial Revolution</h3><p class="mag-item__meta">Martin, M. · <em>International Journal of Global Languages and Literacies</em></p></article>
@@ -648,12 +1049,12 @@
         </form>
         <div class="gate__error" id="gate-error"></div>
         <div class="gate__or">— or —</div>
-        <a href="mailto:cmartin@alexandriasdesign.com?subject=Discovery%20Call%20Request%20%E2%80%94%20Studio%20Portfolio" class="gate__book">Book a 30-min discovery call →</a>
+        <a href="mailto:info@alexandriasdesign.com?subject=Discovery%20Call%20Request%2C%20Studio%20Portfolio" class="gate__book">Book a 30-min discovery call →</a>
       </div>
       <div class="portfolio" id="portfolio">
         <span class="modal__eyebrow">The Portfolio</span>
         <h2 class="modal__title">The door opens into the case room.</h2>
-        <p class="modal__lede">The portfolio now lives as its own experience: case wall, filters, proof layers, and production-system story. Reach out anytime: <a href="mailto:cmartin@alexandriasdesign.com" style="color: var(--cyan);">cmartin@alexandriasdesign.com</a>.</p>
+        <p class="modal__lede">The portfolio now lives as its own experience: case wall, filters, proof layers, and production-system story. Reach out anytime: <a href="mailto:info@alexandriasdesign.com" style="color: var(--cyan);">info@alexandriasdesign.com</a>.</p>
         <div class="portfolio-entry">
           <div class="portfolio-entry__panel">
             <h3>Evidence you can walk through.</h3>
@@ -711,7 +1112,7 @@
        SCRIPT — Three.js renderer + cinematic intro + label projection
        (UMD build so this works opening directly via file://)
        ===================================================================== -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="vendor/three.min.js"></script>
   <script src="studio-assets-inline.js"></script>
   <script>
     // Surface ANY error visibly so we don't get stuck on a black screen again
@@ -726,10 +1127,31 @@
       banner.textContent = 'JS error — ' + (e.message || 'unknown') + (e.filename ? ' (' + e.filename.split('/').pop() + ':' + e.lineno + ')' : '');
     });
 
-    if (typeof THREE === 'undefined') {
-      throw new Error('Three.js failed to load from CDN. Check your internet connection.');
+    /* ========================================================
+       2D FALLBACK — the page never renders blank. If Three.js is
+       missing, WebGL is unavailable, or scene init throws, we show
+       the rendered 2D studio with the same four hotspots.
+       ======================================================== */
+    function enterFallback(reason) {
+      console.warn('3D room unavailable, showing 2D studio. Reason:', reason);
+      document.body.classList.add('is-fallback', 'is-ready');
+      const fb = document.getElementById('fallback-room');
+      if (fb) fb.setAttribute('aria-hidden', 'false');
+      const veil = document.querySelector('.arrival');
+      if (veil) setTimeout(() => { veil.style.display = 'none'; }, 900);
     }
-    console.log('Three.js r' + THREE.REVISION + ' loaded');
+
+    // Safety: the arrival overlay always resolves, no matter what.
+    setTimeout(() => {
+      const veil = document.querySelector('.arrival');
+      if (veil) veil.style.display = 'none';
+    }, 4000);
+
+    function init3D() {
+      if (typeof THREE === 'undefined') {
+        throw new Error('Three.js failed to load');
+      }
+      console.log('Three.js r' + THREE.REVISION + ' loaded');
 
     /* ========================================================
        SCENE / RENDERER
@@ -976,89 +1398,284 @@
       requestAnimationFrame(loop);
     }
     loop();
+    } // end init3D
+
+    try {
+      init3D();
+    } catch (err) {
+      enterFallback(err && err.message ? err.message : String(err));
+    }
 
     /* ========================================================
        CHANNELS / MODALS / GATE — same logic as before
        ======================================================== */
     const channels = [
-      { num: '01', name: 'Micro Mayhem · Interest Promo',       cat: 'Education prototype',   file: 'videos-encoded/ch07-micromayhem-promo.mp4' },
-      { num: '02', name: 'Microsoft Teams · Scheduling',        cat: 'Enterprise training',   file: 'videos-encoded/ch04-teams-scheduling.mp4' },
-      { num: '03', name: 'Microsoft · Inclusive Classroom',     cat: 'Presentation',          file: 'videos-encoded/ch02-microsoft-inclusive-classroom.mp4' },
-      { num: '04', name: '2GIG EDGE · Dealer Toolkit',          cat: 'Corporate',             file: 'videos-encoded/ch03-2gig-edge-dealer-toolkit.mp4' },
-      { num: '05', name: 'CAAASA Superintendent Academy',       cat: 'Leadership',            file: 'videos-encoded/ch05-caaasa-superintendent.mp4' },
-      { num: '06', name: 'Wear the Crown · Lip-Sync',           cat: 'Creative production',   file: 'videos-encoded/ch06-wear-the-crown.mp4' },
+      { num: '00', name: 'Welcome to the Studio',                cat: 'Start here',            file: 'videos-encoded/ch00-welcome.mp4', poster: 'videos-encoded/ch00-welcome-poster.jpg', welcome: true },
+      { num: '01', name: 'Tiny Healer',                          cat: 'Story prototype',       file: 'videos-encoded/ch01-tiny-healer.mp4' },
+      { num: '02', name: 'Microsoft · Inclusive Classroom',      cat: 'Presentation',          file: 'videos-encoded/ch02-microsoft-inclusive-classroom.mp4' },
+      { num: '03', name: '2GIG EDGE · Dealer Toolkit',           cat: 'Corporate',             file: 'videos-encoded/ch03-2gig-edge-dealer-toolkit.mp4' },
+      { num: '04', name: 'Microsoft Teams · Scheduling',         cat: 'Enterprise training',   file: 'videos-encoded/ch04-teams-scheduling.mp4' },
+      { num: '05', name: 'CAAASA Superintendent Academy',        cat: 'Leadership',            file: 'videos-encoded/ch05-caaasa-superintendent.mp4' },
+      { num: '06', name: 'Wear the Crown · Lip-Sync',            cat: 'Creative production',   file: 'videos-encoded/ch06-wear-the-crown.mp4' },
+      { num: '07', name: 'Micro Mayhem · Interest Promo',        cat: 'Education prototype',   file: 'videos-encoded/ch07-micromayhem-promo.mp4' },
+      { num: '08', name: "Captain's Career Course · Walkthrough", cat: 'Federal training',     file: 'videos-encoded/ch08-ccc-medcoe-walkthrough.mp4' },
+      { num: '09', name: 'Cortés Avatar · Walkthrough',          cat: 'Research prototype',    file: 'videos-encoded/ch09-cortes-avatar-walkthrough.mp4' },
     ];
-    const channelsEl = document.getElementById('tv-channels');
-    const tvVideo    = document.getElementById('tv-video');
-    const tvPlaceholder = document.getElementById('tv-placeholder');
-    const tvPlayNote = document.getElementById('tv-play-note');
 
-    function resetTvPlayer() {
-      tvVideo.pause();
-      tvVideo.removeAttribute('src');
-      tvVideo.load();
-      tvVideo.currentTime = 0;
-      tvVideo.muted = false;
-      tvVideo.defaultMuted = false;
-      tvVideo.volume = 1;
-      tvVideo.controls = true;
-      tvVideo.playsInline = true;
-      tvVideo.setAttribute('playsinline', '');
-      tvVideo.removeAttribute('muted');
-      tvPlayNote.textContent = '';
-    }
+    const channelsEl   = document.getElementById('tv-channels');
+    const tvVideo      = document.getElementById('tv-video');
+    const screenEl     = document.getElementById('crt-screen');
+    const plateEl      = document.getElementById('crt-plate');
+    const soundBtn     = document.getElementById('crt-sound');
+    const powerlineEl  = document.getElementById('crt-powerline');
+    const staticCanvas = document.getElementById('crt-static');
+    const staticCtx    = staticCanvas.getContext('2d');
+    const chKnob       = document.getElementById('knob-channel');
+    const volKnob      = document.getElementById('knob-volume');
+    const volTick      = document.getElementById('crt-vol-tick');
+    const crtRoot      = document.getElementById('crt');
 
-    async function playChannel(c) {
-      resetTvPlayer();
-      tvVideo.src = c.file;
-      tvVideo.style.display = 'block';
-      tvPlaceholder.style.display = 'none';
-      tvPlayNote.textContent = `Loading ${c.name}...`;
-      tvVideo.load();
-      try {
-        await tvVideo.play();
-        tvPlayNote.textContent = `Now playing: ${c.name}`;
-      } catch (_) {
-        tvPlayNote.textContent = 'Video loaded. Press the play button in the video controls to begin with sound.';
+    let currentCh   = -1;
+    let tvMuted     = false;
+    let tvVolume    = 0.8;
+    let poweredOnce = false;
+    const guideBtns = [];
+
+    /* ---- static noise (canvas) ---- */
+    let staticOn = false;
+    function staticFrame() {
+      if (!staticOn) return;
+      const img = staticCtx.createImageData(staticCanvas.width, staticCanvas.height);
+      const d = img.data;
+      for (let i = 0; i < d.length; i += 4) {
+        const v = (Math.random() * 255) | 0;
+        d[i] = v; d[i + 1] = v; d[i + 2] = v; d[i + 3] = 255;
       }
+      staticCtx.putImageData(img, 0, 0);
+      requestAnimationFrame(staticFrame);
+    }
+    function staticStart() {
+      if (staticOn) return;
+      staticOn = true;
+      staticCanvas.style.opacity = '1';
+      staticFrame();
+    }
+    function staticStop() {
+      staticOn = false;
+      staticCanvas.style.opacity = '0';
     }
 
-    channels.forEach(c => {
+    function setPlate(c) {
+      plateEl.textContent = 'CH ' + c.num + ' · ' + c.name.toUpperCase();
+    }
+
+    /* ---- tuning ---- */
+    function tuneTo(i) {
+      const n = channels.length;
+      currentCh = ((i % n) + n) % n;
+      const c = channels[currentCh];
+      screenEl.classList.add('is-on');
+      setPlate(c);
+      chKnob.style.transform = 'rotate(' + (currentCh * 30) + 'deg)';
+      guideBtns.forEach((b, idx) => b.classList.toggle('is-active', idx === currentCh));
+      staticStart();
+      setTimeout(staticStop, 2500); // safety: static never sticks
+      tvVideo.pause();
+      tvVideo.muted = tvMuted;
+      tvVideo.volume = tvVolume;
+      if (c.poster) tvVideo.setAttribute('poster', c.poster);
+      else tvVideo.removeAttribute('poster');
+      tvVideo.src = c.file;
+      tvVideo.load();
+      const p = tvVideo.play();
+      if (p && p.catch) p.catch(() => {
+        // Autoplay with sound blocked: retry muted with a visible unmute control.
+        if (!tvVideo.muted) {
+          tvMuted = true;
+          tvVideo.muted = true;
+          soundBtn.hidden = false;
+          const p2 = tvVideo.play();
+          if (p2 && p2.catch) p2.catch(() => {
+            staticStop();
+            plateEl.textContent = 'CH ' + c.num + ' · PRESS THE SCREEN TO PLAY';
+          });
+        } else {
+          staticStop();
+          plateEl.textContent = 'CH ' + c.num + ' · PRESS THE SCREEN TO PLAY';
+        }
+      });
+      soundBtn.hidden = !tvMuted;
+    }
+
+    tvVideo.addEventListener('playing', () => {
+      staticStop();
+      if (channels[currentCh]) setPlate(channels[currentCh]);
+    });
+    tvVideo.addEventListener('error', () => {
+      staticStop();
+      const c = channels[currentCh];
+      if (c && c.welcome) { tuneTo(1); return; } // welcome film not rendered yet: fall to channel 1
+      if (c) plateEl.textContent = 'CH ' + c.num + ' · OFF AIR';
+    });
+
+    /* ---- power-on: white line, static, then the welcome channel ---- */
+    function powerOn(startMuted) {
+      if (poweredOnce) return;
+      poweredOnce = true;
+      screenEl.classList.add('is-on');
+      powerlineEl.classList.add('is-firing');
+      setTimeout(() => {
+        powerlineEl.classList.remove('is-firing');
+        staticStart();
+        setTimeout(() => {
+          tvMuted = !!startMuted;
+          tuneTo(0);
+        }, 800);
+      }, 430);
+    }
+
+    /* ---- sound ---- */
+    let swallowNextScreenClick = false;
+    function unmuteTv() {
+      if (!tvMuted) return false;
+      tvMuted = false;
+      tvVideo.muted = false;
+      soundBtn.hidden = true;
+      return true;
+    }
+    soundBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      unmuteTv();
+      if (tvVideo.paused && currentCh >= 0) { const p = tvVideo.play(); if (p && p.catch) p.catch(() => {}); }
+    });
+    crtRoot.addEventListener('pointerdown', () => {
+      if (unmuteTv()) swallowNextScreenClick = true;
+    });
+
+    /* ---- screen click: play / pause (first click while muted just unmutes) ---- */
+    screenEl.addEventListener('click', (e) => {
+      if (e.target === soundBtn) return;
+      if (swallowNextScreenClick) { swallowNextScreenClick = false; return; }
+      if (currentCh < 0) { tuneTo(0); return; }
+      if (tvVideo.paused) { const p = tvVideo.play(); if (p && p.catch) p.catch(() => {}); }
+      else tvVideo.pause();
+    });
+
+    /* ---- knob geometry helpers ---- */
+    function knobAngle(e, rect) {
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      // 0deg at 12 o'clock, positive clockwise
+      return Math.atan2(e.clientX - cx, -(e.clientY - cy)) * 180 / Math.PI;
+    }
+    function angleDelta(a, b) {
+      return ((b - a + 540) % 360) - 180;
+    }
+
+    /* ---- channel knob: click = next channel, drag = 30deg detents ---- */
+    let chDrag = null;
+    chKnob.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      chKnob.setPointerCapture(e.pointerId);
+      chDrag = {
+        startAngle: knobAngle(e, chKnob.getBoundingClientRect()),
+        startCh: Math.max(currentCh, 0),
+        lastDetent: 0,
+        moved: false,
+      };
+    });
+    chKnob.addEventListener('pointermove', (e) => {
+      if (!chDrag) return;
+      const delta = angleDelta(chDrag.startAngle, knobAngle(e, chKnob.getBoundingClientRect()));
+      if (Math.abs(delta) > 10) chDrag.moved = true;
+      const detent = Math.round(delta / 30);
+      if (detent !== chDrag.lastDetent) {
+        chDrag.lastDetent = detent;
+        tuneTo(chDrag.startCh + detent);
+      }
+    });
+    chKnob.addEventListener('pointerup', () => {
+      if (chDrag && !chDrag.moved) tuneTo(currentCh < 0 ? 0 : currentCh + 1);
+      chDrag = null;
+    });
+    chKnob.addEventListener('pointercancel', () => { chDrag = null; });
+    chKnob.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tuneTo(currentCh < 0 ? 0 : currentCh + 1); }
+    });
+
+    /* ---- volume knob: drag to rotate, mapped to video.volume 0..1 ---- */
+    function setVolume(v) {
+      tvVolume = Math.max(0, Math.min(1, v));
+      tvVideo.volume = tvVolume;
+      volKnob.style.transform = 'rotate(' + (-135 + tvVolume * 270) + 'deg)';
+      volKnob.setAttribute('aria-valuenow', String(Math.round(tvVolume * 100)));
+      volTick.textContent = String(Math.round(tvVolume * 100));
+    }
+    let volDrag = false;
+    function volFromPointer(e) {
+      let a = knobAngle(e, volKnob.getBoundingClientRect());
+      a = Math.max(-135, Math.min(135, a));
+      setVolume((a + 135) / 270);
+    }
+    volKnob.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      volKnob.setPointerCapture(e.pointerId);
+      volDrag = true;
+      volFromPointer(e);
+    });
+    volKnob.addEventListener('pointermove', (e) => { if (volDrag) volFromPointer(e); });
+    volKnob.addEventListener('pointerup',   () => { volDrag = false; });
+    volKnob.addEventListener('pointercancel', () => { volDrag = false; });
+    volKnob.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowUp' || e.key === 'ArrowRight')   { e.preventDefault(); setVolume(tvVolume + 0.05); }
+      if (e.key === 'ArrowDown' || e.key === 'ArrowLeft')  { e.preventDefault(); setVolume(tvVolume - 0.05); }
+    });
+    setVolume(tvVolume);
+
+    /* ---- program guide ---- */
+    channels.forEach((c, idx) => {
       const btn = document.createElement('button');
       btn.className = 'channel';
       btn.innerHTML = `<div class="channel__num">CH ${c.num}</div>
                        <div class="channel__name">${c.name}</div>
                        <div class="channel__cat">${c.cat}</div>`;
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.channel').forEach(x => x.classList.remove('is-active'));
-        btn.classList.add('is-active');
-        if (c.file) {
-          playChannel(c);
-        } else {
-          resetTvPlayer();
-          tvVideo.style.display = 'none';
-          tvPlaceholder.style.display = 'grid';
-          tvPlaceholder.innerHTML = `<div class="tv__idle">
-            <img src="videos-encoded/tv-console-idle.gif" alt="" />
-            <div class="tv__idle-copy"><strong>${c.name}</strong><div>${c.placeholder || 'Select a channel below to begin.'}</div></div>
-          </div>`;
-        }
-      });
+      btn.addEventListener('click', () => tuneTo(idx));
+      guideBtns.push(btn);
       channelsEl.appendChild(btn);
     });
+
+    let userHasInteracted = false;
+    window.addEventListener('pointerdown', () => { userHasInteracted = true; }, { once: true });
 
     function openModal(id) {
       const m = document.getElementById('modal-' + id);
       if (!m) return;
       m.classList.add('is-open');
+      if (id === 'tv' && !poweredOnce) {
+        // Auto-opened: obey autoplay policy and start muted with a Sound-on control.
+        // Opened by a click: try with sound; tuneTo falls back to muted if blocked.
+        powerOn(!userHasInteracted);
+      }
     }
     function closeAll() {
       document.querySelectorAll('.modal').forEach(m => m.classList.remove('is-open'));
       tvVideo.pause();
+      staticStop();
     }
-    document.querySelectorAll('.label').forEach(el => {
+    document.querySelectorAll('.label, .fb-spot').forEach(el => {
       el.addEventListener('click', (e) => { e.preventDefault(); openModal(el.dataset.modal); });
     });
+
+    /* First visit this session: the room settles, then the set switches itself on. */
+    try {
+      if (!sessionStorage.getItem('ad-studio-tv-auto')) {
+        sessionStorage.setItem('ad-studio-tv-auto', '1');
+        setTimeout(() => {
+          if (document.querySelector('.modal.is-open') || poweredOnce) return;
+          openModal('tv');
+        }, 3000);
+      }
+    } catch (_) {}
     document.getElementById('btn-studio').addEventListener('click', () => openModal('studio'));
     document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', closeAll));
     document.querySelectorAll('.modal').forEach(m => {

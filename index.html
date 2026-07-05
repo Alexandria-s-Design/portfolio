@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Alexandria's Design — Learning that moves people forward.</title>
-  <meta name="description" content="Instructional design and rapid AI course development for government, biotech, and education. WOSB-certified, SAM.gov active, Section 508 compliant." />
+  <meta name="description" content="Instructional design and rapid AI course development for government, corporate, and education. WOSB-certified, SAM.gov active, Section 508 compliant." />
 
   <!-- Google Fonts: Newsreader (display) + Inter (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="experience.css" />
 </head>
 <body>
 
@@ -45,35 +46,115 @@
   <main>
 
     <!-- =====================================================================
-         HERO
+         ESTABLISHING SHOT — THE THRESHOLD
          ===================================================================== -->
-    <section class="hero">
-      <div class="hero__glow" aria-hidden="true"></div>
-      <div class="lightstreak" aria-hidden="true"></div>
-      <div class="wrap">
-        <div class="hero__inner">
-          <span class="pill hero__pill">WOSB · Minority-Owned · SAM.gov Active · Section 508</span>
-          <h1 class="hero__headline h-display">
-            <span class="word"><span>The</span></span>
-            <span class="word"><span>leaders</span></span>
-            <span class="word"><span>who</span></span>
-            <span class="word"><span>win</span></span>
-            <span class="word"><span>this</span></span>
-            <span class="word"><span>era</span></span>
-            <span class="word"><span>move</span></span>
-            <span class="word"><span>at</span></span>
-            <span class="word"><span>the</span></span>
-            <span class="word"><span>speed</span></span>
-            <span class="word"><span>of</span></span>
-            <span class="word"><span>light.</span></span>
-          </h1>
-          <p class="lede hero__lede">
-            Onboard, reskill, and upskill your workforce as fast as the regulation changes drop. The era of slow course development is over. We're the studio that gets you ready before your competitors finish writing the RFP.
-          </p>
-          <div class="hero__ctas">
-            <a href="#imagine" class="btn btn--primary">See what next month looks like <span class="arrow">→</span></a>
+    <section class="estab" data-estab>
+      <figure class="estab__media">
+        <img src="assets/scenes/threshold.png" alt="A quiet hallway with three doorways of light, each opening onto a different world of work" />
+      </figure>
+      <div class="estab__content">
+        <div class="wrap">
+          <p class="estab__kicker">WOSB · Minority-Owned · SAM.gov Active · Section 508</p>
+          <h1 class="estab__line">The leaders who win this era move at the speed of light.</h1>
+          <p class="estab__sub">Instructional design for government, corporate, and education. Three doors. Choose where your people learn.</p>
+          <div class="estab__ctas">
+            <a href="#doors" class="btn btn--primary">Choose your door <span class="arrow">→</span></a>
             <a href="#demo" class="btn btn--ghost">Try a sample lesson</a>
-            <a href="capabilities.pdf" class="btn btn--ghost" download>Download Capabilities Statement (PDF) <span class="arrow">↓</span></a>
+            <a href="capabilities.pdf" class="btn btn--ghost" download>Capabilities Statement (PDF) <span class="arrow">↓</span></a>
+          </div>
+        </div>
+      </div>
+      <span class="estab__cue" aria-hidden="true"></span>
+    </section>
+
+    <!-- =====================================================================
+         THREE TALL DOOR PANELS — the signature interactive
+         ===================================================================== -->
+    <section class="section" id="doors">
+      <div class="wrap">
+        <header class="caption-head reveal">
+          <span class="eyebrow">Three ways we work with you</span>
+          <h2 class="h-section">Every audience<br/>has a door.</h2>
+          <p class="lede">Same instructional rigor behind each one. The deliverables, the evidence, and the procurement path change with who is buying.</p>
+        </header>
+
+        <div class="doors reveal">
+          <a href="government.html" class="door door--gov" aria-label="Government services">
+            <div class="door__frame">
+              <div class="door__window">
+                <img src="assets/gov/gov-flag-team.webp" alt="A training team standing before the flag" />
+              </div>
+              <div class="door__leaf" aria-hidden="true"></div>
+              <div class="door__plate">
+                <span class="door__num">01 · Government</span>
+                <h3 class="door__title">Federal &amp; state agencies, MSOs, FQHCs</h3>
+                <p class="door__desc">WOSB / SDB set-asides. Years of subcontractor work with ODNI, U.S. Army MEDCoE, and the Department of War. TRADOC-compliant DL development.</p>
+                <span class="door__cta">Enter <span class="arrow">→</span></span>
+              </div>
+            </div>
+          </a>
+
+          <a href="corporate.html" class="door" aria-label="Corporate services">
+            <div class="door__frame">
+              <div class="door__window">
+                <img src="assets/corp/corp-doctor-window.png" alt="A clinician pausing at a window in a modern healthcare workplace" />
+              </div>
+              <div class="door__leaf" aria-hidden="true"></div>
+              <div class="door__plate">
+                <span class="door__num">02 · Corporate</span>
+                <h3 class="door__title">Biotech, healthcare, enterprise L&amp;D</h3>
+                <p class="door__desc">Trusted by Microsoft, UCLA Health, Skilling It, and Nice / 2GIG. Theory-of-change-driven design with measurable outcomes.</p>
+                <span class="door__cta">Enter <span class="arrow">→</span></span>
+              </div>
+            </div>
+          </a>
+
+          <a href="education.html" class="door" aria-label="Education services">
+            <div class="door__frame">
+              <div class="door__window">
+                <img src="assets/scenes/education-classroom.png" alt="A bright classroom where students work with models and screens" />
+              </div>
+              <div class="door__leaf" aria-hidden="true"></div>
+              <div class="door__plate">
+                <span class="door__num">03 · Education</span>
+                <h3 class="door__title">K-12, higher ed, research-backed</h3>
+                <p class="door__desc">SBIR work with ModelIt!, Micro Mayhem, TRPEC consulting, and university course development. Peer-reviewed outcomes.</p>
+                <span class="door__cta">Enter <span class="arrow">→</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <details class="drawer reveal">
+          <summary>Read the thinking <span class="drawer__icon" aria-hidden="true">+</span></summary>
+          <div class="drawer__body">
+            <p>Onboard, reskill, and upskill your workforce as fast as the regulation changes drop. The era of slow course development is over. We're the studio that gets you ready before your competitors finish writing the RFP.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         IMPACT STRIP
+         ===================================================================== -->
+    <section class="impact impact--dark" aria-label="Impact at a glance">
+      <div class="wrap">
+        <div class="impact__grid">
+          <div class="impact__cell">
+            <span class="impact__num" data-count="3000" data-suffix="+">3,000+</span>
+            <span class="impact__label">Educators trained · 93% satisfaction</span>
+          </div>
+          <div class="impact__cell">
+            <span class="impact__num" data-count="5000" data-suffix="+">5,000+</span>
+            <span class="impact__label">Health professionals · CEU-accredited</span>
+          </div>
+          <div class="impact__cell">
+            <span class="impact__num">ODNI · MEDCoE · DoW</span>
+            <span class="impact__label">Multi-year federal subcontractor</span>
+          </div>
+          <div class="impact__cell">
+            <span class="impact__num">WOSB · SDB</span>
+            <span class="impact__label">SAM.gov active · 508 / WCAG 2.1 AA</span>
           </div>
         </div>
       </div>
@@ -109,67 +190,7 @@
     </section>
 
     <!-- =====================================================================
-         IMPACT STRIP
-         ===================================================================== -->
-    <section class="impact impact--dark" aria-label="Impact at a glance">
-      <div class="wrap">
-        <div class="impact__grid">
-          <div class="impact__cell">
-            <span class="impact__num" data-count="3000" data-suffix="+">3,000+</span>
-            <span class="impact__label">Educators trained · 93% satisfaction</span>
-          </div>
-          <div class="impact__cell">
-            <span class="impact__num" data-count="5000" data-suffix="+">5,000+</span>
-            <span class="impact__label">Health professionals · CEU-accredited</span>
-          </div>
-          <div class="impact__cell">
-            <span class="impact__num">ODNI · MEDCoE · DoW</span>
-            <span class="impact__label">Multi-year federal subcontractor</span>
-          </div>
-          <div class="impact__cell">
-            <span class="impact__num">WOSB · SDB</span>
-            <span class="impact__label">SAM.gov active · 508 / WCAG 2.1 AA</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         AUDIENCE — Three ways we work with you
-         ===================================================================== -->
-    <section class="section">
-      <div class="wrap">
-        <header class="section__head reveal">
-          <h2 class="h-section">Three ways<br/>we work with&nbsp;you.</h2>
-          <p class="lede">
-            Same instructional rigor across every audience. The deliverables, evidence, and procurement path are tuned to who's buying.
-          </p>
-        </header>
-        <div class="audience audience--boxy reveal">
-          <a href="government.html" class="audience__item">
-            <span class="audience__num">01 — Government</span>
-            <h3 class="audience__title h-card">Federal &amp; state agencies, MSOs, FQHCs</h3>
-            <p class="audience__desc">WOSB / SDB set-asides. Years of subcontractor work with ODNI, U.S. Army MEDCoE, and the Department of War. TRADOC-compliant DL development. Password-protected portfolio for vetted buyers.</p>
-            <span class="audience__arrow">Government services <span class="arrow">→</span></span>
-          </a>
-          <a href="corporate.html" class="audience__item">
-            <span class="audience__num">02 — Corporate</span>
-            <h3 class="audience__title h-card">Biotech, healthcare, enterprise L&amp;D</h3>
-            <p class="audience__desc">Trusted by Microsoft, UCLA Health, Skilling It, and Nice / 2GIG. Theory-of-change-driven design with measurable outcomes.</p>
-            <span class="audience__arrow">Corporate services <span class="arrow">→</span></span>
-          </a>
-          <a href="education.html" class="audience__item">
-            <span class="audience__num">03 — Education</span>
-            <h3 class="audience__title h-card">K-12, higher ed, research-backed</h3>
-            <p class="audience__desc">SBIR work with ModelIt!, Micro Mayhem, TRPEC consulting, and university course development. Peer-reviewed outcomes.</p>
-            <span class="audience__arrow">Education services <span class="arrow">→</span></span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         PLAYABLE DEMO — branching scenario
+         PLAYABLE DEMO — branching scenario (kept intact)
          ===================================================================== -->
     <section class="demo" id="demo">
       <div class="wrap">
@@ -223,85 +244,58 @@
     </section>
 
     <!-- =====================================================================
-         PAST PERFORMANCE (dark — borrowed from live-site box treatment)
+         PAST PERFORMANCE — condensed to a single strip
          ===================================================================== -->
     <section class="section--dark" id="performance">
       <div class="wrap">
-        <header class="section__head reveal">
-          <h2 class="h-section">Past performance.<br/>Public clients.</h2>
-          <p class="lede">
-            A representative slice across federal, state-healthcare, and enterprise. The full case-study file lives behind the password-protected studio room.
+        <div class="pp-strip reveal">
+          <span class="pp-strip__label">Past performance · Public clients</span>
+          <p class="pp-strip__names">
+            Microsoft Education<span class="dot">·</span>U.S. Army MEDCoE<span class="dot">·</span>ODNI<span class="dot">·</span>Department of War OUSD(A&amp;S)<span class="dot">·</span>UCLA Health<span class="dot">·</span>California CalAIM CBOs
           </p>
-        </header>
+          <p class="pp-strip__line">Federal, state healthcare, and enterprise. The full case-study file lives behind the password-protected studio room.</p>
 
-        <div class="perf-row reveal">
-
-          <article class="perf-row__card">
-            <div class="perf-row__card-client">Microsoft Education</div>
-            <h3 class="perf-row__card-title">Inclusive Classroom — Educator Curriculum</h3>
-            <p class="perf-row__card-desc">Multi-year subcontract delivering AI-augmented teacher training built around accessible-by-default classroom technology.</p>
-            <div class="perf-row__card-tags">
-              <span class="perf-row__card-tag">3,000+ educators</span>
-              <span class="perf-row__card-tag">93% satisfaction</span>
+          <details class="drawer drawer--dark">
+            <summary>Read the record <span class="drawer__icon" aria-hidden="true">+</span></summary>
+            <div class="drawer__body">
+              <div class="pp-record">
+                <span class="pp-record__client">Microsoft Education</span>
+                <h3 class="pp-record__title">Inclusive Classroom — Educator Curriculum</h3>
+                <p>Multi-year subcontract delivering AI-augmented teacher training built around accessible-by-default classroom technology. 3,000+ educators · 93% satisfaction.</p>
+              </div>
+              <div class="pp-record">
+                <span class="pp-record__client">U.S. Army MEDCoE</span>
+                <h3 class="pp-record__title">Captain's Career Course DL · Preventive Medicine</h3>
+                <p>Multi-year subcontractor engagement developing TRADOC-compliant distributed-learning courses for Army medical professionals.</p>
+              </div>
+              <div class="pp-record">
+                <span class="pp-record__client">ODNI · Director of National Intelligence</span>
+                <h3 class="pp-record__title">Federal Workforce Training Development</h3>
+                <p>Vetted subcontractor partner. Curriculum design, content architecture, and accessibility compliance for ODNI training initiatives.</p>
+              </div>
+              <div class="pp-record">
+                <span class="pp-record__client">Department of War · OUSD(A&amp;S)</span>
+                <h3 class="pp-record__title">Mentor-Protege — 10 Bilingual Modules</h3>
+                <p>136 learning objectives across 10 bilingual training modules. Section 508 compliant, replacing legacy Storyline with web-native scenarios.</p>
+              </div>
+              <div class="pp-record">
+                <span class="pp-record__client">UCLA Health</span>
+                <h3 class="pp-record__title">ACES Aware &amp; Stress Busters — CEU Programs</h3>
+                <p>CEU-accredited healthcare professional development at health-system scale. Continuing-education infrastructure for clinical teams. 5,000+ professionals.</p>
+              </div>
+              <div class="pp-record">
+                <span class="pp-record__client">California CalAIM · Healthcare CBOs</span>
+                <h3 class="pp-record__title">ECM Care Manager — Year-Long Simulation</h3>
+                <p>Year-long real-game simulation for Enhanced Care Management. Day 1 → Year 1 longitudinal scaffolding. Audit-ready chart documentation across 7 ECM components.</p>
+              </div>
             </div>
-          </article>
+          </details>
 
-          <article class="perf-row__card">
-            <div class="perf-row__card-client">U.S. Army MEDCoE</div>
-            <h3 class="perf-row__card-title">Captain's Career Course DL · Preventive Medicine</h3>
-            <p class="perf-row__card-desc">Multi-year subcontractor engagement developing TRADOC-compliant distributed-learning courses for Army medical professionals.</p>
-            <div class="perf-row__card-tags">
-              <span class="perf-row__card-tag">TRADOC</span>
-              <span class="perf-row__card-tag">Subcontractor</span>
-            </div>
-          </article>
-
-          <article class="perf-row__card">
-            <div class="perf-row__card-client">ODNI · Director of National Intelligence</div>
-            <h3 class="perf-row__card-title">Federal Workforce Training Development</h3>
-            <p class="perf-row__card-desc">Vetted subcontractor partner. Curriculum design, content architecture, and accessibility compliance for ODNI training initiatives.</p>
-            <div class="perf-row__card-tags">
-              <span class="perf-row__card-tag">Subcontractor</span>
-              <span class="perf-row__card-tag">Federal IC</span>
-            </div>
-          </article>
-
-          <article class="perf-row__card">
-            <div class="perf-row__card-client">Department of War · OUSD(A&amp;S)</div>
-            <h3 class="perf-row__card-title">Mentor-Protege — 10 Bilingual Modules</h3>
-            <p class="perf-row__card-desc">136 learning objectives across 10 bilingual training modules. Section 508 compliant, replacing legacy Storyline with web-native scenarios.</p>
-            <div class="perf-row__card-tags">
-              <span class="perf-row__card-tag">10 modules</span>
-              <span class="perf-row__card-tag">Bilingual</span>
-            </div>
-          </article>
-
-          <article class="perf-row__card">
-            <div class="perf-row__card-client">UCLA Health</div>
-            <h3 class="perf-row__card-title">ACES Aware &amp; Stress Busters — CEU Programs</h3>
-            <p class="perf-row__card-desc">CEU-accredited healthcare professional development at health-system scale. Continuing-education infrastructure for clinical teams.</p>
-            <div class="perf-row__card-tags">
-              <span class="perf-row__card-tag">5,000+ pros</span>
-              <span class="perf-row__card-tag">CEU</span>
-            </div>
-          </article>
-
-          <article class="perf-row__card">
-            <div class="perf-row__card-client">California CalAIM · Healthcare CBOs</div>
-            <h3 class="perf-row__card-title">ECM Care Manager — Year-Long Simulation</h3>
-            <p class="perf-row__card-desc">Year-long real-game simulation for Enhanced Care Management. Day 1 → Year 1 longitudinal scaffolding. Audit-ready chart documentation.</p>
-            <div class="perf-row__card-tags">
-              <span class="perf-row__card-tag">7 ECM components</span>
-              <span class="perf-row__card-tag">Year-long</span>
-            </div>
-          </article>
-
-        </div>
-
-        <div style="text-align:center; margin-top: 50px;">
-          <a href="about-room.html" class="btn btn--primary" style="background:#c9a84c; color:#0a1628; border:0;">
-            Step into the studio for the full portfolio <span class="arrow">→</span>
-          </a>
+          <div style="margin-top: 40px;">
+            <a href="about-room.html" class="btn btn--primary" style="background:#c9a84c; color:#0a1628; border:0;">
+              Step into the studio for the full portfolio <span class="arrow">→</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -318,14 +312,23 @@
             <p class="cap__copy">
               Alexandria's Design LLC is a WOSB-certified, minority-owned instructional design firm with Section 508 / WCAG 2.1 AA compliance, an active SAM.gov registration, and a documented track record across federal, state, healthcare, and enterprise contracts.
             </p>
-            <ul class="cap__list">
-              <li><span class="k">01</span><span><strong>Core competencies</strong> — Distributed Learning (TRADOC &amp; Army University), eLearning development (Articulate 360, Storyline, Rise), curriculum design (CCSS / NGSS / military standards), leadership training, Section 508 accessibility, AI literacy programs.</span></li>
-              <li><span class="k">02</span><span><strong>Selected past performance</strong> — Office of the Director of National Intelligence (subcontractor) · U.S. Army MEDCoE DL (multi-year subcontractor) · Department of War (formerly DoD) OUSD(A&amp;S) MPP Portal (10 modules, 136 objectives, bilingual) · Microsoft Education (3,000+ educators, 93% satisfaction) · UCLA Health (5,000+ professionals, CEU-accredited) · NIH SBIR K-12 STEM (NGSS-aligned, adopted nationwide).</span></li>
-              <li><span class="k">03</span><span><strong>NAICS</strong> — 611430 Professional &amp; Management Development Training · 611710 Educational Support Services · 541611 Administrative Management Consulting.</span></li>
-              <li><span class="k">04</span><span><strong>Set-aside eligibility</strong> — WOSB · Minority-Owned · Small Disadvantaged Business (SDB) · SAM.gov Active.</span></li>
-              <li><span class="k">05</span><span><strong>Standards &amp; packaging</strong> — SCORM 1.2 / 2004 · xAPI · TRADOC DL standards · WCAG 2.1 AA · ISD process documentation.</span></li>
-            </ul>
-            <a href="capabilities.pdf" class="btn btn--ghost">Download capabilities PDF <span class="arrow">↓</span></a>
+
+            <details class="drawer">
+              <summary>Read the full capabilities detail <span class="drawer__icon" aria-hidden="true">+</span></summary>
+              <div class="drawer__body">
+                <ul class="cap__list" style="border-top:0; margin-bottom:0;">
+                  <li><span class="k">01</span><span><strong>Core competencies</strong> — Distributed Learning (TRADOC &amp; Army University), eLearning development (Articulate 360, Storyline, Rise), curriculum design (CCSS / NGSS / military standards), leadership training, Section 508 accessibility, AI literacy programs.</span></li>
+                  <li><span class="k">02</span><span><strong>Selected past performance</strong> — Office of the Director of National Intelligence (subcontractor) · U.S. Army MEDCoE DL (multi-year subcontractor) · Department of War (formerly DoD) OUSD(A&amp;S) MPP Portal (10 modules, 136 objectives, bilingual) · Microsoft Education (3,000+ educators, 93% satisfaction) · UCLA Health (5,000+ professionals, CEU-accredited) · NIH SBIR K-12 STEM (NGSS-aligned, adopted nationwide).</span></li>
+                  <li><span class="k">03</span><span><strong>NAICS</strong> — 611430 Professional &amp; Management Development Training · 611710 Educational Support Services · 541611 Administrative Management Consulting.</span></li>
+                  <li><span class="k">04</span><span><strong>Set-aside eligibility</strong> — WOSB · Minority-Owned · Small Disadvantaged Business (SDB) · SAM.gov Active.</span></li>
+                  <li><span class="k">05</span><span><strong>Standards &amp; packaging</strong> — SCORM 1.2 / 2004 · xAPI · TRADOC DL standards · WCAG 2.1 AA · ISD process documentation.</span></li>
+                </ul>
+              </div>
+            </details>
+
+            <div style="margin-top: 28px;">
+              <a href="capabilities.pdf" class="btn btn--ghost">Download capabilities PDF <span class="arrow">↓</span></a>
+            </div>
           </div>
           <div class="cap__credentials">
             <div>
@@ -358,34 +361,39 @@
     </section>
 
     <!-- =====================================================================
-         RAPID AI COURSE DESIGN — Format Tiers (length / scope)
+         RAPID AI COURSE DESIGN — Step 01, format picker
          ===================================================================== -->
     <section class="section" id="tiers">
       <div class="wrap">
         <header class="section__head reveal">
           <h2 class="h-section">Rapid AI Course<br/>Design Services.</h2>
           <p class="lede">
-            Two decisions shape every quote: how much course you need (format), and how much production goes into it (interaction level). Pricing scales on both axes — start with the format, then layer the interaction.
+            Two decisions shape every quote: how much course you need (format), and how much production goes into it (interaction level). Pick a card in each step and we take it from there.
           </p>
         </header>
 
         <span class="eyebrow reveal" style="display:block; margin-bottom:24px;">Step 01 — Pick a format</span>
 
-        <div class="tiers reveal">
+        <div class="tiers reveal" data-picker="format">
 
           <!-- MICRO-LEARNING -->
-          <article class="tier">
+          <article class="tier" data-pick="Micro-Learning">
             <span class="tier__level">Micro-Learning</span>
             <h4 class="tier__name">Single 30-min Module</h4>
             <p class="tier__meta">Build 1–2 weeks · SME &amp; QA up to 4 weeks</p>
             <span class="tier__price">$8K<span style="font-size:18px; font-weight:400; color:var(--navy-40);">+</span></span>
             <span class="tier__price-note">Starting price · Level 1 interaction</span>
-            <ul class="tier__features">
-              <li class="tier__feature">One self-contained module, narrated &amp; interactive</li>
-              <li class="tier__feature">Pre/post assessment + completion tracking</li>
-              <li class="tier__feature">Section 508 / WCAG 2.1 AA out of the box</li>
-              <li class="tier__feature">Branded to your style guide</li>
-            </ul>
+            <details class="drawer" style="margin-top:0; margin-bottom:20px;">
+              <summary>What's included <span class="drawer__icon" aria-hidden="true">+</span></summary>
+              <div class="drawer__body">
+                <ul>
+                  <li>One self-contained module, narrated &amp; interactive</li>
+                  <li>Pre/post assessment + completion tracking</li>
+                  <li>Section 508 / WCAG 2.1 AA out of the box</li>
+                  <li>Branded to your style guide</li>
+                </ul>
+              </div>
+            </details>
             <a href="#" class="tier__sample">
               <span class="tier__sample-tag">Sample build</span>
               <span class="tier__sample-name">PMP Module 1 — Why Projects Matter →</span>
@@ -394,18 +402,23 @@
           </article>
 
           <!-- CURRICULUM TRACK (FEATURED) -->
-          <article class="tier tier--featured">
+          <article class="tier tier--featured" data-pick="Curriculum Track">
             <span class="tier__level">Curriculum Track</span>
             <h4 class="tier__name">Multi-Module Curriculum</h4>
             <p class="tier__meta">Build 2–3 weeks · SME &amp; QA up to 4 weeks</p>
             <span class="tier__price">$25K<span style="font-size:18px; font-weight:400; color:rgba(255,255,255,0.4);">+</span></span>
             <span class="tier__price-note">Starting price · Level 1 interaction</span>
-            <ul class="tier__features">
-              <li class="tier__feature">5 connected modules with branching scenarios</li>
-              <li class="tier__feature">Facilitator's guide + participant guide</li>
-              <li class="tier__feature">Cohort-ready or self-paced delivery</li>
-              <li class="tier__feature">Audit-ready competency tracking</li>
-            </ul>
+            <details class="drawer drawer--dark" style="margin-top:0; margin-bottom:20px;">
+              <summary>What's included <span class="drawer__icon" aria-hidden="true">+</span></summary>
+              <div class="drawer__body">
+                <ul>
+                  <li>5 connected modules with branching scenarios</li>
+                  <li>Facilitator's guide + participant guide</li>
+                  <li>Cohort-ready or self-paced delivery</li>
+                  <li>Audit-ready competency tracking</li>
+                </ul>
+              </div>
+            </details>
             <a href="#" class="tier__sample">
               <span class="tier__sample-tag">Sample build</span>
               <span class="tier__sample-name">AI Fluency Path — Section preview →</span>
@@ -414,18 +427,23 @@
           </article>
 
           <!-- CERTIFICATION TRACK -->
-          <article class="tier">
+          <article class="tier" data-pick="Certification Track">
             <span class="tier__level">Certification Track</span>
             <h4 class="tier__name">Full Program Build</h4>
             <p class="tier__meta">Build 4–6 weeks · SME &amp; QA 4–6 weeks</p>
             <span class="tier__price">$75K<span style="font-size:18px; font-weight:400; color:var(--navy-40);">+</span></span>
             <span class="tier__price-note">Starting price · Level 1 interaction</span>
-            <ul class="tier__features">
-              <li class="tier__feature">Full multi-track certification program</li>
-              <li class="tier__feature">Day-1 → Year-1 longitudinal scaffolding</li>
-              <li class="tier__feature">Pre/mid/post + capstone assessment suite</li>
-              <li class="tier__feature">CEU / CME accreditation pathway support</li>
-            </ul>
+            <details class="drawer" style="margin-top:0; margin-bottom:20px;">
+              <summary>What's included <span class="drawer__icon" aria-hidden="true">+</span></summary>
+              <div class="drawer__body">
+                <ul>
+                  <li>Full multi-track certification program</li>
+                  <li>Day-1 → Year-1 longitudinal scaffolding</li>
+                  <li>Pre/mid/post + capstone assessment suite</li>
+                  <li>CEU / CME accreditation pathway support</li>
+                </ul>
+              </div>
+            </details>
             <a href="#" class="tier__sample">
               <span class="tier__sample-tag">Sample build</span>
               <span class="tier__sample-name">ECM Care Manager — Year-Long Sim →</span>
@@ -445,7 +463,7 @@
     </section>
 
     <!-- =====================================================================
-         INTERACTION LEVELS — what the production layer looks like
+         INTERACTION LEVELS — Step 02, level picker
          ===================================================================== -->
     <section class="section section--soft" id="interaction-levels">
       <div class="wrap">
@@ -456,50 +474,73 @@
           </p>
         </header>
 
-        <div class="levels reveal">
+        <div class="levels reveal" data-picker="level">
 
-          <article class="level">
+          <article class="level" data-pick="Level 1 · Foundation">
             <span class="level__num">Level 01</span>
             <h3 class="level__name">Foundation</h3>
             <p class="level__tag">Starts at format base price</p>
-            <ul class="level__list">
-              <li>Branded visuals, charts, and infographics</li>
-              <li>Click-to-reveal interactions, drag-and-drop, hotspots</li>
-              <li>Light stock or generated B-roll video</li>
-              <li>Standard pre/post assessment</li>
-              <li>Voice-over narration (synthetic or human)</li>
-            </ul>
+            <details class="drawer" style="margin-top:0; margin-bottom:20px;">
+              <summary>What it looks like <span class="drawer__icon" aria-hidden="true">+</span></summary>
+              <div class="drawer__body">
+                <ul>
+                  <li>Branded visuals, charts, and infographics</li>
+                  <li>Click-to-reveal interactions, drag-and-drop, hotspots</li>
+                  <li>Light stock or generated B-roll video</li>
+                  <li>Standard pre/post assessment</li>
+                  <li>Voice-over narration (synthetic or human)</li>
+                </ul>
+              </div>
+            </details>
             <p class="level__use">Best for: compliance, policy refreshers, knowledge checks.</p>
           </article>
 
-          <article class="level level--mid">
+          <article class="level level--mid" data-pick="Level 2 · Production">
             <span class="level__num">Level 02</span>
             <h3 class="level__name">Production</h3>
             <p class="level__tag">~1.5× the format base</p>
-            <ul class="level__list">
-              <li>Custom video shoots and avatar presenters (Synthesia / Hume)</li>
-              <li>Walkthrough recordings with clickable response paths</li>
-              <li>Heavy interactive activities, layered scenarios</li>
-              <li>Branched feedback loops on assessments</li>
-              <li>Higher-fidelity audio &amp; mixed-media production</li>
-            </ul>
+            <details class="drawer" style="margin-top:0; margin-bottom:20px;">
+              <summary>What it looks like <span class="drawer__icon" aria-hidden="true">+</span></summary>
+              <div class="drawer__body">
+                <ul>
+                  <li>Custom video shoots and avatar presenters (Synthesia / Hume)</li>
+                  <li>Walkthrough recordings with clickable response paths</li>
+                  <li>Heavy interactive activities, layered scenarios</li>
+                  <li>Branched feedback loops on assessments</li>
+                  <li>Higher-fidelity audio &amp; mixed-media production</li>
+                </ul>
+              </div>
+            </details>
             <p class="level__use">Best for: clinical training, sales enablement, soft-skill development.</p>
           </article>
 
-          <article class="level level--top">
+          <article class="level level--top" data-pick="Level 3 · Simulation">
             <span class="level__num">Level 03</span>
             <h3 class="level__name">Simulation</h3>
             <p class="level__tag">~2.5–3× the format base</p>
-            <ul class="level__list">
-              <li>First-person 360° immersive Skybox scenes</li>
-              <li>Full game engine builds (Phaser, Unity-lite)</li>
-              <li>Branching narrative + multi-path scenario design</li>
-              <li>Avatar-driven role-play with response evaluation</li>
-              <li>Longitudinal Day-1 → Year-1 sim scaffolding</li>
-            </ul>
+            <details class="drawer" style="margin-top:0; margin-bottom:20px;">
+              <summary>What it looks like <span class="drawer__icon" aria-hidden="true">+</span></summary>
+              <div class="drawer__body">
+                <ul>
+                  <li>First-person 360° immersive Skybox scenes</li>
+                  <li>Full game engine builds (Phaser, Unity-lite)</li>
+                  <li>Branching narrative + multi-path scenario design</li>
+                  <li>Avatar-driven role-play with response evaluation</li>
+                  <li>Longitudinal Day-1 → Year-1 sim scaffolding</li>
+                </ul>
+              </div>
+            </details>
             <p class="level__use">Best for: workforce-readiness, certification programs, high-stakes practice.</p>
           </article>
 
+        </div>
+
+        <div class="picker-summary" id="pickerSummary" aria-live="polite" hidden>
+          <div>
+            <span class="picker-summary__label">Your selection</span>
+            <span class="picker-summary__text" id="pickerText"></span>
+          </div>
+          <a href="contact.html" class="btn btn--primary">Request this quote <span class="arrow">→</span></a>
         </div>
 
         <p class="timeline-note reveal">
@@ -589,6 +630,7 @@
           <ul>
             <li><a href="academy.html">Academy</a></li>
             <li><a href="about-room.html">About</a></li>
+            <li><a href="about-room.html#research">Publications</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="https://doc-martins.com/" target="_blank" rel="noopener">Portfolio</a></li>
           </ul>
@@ -597,6 +639,8 @@
           <h5>Reach Us</h5>
           <ul>
             <li><a href="mailto:info@alexandriasdesign.com">info@alexandriasdesign.com</a></li>
+            <li><a href="https://doc-martins.com/" target="_blank" rel="noopener">doc-martins.com</a></li>
+            <li><a href="about-room.html">Step into the Studio</a></li>
             <li><a href="tel:+13236320271">(323) 632-0271</a></li>
             <li>San Diego, CA</li>
           </ul>
@@ -614,10 +658,11 @@
     </div>
   </footer>
 
-  <!-- Libraries (CDN) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <!-- Libraries (local vendor) -->
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="vendor/lenis.min.js"></script>
   <script src="motion.js"></script>
+  <script src="experience.js"></script>
 </body>
 </html>
