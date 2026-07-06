@@ -121,6 +121,12 @@
       transition: all 0.2s ease;
     }
     .ui-btn:hover { background: var(--cyan); color: var(--bg); border-color: var(--cyan); box-shadow: 0 0 30px var(--cyan-glow); }
+    @media (max-width: 600px) {
+      .ui-brand { top: 14px; left: 14px; font-size: 0; gap: 0; padding: 9px 11px; }
+      .ui-brand svg { width: 18px; height: 18px; }
+      .ui-actions { top: 14px; right: 14px; gap: 8px; }
+      .ui-btn { padding: 9px 13px; letter-spacing: 0.14em; }
+    }
 
     .ui-hint {
       position: fixed;
@@ -247,6 +253,10 @@
       color: var(--ink-60);
       line-height: 1.45;
     }
+    @media (max-width: 600px) {
+      .label__card { min-width: 0; width: max-content; max-width: 62vw; padding: 12px 14px; }
+      .label__title { font-size: 17px; }
+    }
 
     /* =====================================================================
        MODALS
@@ -287,6 +297,10 @@
       transition: all 0.2s;
     }
     .modal__close:hover { background: var(--cyan); color: var(--bg); }
+    @media (max-width: 600px) {
+      .modal { padding: 10px; }
+      .modal__panel { padding: 34px 20px 26px; }
+    }
 
     .modal__eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
     .modal__title { font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 4vw, 48px); letter-spacing: -0.018em; line-height: 1.05; margin: 10px 0 18px; color: var(--ink); }
@@ -530,6 +544,7 @@
       box-shadow: inset 0 2px 2px rgba(255,255,255,0.14);
     }
     .crt__screen-frame {
+      min-width: 0;
       background: linear-gradient(180deg, #241608, #171009);
       border-radius: 16px;
       padding: 14px;
@@ -645,6 +660,7 @@
       text-overflow: ellipsis;
     }
     .crt__side {
+      min-width: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -1163,6 +1179,23 @@
     const camera = new THREE.PerspectiveCamera(72, window.innerWidth/window.innerHeight, 0.1, 1100);
     camera.rotation.order = 'YXZ';
 
+    // Portrait phones: a fixed 72-degree VERTICAL fov collapses the horizontal
+    // view to a sliver, hiding most hotspots. Widen the vertical fov on narrow
+    // screens so the horizontal field stays close to the desktop framing.
+    function applyCameraFov() {
+      const aspect = window.innerWidth / window.innerHeight;
+      camera.aspect = aspect;
+      if (aspect < 1) {
+        const baseH = 2 * Math.atan(Math.tan((72 * Math.PI / 180) / 2) * (4 / 3));
+        const vFov = 2 * Math.atan(Math.tan(baseH / 2) / aspect) * 180 / Math.PI;
+        camera.fov = Math.min(vFov, 108);
+      } else {
+        camera.fov = 72;
+      }
+      camera.updateProjectionMatrix();
+    }
+    applyCameraFov();
+
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -1361,10 +1394,8 @@
        RESIZE
        ======================================================== */
     window.addEventListener('resize', () => {
-      const w = window.innerWidth, h = window.innerHeight;
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-      renderer.setSize(w, h);
+      applyCameraFov();
+      renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
     /* ========================================================
