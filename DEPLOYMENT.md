@@ -11,7 +11,7 @@ Everything you need to ship `~/alexandrias-design-redesign/mockup/` to `www.alex
 | `index.html` | Front page (hero, imagine, dark impact strip, audience boxes, demo, dark past-performance, capabilities, tiers, interaction levels, beyond-courses, dark closing) | ✅ Done |
 | `government.html` | Federal lane — capabilities PDF prominent, multi-year subcontractor framing, NAICS table, set-aside detail | ✅ Done |
 | `corporate.html` | Biotech / healthcare / enterprise — case cards, pricing tiers, AI for Biotech cohort, T-T-T / audit / thought-partner cards | ✅ Done |
-| `education.html` | K-12 / higher ed — ModelIt!, Micro Mayhem, TRPEC, Higher Ed cards; dark research strip; teacher PD CTA | ✅ Done |
+| `education.html` | K-12 / higher ed — CTE Curriculum, Learning Games & SBIR Support, TRPEC (founded by Dr. William Gideon), Higher Ed cards; dark research strip; teacher PD CTA | ✅ Done |
 | `academy.html` | Academy out-of-the-box catalog (existing, content intact) | ✅ Done |
 | `about-room.html` | **The Doc Martin Studio Room** — 3D-style interactive scene; TV video console, research shelf, work-table theory hotspot, doorway-with-password-gate; founder bios with portraits | ✅ Done |
 | `about.html` | Stub → auto-redirects to `about-room.html` (defensive — old links don't dead-end) | ✅ Done |
@@ -20,7 +20,7 @@ Everything you need to ship `~/alexandrias-design-redesign/mockup/` to `www.alex
 | `style.css` | Shared styles + new dark-section / boxy-audience modifiers | ✅ Done |
 | `motion.js` | GSAP scroll reveals, headline word stagger | ✅ Existing |
 | `inspiration/` | 30 Unsplash reference JPGs for the studio-room palette | ✅ Done |
-| `videos-encoded/` | Web-optimized video assets: Micro Mayhem, Microsoft, 2GIG, CAAASA, Wear-the-Crown, CCC MEDCoE secure walkthrough, Dr. Cortés gated avatar walkthrough, and TV idle GIF | ✅ Done |
+| `videos-encoded/` | Web-optimized video assets: Microsoft, 2GIG, CAAASA, Wear-the-Crown, CCC MEDCoE secure walkthrough, Dr. Cortés gated avatar walkthrough, and TV idle GIF | ✅ Done |
 | `research/` | Downloadable Dr. Cortés article drafts for the gated research and portfolio sections | ✅ Done |
 | `ACADEMY-ROUTING-WORKFLOW.md` | UI/UX doc for routing consumer vs. business buyers from `academy.html` into Moodle | ✅ Done |
 
@@ -114,7 +114,7 @@ Open each page in a browser (file://) and verify:
 - [ ] `index.html` — hero animates; dark impact strip reads; audience boxes hover-lift; dark Past Performance grid renders; capabilities PDF button downloads the right file; tiers section; closing dark CTA links work.
 - [ ] `government.html` — capabilities PDF downloads near top; gold cred badges render; perf cards hover; NAICS table reads cleanly; closing dark CTA works.
 - [ ] `corporate.html` — case cards render dark with gold accents; 3 pricing tiers (middle featured/navy); AI Biotech cohort block; 3 "beyond" cards; closing dark CTA.
-- [ ] `education.html` — 4 product cards (ModelIt → `modelitk12.com`, Micro Mayhem placeholder, TRPEC → `rightpathed.com/services`, Higher Ed); dark research strip; closing.
+- [ ] `education.html` — 4 product cards (CTE Curriculum, Learning Games & SBIR Support, TRPEC → `rightpathed.com/services`, Higher Ed); dark research strip; closing.
 - [ ] `academy.html` — existing catalog intact.
 - [ ] `about-room.html` — 4 hotspots pulse; TV modal opens with the intentional channel order; idle GIF appears before a channel is selected; research lives on the bookshelf hotspot; theory lives on the work-table hotspot; doorway gate rejects bad password, accepts `Welcome2020`, and routes to `portfolio.html`; founder portraits load.
 - [ ] `contact.html` — form fields focus correctly; submitting (before Formspree ID is set) will 404, that's expected until ID is wired.
