@@ -58,7 +58,7 @@ scp -i ~/.ssh/id_ed25519 -r videos-encoded/ root@31.97.215.108:/var/www/files/vi
 
 Then change `about-room.html`:
 ```js
-file: 'https://files.alexandriasdesign.com/videos/ch01-tiny-healer.mp4'
+file: 'https://files.alexandriasdesign.com/videos/ch02-microsoft-inclusive-classroom.mp4'
 ```
 Update each channel's `file` field to the hosted URL, or keep the current `videos-encoded/` relative paths if the videos deploy with the site.
 
