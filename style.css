@@ -9,12 +9,12 @@
   --bg-soft:   #F7F9FC;
   --bg-mute:   #EEF2F8;
   --navy:      #1E3A5F;       /* Display + body */
-  --navy-60:   rgba(30, 58, 95, 0.62);
-  --navy-40:   rgba(30, 58, 95, 0.40);
+  --navy-60:   #52657D;
+  --navy-40:   #5C6D82;
   --navy-08:   rgba(30, 58, 95, 0.08);
-  --blue:      #3182CE;       /* Support */
-  --teal:      #0694A2;       /* Support */
-  --amber:     #D97706;       /* Accent — used once per view */
+  --blue:      #246BA8;       /* Support */
+  --teal:      #087783;       /* Support */
+  --amber:     #A65300;       /* Accent — used once per view */
   --amber-ink: #FFFFFF;       /* Text on amber */
   --green:     #10B981;       /* Pill dot only */
 
@@ -722,7 +722,7 @@ h1, h2, h3, h4 {
   color: var(--navy-40);
   margin-bottom: 28px;
 }
-.tier--featured .tier__price-note { color: rgba(255,255,255,0.5); }
+.tier--featured .tier__price-note { color: rgba(255,255,255,0.78); }
 .tier__features {
   list-style: none;
   padding: 0;
@@ -753,7 +753,7 @@ h1, h2, h3, h4 {
   display: block;
   margin-bottom: 4px;
 }
-.tier--featured .tier__sample-tag { color: rgba(255,255,255,0.5); }
+.tier--featured .tier__sample-tag { color: rgba(255,255,255,0.78); }
 .tier__sample-name {
   font-weight: 600;
   color: var(--navy);

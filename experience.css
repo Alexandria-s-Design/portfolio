@@ -7,6 +7,7 @@
 
 :root {
   --gold:       #9F8B5C;
+  --gold-text:  #756239; /* Gold text on light surfaces: WCAG AA. */
   --gold-hi:    #B8A26E;
   --gold-soft:  rgba(159, 139, 92, 0.35);
   --ink-dark:   #0a1628;
@@ -149,7 +150,7 @@ details.drawer summary {
   user-select: none;
 }
 details.drawer summary::-webkit-details-marker { display: none; }
-details.drawer summary:hover { color: var(--gold); }
+details.drawer summary:hover { color: var(--gold-text); }
 .drawer__icon {
   flex-shrink: 0;
   width: 26px; height: 26px;
@@ -163,7 +164,7 @@ details.drawer summary:hover { color: var(--gold); }
   line-height: 1;
   transition: transform 0.45s var(--ease-out), border-color 0.3s;
 }
-details.drawer[open] .drawer__icon { transform: rotate(45deg); border-color: var(--gold); color: var(--gold); }
+details.drawer[open] .drawer__icon { transform: rotate(45deg); border-color: var(--gold); color: var(--gold-text); }
 .drawer__body {
   padding: 2px 22px 24px;
   color: var(--navy-60);
@@ -536,7 +537,7 @@ details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
   transform: rotate(-8deg);
   border: 2px solid var(--gold);
   box-shadow: inset 0 0 0 2px #fff, inset 0 0 0 3px var(--gold-soft);
-  color: var(--gold);
+  color: var(--gold-text);
   padding: 8px 20px;
   font-size: 13px;
   font-weight: 700;
@@ -552,7 +553,7 @@ details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-text);
   font-weight: 600;
 }
 .record__title {
@@ -898,7 +899,7 @@ details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
   width: 54px; height: 54px;
   border-radius: 50%;
   border: 1px solid var(--gold-soft);
-  color: var(--gold);
+  color: var(--gold-text);
   display: grid;
   place-items: center;
   margin-bottom: 22px;
@@ -929,7 +930,7 @@ details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: var(--gold);
+  color: var(--gold-text);
 }
 .door-card:hover .door-card__cta { color: var(--navy); }
 
@@ -1034,3 +1035,9 @@ details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
 
 /* Guard against horizontal overflow from experience components */
 main { overflow-x: clip; }
+
+/* Contrast-safe surfaces keep image brightness from reducing text legibility. */
+.nav { background: #fff; }
+.estab__content { background: rgba(10, 22, 40, 0.90); padding-block: 24px; }
+.door__plate { background: linear-gradient(180deg, rgba(10,22,40,0.88), rgba(10,22,40,0.96)); }
+.scene figcaption { background: rgba(10, 22, 40, 0.90); padding-top: 24px; }
