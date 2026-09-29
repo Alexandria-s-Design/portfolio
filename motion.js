@@ -125,6 +125,7 @@
   const again      = document.getElementById("demoAgain");
   const reset      = document.getElementById("demoReset");
   const stepLabel  = document.getElementById("demoStep");
+  const hud        = shell.querySelector(".demo__hud");
   const choices    = shell.querySelectorAll(".demo__choice");
 
   const responses = {
@@ -161,12 +162,14 @@
     outcome.classList.add("is-shown");
     stepLabel.textContent = "Outcome · feedback delivered";
     reset.hidden = false;
+    hud.hidden = false;
   }
 
   function resetDemo() {
     outcome.classList.remove("is-shown");
     question.style.display = "";
-    stepLabel.textContent = "Scenario · 1 of 1";
+    stepLabel.textContent = "";
+    hud.hidden = true;
     reset.hidden = true;
     /* Refocus the first choice for keyboard users */
     if (choices[0]) choices[0].focus();

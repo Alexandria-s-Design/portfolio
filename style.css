@@ -403,9 +403,12 @@ h1, h2, h3, h4 {
    IMAGINE — vision-state editorial moment between hero and impact
    ===================================================================== */
 .imagine {
-  padding-block: clamp(80px, 12vw, 160px);
+  padding-top: clamp(80px, 12vw, 160px);
+  padding-bottom: 0;
   position: relative;
 }
+/* Keep the sample interaction close to the preceding copy. */
+.imagine + .demo { padding-top: clamp(40px, 5vw, 64px); }
 .imagine__inner {
   max-width: 980px;
   position: relative;
@@ -958,6 +961,7 @@ h1, h2, h3, h4 {
   margin-bottom: 28px;
   border-bottom: 1px solid var(--navy-08);
 }
+.demo__hud[hidden] { display: none; }
 .demo__hud .step {
   display: inline-flex;
   align-items: center;
@@ -1710,3 +1714,7 @@ h1, h2, h3, h4 {
 .closing--dark .btn--ghost:hover {
   background: rgba(255,255,255,0.14);
 }
+
+/* Compact the transition after the course-format cards. */
+#tiers { padding-bottom: clamp(24px, 3vw, 40px); }
+#interaction-levels { padding-top: clamp(24px, 3vw, 40px); }
