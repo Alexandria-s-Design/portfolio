@@ -1,5 +1,5 @@
 /* =====================================================================
-   Alexandria's Design — Motion orchestration
+   Alexandria's Design: Motion orchestration
    GSAP + ScrollTrigger + Lenis. Respects prefers-reduced-motion.
    ===================================================================== */
 
@@ -17,7 +17,7 @@
   }
 
   if (reducedMotion) {
-    /* No motion — words & reveals stay visible (CSS default). */
+    /* No motion: words & reveals stay visible (CSS default). */
     return;
   }
 
@@ -111,7 +111,7 @@
 })();
 
 /* =====================================================================
-   Playable demo — branching scenario logic
+   Playable demo: branching scenario logic
    ===================================================================== */
 (function () {
   const shell      = document.getElementById("demoShell");
@@ -131,7 +131,7 @@
   const responses = {
     A: {
       tone: "mixed",
-      verdict: "Defensible — but heavy-handed.",
+      verdict: "Defensible, but heavy-handed.",
       headline: "It's a safe call. It's also an expensive one.",
       rationale: "Pulling a Care Manager from the field for a documented but narrow gap creates a service disruption for members already in their care plan, triggers backfill costs, and signals to staff that any flag means immediate suspension. CalAIM contemplates remediation pathways, not blanket benching. Save full removals for ethics, fraud, or member-safety issues.",
     },
@@ -145,7 +145,7 @@
       tone: "bad",
       verdict: "Don't do this.",
       headline: "Re-issuing without remediation is the move that ends careers.",
-      rationale: "If the auditor flagged it, the record speaks louder than your assertion. Re-issuing a certificate without addressing the underlying gap is a documentation failure that compounds into compliance failure — and in some jurisdictions, fraud. Always close the gap, document the closure, then let the records do the explaining.",
+      rationale: "If the auditor flagged it, the record speaks louder than your assertion. Re-issuing a certificate without addressing the underlying gap is a documentation failure that compounds into compliance failure and, in some jurisdictions, fraud. Always close the gap, document the closure, then let the records do the explaining.",
     },
   };
 

@@ -1,5 +1,5 @@
 /* =====================================================================
-   Alexandria's Design — Experience layer behaviors (lane pages)
+   Alexandria's Design: Experience layer behaviors (lane pages)
    Runs after motion.js (which owns Lenis, nav, counters, .reveal).
    Everything here is progressive enhancement: content is readable
    without JS, and animation is skipped under prefers-reduced-motion.
@@ -11,7 +11,7 @@
   document.documentElement.classList.add("js");
 
   /* Native image drag-and-drop cancels pointer interactions
-     (compare slider, ward pan, door parallax) — disable it. */
+     (compare slider, ward pan, door parallax): disable it. */
   document.querySelectorAll(
     ".compare img, .ward__panel img, .door__window img, .estab__media img, .scene img, .two-up img"
   ).forEach(function (img) {
@@ -24,7 +24,7 @@
   var hasST = !!window.ScrollTrigger;
 
   /* -------------------------------------------------------------------
-     1. Establishing shot — content fade-up + subtle image parallax
+     1. Establishing shot: content fade-up + subtle image parallax
      ------------------------------------------------------------------- */
   if (!reduced && hasGsap) {
     document.querySelectorAll("[data-estab]").forEach(function (sec) {
@@ -76,7 +76,7 @@
   }
 
   /* -------------------------------------------------------------------
-     2. Drawers — smooth expand/collapse on <details class="drawer">
+     2. Drawers: smooth expand/collapse on <details class="drawer">
      ------------------------------------------------------------------- */
   document.querySelectorAll("details.drawer").forEach(function (d) {
     var summary = d.querySelector("summary");
@@ -124,7 +124,7 @@
   });
 
   /* -------------------------------------------------------------------
-     3. Hotspot groups — one capability card open at a time
+     3. Hotspot groups: one capability card open at a time
         Container: [data-hotspots]; spots: .hotspot[data-target="id"];
         cards: .hs-card[id]; close: [data-close].
      ------------------------------------------------------------------- */
@@ -161,7 +161,7 @@
   });
 
   /* -------------------------------------------------------------------
-     4. Door panels (index) — pointer parallax inside the window
+     4. Door panels (index): pointer parallax inside the window
      ------------------------------------------------------------------- */
   if (!reduced) {
     document.querySelectorAll(".door").forEach(function (door) {
@@ -181,7 +181,7 @@
   }
 
   /* -------------------------------------------------------------------
-     5. Ward pan strip — drag-to-pan with momentum (mouse); native
+     5. Ward pan strip: drag-to-pan with momentum (mouse); native
         touch scrolling is left alone.
      ------------------------------------------------------------------- */
   document.querySelectorAll("[data-ward]").forEach(function (vp) {
@@ -250,7 +250,7 @@
   });
 
   /* -------------------------------------------------------------------
-     6. Compare slider — drag handle, clip-path reveal, keyboard support
+     6. Compare slider: drag handle, clip-path reveal, keyboard support
      ------------------------------------------------------------------- */
   document.querySelectorAll("[data-compare]").forEach(function (c) {
     var handle = c.querySelector(".compare__handle");
@@ -289,7 +289,7 @@
   });
 
   /* -------------------------------------------------------------------
-     7. Shelf covers (academy) — tilt-on-hover
+     7. Shelf covers (academy): tilt-on-hover
      ------------------------------------------------------------------- */
   if (!reduced) {
     document.querySelectorAll(".cover").forEach(function (card) {
@@ -307,7 +307,7 @@
   }
 
   /* -------------------------------------------------------------------
-     8. Format / level picker (index) — click a card to select it
+     8. Format / level picker (index): click a card to select it
      ------------------------------------------------------------------- */
   (function () {
     var summary = document.getElementById("pickerSummary");
@@ -342,7 +342,7 @@
   })();
 
   /* -------------------------------------------------------------------
-     9. Mailto forms — compose an email from the fields; nothing can
+     9. Mailto forms: compose an email from the fields; nothing can
         silently vanish because the user's own mail app sends it.
      ------------------------------------------------------------------- */
   document.querySelectorAll("form[data-mailto]").forEach(function (form) {

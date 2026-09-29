@@ -1,5 +1,5 @@
 /* =====================================================================
-   Alexandria's Design — Experience layer (lane pages)
+   Alexandria's Design: Experience layer (lane pages)
    Establishing shots, door panels, dossier scenes, hotspots, drawers,
    ward pan strip, compare slider, shelf covers, contact doors.
    Loads AFTER style.css. Brand: Newsreader + Inter, navy, gold #9F8B5C.
@@ -24,7 +24,7 @@ figure { margin: 0; }
 }
 
 /* =====================================================================
-   ESTABLISHING SHOT — full-viewport scene that opens every lane page
+   ESTABLISHING SHOT: full-viewport scene that opens every lane page
    ===================================================================== */
 .estab {
   position: relative;
@@ -126,7 +126,7 @@ figure { margin: 0; }
 @media (prefers-reduced-motion: reduce) { .estab__cue { display: none; } }
 
 /* =====================================================================
-   DRAWER — "Read the thinking" expandable long-form copy
+   DRAWER: "Read the thinking" expandable long-form copy
    ===================================================================== */
 details.drawer {
   border: 1px solid var(--navy-08);
@@ -187,7 +187,7 @@ details.drawer.drawer--dark[open] .drawer__icon { color: var(--gold-hi); border-
 details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
 
 /* =====================================================================
-   INDEX — THREE TALL DOOR PANELS
+   INDEX: THREE TALL DOOR PANELS
    ===================================================================== */
 .doors {
   display: grid;
@@ -288,7 +288,7 @@ details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
 .door:hover .door__cta { gap: 14px; }
 
 /* =====================================================================
-   PAST PERFORMANCE — condensed strip (index)
+   PAST PERFORMANCE: condensed strip (index)
    ===================================================================== */
 .pp-strip { text-align: center; }
 .pp-strip__label {
@@ -337,7 +337,7 @@ details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
 .pp-record p { margin: 0; font-size: 14px; }
 
 /* =====================================================================
-   CAPTION SCENES — full-width dossier stills with one-line captions
+   CAPTION SCENES: full-width dossier stills with one-line captions
    ===================================================================== */
 .scene { position: relative; overflow: hidden; background: var(--ink-dark); }
 .scene img {
@@ -391,7 +391,7 @@ details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
 }
 
 /* =====================================================================
-   HOTSPOT SCENES — pulsing dots that open capability cards
+   HOTSPOT SCENES: pulsing dots that open capability cards
    ===================================================================== */
 .hs-scene {
   position: relative;
@@ -446,7 +446,7 @@ details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
 }
 .hotspot.is-active::after { animation: none; opacity: 0; }
 
-/* Capability card — static below the scene by default (no-JS safe);
+/* Capability card: static below the scene by default (no-JS safe);
    becomes an overlay panel once JS adds the .js class to <html>. */
 .hs-card {
   background: rgba(10, 22, 40, 0.94);
@@ -518,7 +518,7 @@ details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
 .hs-hint--dark { color: rgba(255,255,255,0.5); }
 
 /* =====================================================================
-   GOVERNMENT — delivered record card
+   GOVERNMENT: delivered record card
    ===================================================================== */
 .record {
   position: relative;
@@ -579,7 +579,7 @@ details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
 }
 
 /* =====================================================================
-   CORPORATE — ward pan strip
+   CORPORATE: ward pan strip
    ===================================================================== */
 .ward__viewport {
   overflow-x: auto;
@@ -608,7 +608,7 @@ details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
 .js .ward__stage .hs-card { position: static; max-width: none; }
 
 /* =====================================================================
-   CORPORATE — before / after compare slider
+   CORPORATE: before / after compare slider
    ===================================================================== */
 .compare {
   position: relative;
@@ -666,7 +666,7 @@ details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
 .compare__label--before { left: 18px; }
 .compare__label--after { right: 18px; }
 
-/* Deliberately plain "slide deck" mock — the before state */
+/* Deliberately plain "slide deck" mock: the before state */
 .deckmock {
   position: absolute; inset: 0;
   background: #d9dce1;
@@ -722,7 +722,7 @@ details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
   display: block;
 }
 
-/* Corporate closing index — one line per training type */
+/* Corporate closing index: one line per training type */
 .type-index {
   list-style: none;
   padding: 0;
@@ -753,7 +753,7 @@ details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
 }
 
 /* =====================================================================
-   ACADEMY — companion course + shelf covers
+   ACADEMY: companion course + shelf covers
    ===================================================================== */
 .companion {
   display: grid;
@@ -870,7 +870,7 @@ details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
 }
 
 /* =====================================================================
-   CONTACT — three door-styled cards
+   CONTACT: three door-styled cards
    ===================================================================== */
 .door-cards {
   display: grid;
@@ -947,7 +947,7 @@ details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
 }
 
 /* =====================================================================
-   PICKER — index format / level selection states
+   PICKER: index format / level selection states
    ===================================================================== */
 [data-picker] .tier, [data-picker] .level { cursor: pointer; }
 .tier.is-selected, .level.is-selected {
@@ -986,7 +986,7 @@ details.drawer.drawer--dark .drawer__body { color: var(--ink-text); }
 }
 
 /* =====================================================================
-   EDUCATION — bridge card to the Academy
+   EDUCATION: bridge card to the Academy
    ===================================================================== */
 .bridge {
   display: grid;
