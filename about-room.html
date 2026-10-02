@@ -398,6 +398,90 @@
     .gate__error { color: #ff7a7a; font-size: 13px; margin-top: 10px; min-height: 18px; }
     .portfolio { display: none; }
     .portfolio.is-unlocked { display: block; }
+    .portfolio-showcase {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      margin-top: 26px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      color: inherit;
+      background: rgba(255,255,255,0.045);
+      transition: border-color 0.22s ease, transform 0.22s ease, background 0.22s ease;
+    }
+    .portfolio-showcase:hover {
+      transform: translateY(-2px);
+      border-color: var(--gold);
+      background: rgba(255,255,255,0.065);
+    }
+    .portfolio-showcase:focus-visible {
+      outline: 3px solid var(--cyan);
+      outline-offset: 4px;
+    }
+    .portfolio-showcase__media {
+      position: relative;
+      min-height: 330px;
+      overflow: hidden;
+      background: #0b1f33;
+      border-right: 1px solid var(--line);
+    }
+    .portfolio-showcase__media img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: top left;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .portfolio-showcase:hover .portfolio-showcase__media img { transform: scale(1.018); }
+    .portfolio-showcase__body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(24px, 4vw, 38px);
+    }
+    .portfolio-showcase__kicker {
+      color: var(--gold);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .portfolio-showcase h3 {
+      margin: 10px 0 14px;
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 380;
+      letter-spacing: -0.035em;
+      line-height: 0.98;
+      text-wrap: balance;
+    }
+    .portfolio-showcase p {
+      margin: 0;
+      color: var(--ink-60);
+      font-size: 14px;
+      line-height: 1.65;
+      text-wrap: pretty;
+    }
+    .portfolio-showcase__proof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin: 22px 0;
+      color: var(--cyan);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .portfolio-showcase__proof span::before { content: "+"; margin-right: 6px; color: var(--gold); }
+    .portfolio-showcase__cta {
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 700;
+    }
     .portfolio-entry {
       display: grid;
       grid-template-columns: 1fr 0.75fr;
@@ -446,7 +530,11 @@
       text-transform: uppercase;
       margin-bottom: 4px;
     }
-    @media (max-width: 760px) { .portfolio-entry { grid-template-columns: 1fr; } }
+    @media (max-width: 760px) {
+      .portfolio-showcase,
+      .portfolio-entry { grid-template-columns: 1fr; }
+      .portfolio-showcase__media { min-height: 220px; border-right: 0; border-bottom: 1px solid var(--line); }
+    }
 
     /* Studio */
     .studio-card { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px; }
@@ -1085,20 +1173,37 @@
         <a href="mailto:info@alexandriasdesign.com?subject=Discovery%20Call%20Request%2C%20Studio%20Portfolio" class="gate__book">Book a 30-min discovery call →</a>
       </div>
       <div class="portfolio" id="portfolio">
-        <span class="modal__eyebrow">The Portfolio</span>
-        <h2 class="modal__title">The door opens into the case room.</h2>
-        <p class="modal__lede">The portfolio now lives as its own experience: case wall, filters, proof layers, and production-system story. Reach out anytime: <a href="mailto:info@alexandriasdesign.com" style="color: var(--cyan);">info@alexandriasdesign.com</a>.</p>
+        <span class="modal__eyebrow">Selected Work</span>
+        <h2 class="modal__title">Start with the training showcase.</h2>
+        <p class="modal__lede">Use this guided portfolio during interviews and client conversations to move from research and learning architecture into the programs, interactions, and evidence we produced.</p>
+        <a class="portfolio-showcase" href="https://drmariemartin.com/trainingpros/" target="_blank" rel="noopener" aria-label="Open the Training Portfolio Showcase in a new tab">
+          <div class="portfolio-showcase__media">
+            <img src="assets/scenes/training-portfolio-showcase.png" alt="Alexandria's Design training portfolio capability profile" loading="lazy" />
+          </div>
+          <div class="portfolio-showcase__body">
+            <span class="portfolio-showcase__kicker">Featured experience</span>
+            <h3>Training Portfolio Showcase</h3>
+            <p>Research projects, instructor-led and virtual training, train-the-trainer systems, Storyline and Rise interactions, curriculum and program development, and learning-systems evaluation.</p>
+            <div class="portfolio-showcase__proof" aria-label="Featured capability areas">
+              <span>Research</span>
+              <span>ILT and VILT</span>
+              <span>Interactive learning</span>
+              <span>Program efficacy</span>
+            </div>
+            <span class="portfolio-showcase__cta">Open the showcase →</span>
+          </div>
+        </a>
         <div class="portfolio-entry">
           <div class="portfolio-entry__panel">
-            <h3>Evidence you can walk through.</h3>
-            <p>Move from the studio into a password-gated proof environment built for government, healthcare, enterprise, and education buyers.</p>
-            <a href="portfolio.html" class="gate__submit" style="display:inline-flex; text-decoration:none;">Enter portfolio →</a>
+            <h3>Continue into the case room.</h3>
+            <p>Explore the broader proof environment built for government, healthcare, enterprise, and education buyers.</p>
+            <a href="portfolio.html" class="gate__submit" style="display:inline-flex; text-decoration:none;">Open the case room →</a>
           </div>
           <div class="portfolio-entry__list">
             <ul>
-              <li><strong>Case wall</strong>Portfolio rooms across federal training, healthcare simulation, AI fluency, research prototypes, and K-12 modeling.</li>
-              <li><strong>Buyer filters</strong>Government, healthcare, enterprise, education, and simulation paths.</li>
-              <li><strong>Proof layer</strong>Metrics, compliance notes, architecture, and production-system framing.</li>
+              <li><strong>Case wall</strong>Selected work across federal training, healthcare simulation, AI fluency, research prototypes, and K-12 modeling.</li>
+              <li><strong>Buyer paths</strong>Government, healthcare, enterprise, education, and simulation views.</li>
+              <li><strong>Proof layer</strong>Metrics, architecture, applied artifacts, and production-system framing.</li>
             </ul>
           </div>
         </div>
